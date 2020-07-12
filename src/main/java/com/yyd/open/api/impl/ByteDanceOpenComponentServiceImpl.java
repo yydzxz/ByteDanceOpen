@@ -106,7 +106,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
                 + "&component_appsecret=" + getByteDanceOpenConfigStorage().getComponentAppSecret()
                 + "&component_appid=" + getByteDanceOpenConfigStorage().getComponentAppId();
 
-            String responseContent = this.getByteDanceOpenService().get(url);
+            String responseContent = this.getByteDanceOpenService().getByteDanceHttpRequestService().get(url);
             ByteDanceOpenComponentAccessToken componentAccessToken = ByteDanceOpenComponentAccessToken.fromJson(responseContent);
             config.updateComponentAccessToken(componentAccessToken);
             return config.getComponentAccessToken();
@@ -219,7 +219,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
 
     private <T> T getInternal(String url, Class<T> t) {
         return executeRequest((uriWithCommonParam, request, t2)->{
-            return getByteDanceOpenService().get(uriWithCommonParam, t2);
+            return getByteDanceOpenService().getByteDanceHttpRequestService().get(uriWithCommonParam, t2);
         }, url, null, t);
     }
 
@@ -231,7 +231,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
 
     private  <T> T postInternal(String url, Object request, Class<T> t) {
         return executeRequest((uriWithCommonParam, request2, t2)->{
-            return getByteDanceOpenService().post(uriWithCommonParam, request2, t2);
+            return getByteDanceOpenService().getByteDanceHttpRequestService().post(uriWithCommonParam, request2, t2);
         }, url, request, t);
     }
 
