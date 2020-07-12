@@ -1,6 +1,5 @@
 package com.yyd.open.util;
 
-import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import com.yyd.open.bean.message.ByteDanceOpenMessage;
 import java.nio.ByteBuffer;
@@ -11,8 +10,7 @@ import java.util.Arrays;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.commons.codec.binary.Base64;
+import java.util.Base64;
 
 
 public class MsgDecrypt {
@@ -25,7 +23,7 @@ public class MsgDecrypt {
         if (encodingAesKey.length() != 43) {
             throw new Exception("AES key 长度不合法");
         }
-        byte[] aesKey = Base64.decodeBase64(encodingAesKey + "=");
+        byte[] aesKey = Base64.getDecoder().decode(encodingAesKey + "=");
 
         SecretKeySpec keySpec = new SecretKeySpec(aesKey, "AES");
         IvParameterSpec iv = new IvParameterSpec(aesKey, 0, 16);
@@ -54,7 +52,7 @@ public class MsgDecrypt {
     public ByteDanceOpenMessage decrypt(String text) throws Exception {
         byte[] original;
         try {
-            byte[] encrypted = Base64.decodeBase64(text);
+            byte[] encrypted = Base64.getDecoder().decode(text);
             original = cipher.doFinal(encrypted);
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,12 +74,18 @@ public class MsgDecrypt {
             //byte数组截去真实消息后，末尾剩下的字符就是appid
             AppId = new String(Arrays.copyOfRange(bytes, RANDOM_BYTES_POS + 4 + msgLength, bytes.length), StandardCharsets.UTF_8);
 
-            message = JSONUtil.toBean(Content, ByteDanceOpenMessage.class);
+            message = JSON.parseObject(Content, ByteDanceOpenMessage.class);
             message.setFromTpAppId(AppId);
+            System.out.println(message);
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("Buffer异常");
         }
         return message;
+    }
+
+    public static void main(String[] args) throws Exception {
+        MsgDecrypt test = new MsgDecrypt("1234567890123456789012345678901234567890qwe");
+        test.decrypt("JymxvCwHjeN9hQvdN6uAOpq4QS2FmN3TOynFXfn/q8Ye8mcBHXCKC0/yRf/kwPFg4enZd30CuKjlfcJ23HStIPDe2HR9lbQ/9cgpPb0Iw/NFRFeFsBjYJKddlpSYGuUt3t78wv+vKLmLPxKB+4uGS0LPgprIGRiGomq0P2Pc8ZJkCJ/WoOkNUrD3zldKWIUuZPOeQXoMl2K//vGoH66c/GJd8KvICVjb90ZhUu7XaLU2+5vfPssh3CB23+/smGOEISwJZJOuftF+IFXSudQ49g==");
     }
 }

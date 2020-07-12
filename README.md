@@ -3,3 +3,4 @@
 支持字节跳动开放平台小程序代开发功能的后端开发。
 ## 使用方式
 自己实现一个`IByteDanceOpenService`
+具体可以参考[ByteDance-Open-Demo](https://github.com/yydzxz/ByteDance-Open-Demo)
