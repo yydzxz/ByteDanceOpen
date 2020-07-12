@@ -39,7 +39,6 @@ com/yyd/open/api/request/code/CodeAuditRequest.class
 com/yyd/open/api/response/template/TemplateDelTplResponse.class
 com/yyd/open/api/response/code/CodeReleaseResponse.class
 com/yyd/common/redis/RedissonByteDanceRedisOps.class
-com/yyd/App.class
 com/yyd/open/api/request/auth/GetComponentAccessTokenRequest.class
 com/yyd/open/bean/message/ByteDanceOpenMessageHandleResult.class
 com/yyd/open/bean/ByteDanceOpenComponentAccessToken.class
@@ -62,7 +61,6 @@ com/yyd/open/api/response/appinfo/AppInfoResponse$AppCategoriesAuditInfo.class
 com/yyd/open/api/impl/ByteDanceOpenMiniProgramServiceImpl.class
 com/yyd/open/bean/ByteDanceOpenAuthorizerAccessToken.class
 com/yyd/open/api/request/auth/GetAuthorizerAccessTokenRequest.class
-com/yyd/open/util/ByteDanceBase64.class
 com/yyd/open/util/MsgDecrypt.class
 com/yyd/open/api/impl/AbstractByteDanceOpenInRedisConfigStorage.class
 com/yyd/open/api/request/appinfo/AppQrCodeRequest.class
