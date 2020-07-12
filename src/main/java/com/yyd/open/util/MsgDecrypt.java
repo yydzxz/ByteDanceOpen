@@ -1,5 +1,8 @@
 package com.yyd.open.util;
 
+import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
+import com.yyd.open.bean.message.ByteDanceOpenMessage;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
@@ -15,7 +18,7 @@ import org.apache.commons.codec.binary.Base64;
 public class MsgDecrypt {
 
     private Cipher cipher;
-    static int RANDOM_BYTES_POS = 32;
+    public static int RANDOM_BYTES_POS = 32;
 
     public MsgDecrypt(String encodingAesKey) throws Exception {
         //AES key长度固定
@@ -48,7 +51,7 @@ public class MsgDecrypt {
         return Arrays.copyOfRange(decrypted, 0, decrypted.length - pad);
     }
 
-    private void decrypt(String text) throws Exception {
+    public ByteDanceOpenMessage decrypt(String text) throws Exception {
         byte[] original;
         try {
             byte[] encrypted = Base64.decodeBase64(text);
@@ -60,6 +63,7 @@ public class MsgDecrypt {
 
         String Content;
         String AppId;
+        ByteDanceOpenMessage message;
         try {
             byte[] bytes = this.decode(original);
 
@@ -72,16 +76,12 @@ public class MsgDecrypt {
             //byte数组截去真实消息后，末尾剩下的字符就是appid
             AppId = new String(Arrays.copyOfRange(bytes, RANDOM_BYTES_POS + 4 + msgLength, bytes.length), StandardCharsets.UTF_8);
 
-            System.out.println("Content: " + Content);
-            System.out.println("ThirdParty AppID: " + AppId);
+            message = JSONUtil.toBean(Content, ByteDanceOpenMessage.class);
+            message.setFromTpAppId(AppId);
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("Buffer异常");
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        MsgDecrypt test = new MsgDecrypt("XXX");
-        test.decrypt("XXX");
+        return message;
     }
 }
