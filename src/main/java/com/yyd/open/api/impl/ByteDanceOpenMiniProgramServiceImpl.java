@@ -113,7 +113,7 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
     private <T> T postInternal(String url, Object request, Class<T> t){
         return executeRequest(
             (String uriWithCommonParam, Object request2, Class<T> t2) -> {
-                return getByteDanceOpenComponentService().getByteDanceOpenService().post(uriWithCommonParam, request2, t2);
+                return getByteDanceOpenComponentService().getByteDanceOpenService().getByteDanceHttpRequestService().post(uriWithCommonParam, request2, t2);
             },url, request, t
         );
     }
@@ -121,7 +121,7 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
     private <T> T getInternal(String url, Class<T> t){
         return executeRequest(
             (String uriWithCommonParam, Object request2, Class<T> t2) -> {
-                return getByteDanceOpenComponentService().getByteDanceOpenService().get(uriWithCommonParam, t2);
+                return getByteDanceOpenComponentService().getByteDanceOpenService().getByteDanceHttpRequestService().get(uriWithCommonParam, t2);
             },url, null, t
         );
     }
