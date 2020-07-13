@@ -6,7 +6,7 @@
 
   <groupId>com.github.yydzxz</groupId>
   <artifactId>bytedance-open</artifactId>
-  <version>1.12-SNAPSHOT</version>
+  <version>1.0.2.RELEASE</version>
 
   <name>ByteDance - Open Java SDK</name>
   <description>字节跳动开放平台Java SDK</description>
@@ -19,6 +19,12 @@
       <url>https://github.com/yydzxz</url>
     </developer>
   </developers>
+
+  <scm>
+    <connection>scm:git:https://github.com/yydzxz/ByteDanceOpen.git</connection>
+    <developerConnection>scm:https://github.com/yydzxz</developerConnection>
+    <url>https://github.com/yydzxz/ByteDanceOpen</url>
+  </scm>
 
   <licenses>
     <license>
