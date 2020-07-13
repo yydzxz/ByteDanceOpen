@@ -4,6 +4,7 @@ import com.github.yydzxz.open.bean.message.ByteDanceOpenMessage;
 import com.github.yydzxz.open.bean.message.ByteDanceOpenMessageHandleResult;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -56,13 +57,13 @@ public class ByteDanceOpenMessageRouterRule {
      * 使用该规则对应的所有handlers处理消息
      * @return
      */
-    public ByteDanceOpenMessageHandleResult handle(ByteDanceOpenMessage message){
+    public ByteDanceOpenMessageHandleResult handle(ByteDanceOpenMessage message, Map<String, Object> context){
         ByteDanceOpenMessageHandleResult result = null;
         for(IByteDanceOpenMessageHandler handler : this.handlers){
             if(handler == null){
                log.warn("存在为null的handler");
             }
-            result = handler.handle(message);
+            result = handler.handle(message, context);
         }
         // 返回最后handler的结果
         return result;

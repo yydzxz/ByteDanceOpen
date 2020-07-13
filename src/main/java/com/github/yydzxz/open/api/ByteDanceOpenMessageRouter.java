@@ -6,7 +6,9 @@ import com.github.yydzxz.common.redis.IByteDanceRedisOps;
 import com.github.yydzxz.open.bean.message.ByteDanceOpenMessage;
 import com.github.yydzxz.open.bean.message.ByteDanceOpenMessageHandleResult;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,10 +40,14 @@ public class ByteDanceOpenMessageRouter {
         return new ByteDanceOpenMessageRouterRule(this);
     }
 
+    public ByteDanceOpenMessageHandleResult route(final ByteDanceOpenMessage message){
+        return route(message, new HashMap<>(1));
+    }
+
     /**
      * 匹配符合的规则，然后用这些规则中的handlers去处理消息.
      */
-    public ByteDanceOpenMessageHandleResult route(final ByteDanceOpenMessage message){
+    public ByteDanceOpenMessageHandleResult route(final ByteDanceOpenMessage message, Map<String, Object> context){
         ByteDanceOpenMessageHandleResult result = new ByteDanceOpenMessageHandleResult();
 
         if (isMsgDuplicated(message)) {
@@ -63,7 +69,7 @@ public class ByteDanceOpenMessageRouter {
 
         for(final ByteDanceOpenMessageRouterRule rule : matchedRules){
             //返回最后一个handler的处理结果
-            result = rule.handle(message);
+            result = rule.handle(message, context);
         }
         return result;
     }
