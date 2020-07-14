@@ -190,5 +190,29 @@
         </snapshotRepository>
       </distributionManagement>
     </profile>
+
+    <profile>
+      <id>github</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+        <repository>
+          <id>github</id>
+          <name>GitHub OWNER Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/yydzxz/ByteDanceOpen</url>
+        </repository>
+      </repositories>
+      <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub OWNER Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/yydzxz/ByteDanceOpen</url>
+        </repository>
+      </distributionManagement>
+    </profile>
   </profiles>
 </project>
