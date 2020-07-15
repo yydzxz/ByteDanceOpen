@@ -35,18 +35,30 @@ public class RestTemplateByteDanceHttpRequestServiceImpl implements IByteDanceHt
     public <T> T get(String url, Class<T> t) {
         log.info("get请求字节跳动接口,请求地址: [{}]",url);
         T response = restTemplate.getForObject(url, t);
-        if(response instanceof String){
-            checkError((String)response);
-        }
-        return response;
+        return handleResponse(response);
     }
 
     @Override
     public <T> T post(String url, Object request, Class<T> t) {
         log.info("post请求字节跳动接口, 请求地址[{}], 参数[{}]",url, JSONUtil.toJsonStr(request));
         T response = restTemplate.postForObject(url, request, t);
+        return handleResponse(response);
+    }
+
+    private <T> T handleResponse(T response){
         if(response instanceof String){
             checkError((String)response);
+            log.info("请求字节跳动接口返回数据: {}", response);
+        }else if(response instanceof byte[]){
+            try{
+                checkError(new String((byte[])response));
+            }catch (RuntimeException e){
+                if(e instanceof ByteDanceErrorException){
+                    throw e;
+                }else{
+                    //doNothing
+                }
+            }
         }
         return response;
     }
@@ -56,13 +68,10 @@ public class RestTemplateByteDanceHttpRequestServiceImpl implements IByteDanceHt
         ByteDanceError error;
         try{
             error = JSONUtil.toBean(response, ByteDanceError.class);
-        }catch (Exception e){
+        }catch (RuntimeException e){
             log.error("字节跳动接口未知错误");
             log.error(e.getMessage(), e);
-            error = new ByteDanceError();
-            error.setErrno(ByteDanceMiniProgramErrorMsgEnum.CODE_40000.getCode());
-            error.setMessage("字节跳动接口未知错误");
-            throw new ByteDanceErrorException(error);
+            throw e;
         }
         if(error.getErrno() != null && error.getErrno() != 0){
             log.error("字节跳动接口返回内容: {}", response);
