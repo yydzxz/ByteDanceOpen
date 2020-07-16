@@ -40,6 +40,8 @@ public class ByteDanceOpenMessageRouter {
         return new ByteDanceOpenMessageRouterRule(this);
     }
 
+
+
     public ByteDanceOpenMessageHandleResult route(final ByteDanceOpenMessage message){
         return route(message, new HashMap<>(1));
     }
@@ -69,18 +71,21 @@ public class ByteDanceOpenMessageRouter {
 
         for(final ByteDanceOpenMessageRouterRule rule : matchedRules){
             //返回最后一个handler的处理结果
-            result = rule.handle(message, context);
+            try{
+                result = rule.handle(message, context);
+            }catch (Exception e){
+                log.error("消息处理失败，清除消息重复状态");
+                //如果这条消息处理报错，那么清除这条消息的重复状态，这样字节服务再次推送这条消息的时候，可以再次处理
+                this.messageDuplicateChecker.clearDuplicate(getMessageId(message));
+                throw e;
+            }
         }
         return result;
     }
 
-    private boolean isMsgDuplicated(final ByteDanceOpenMessage message){
-        if(this.messageDuplicateChecker == null){
-            log.warn("没有配置消息重复检查器，不进行消息重复性检查");
-            return false;
-        }
-        StringBuilder messageId = new StringBuilder("bytedance:event:msgid:");
-        messageId.append(message.getAppId() == null ? "appidempty" : message.getAppId())
+    private String getMessageId(final ByteDanceOpenMessage message){
+        StringBuilder sb = new StringBuilder("bytedance:event:msgid:");
+        sb.append(message.getAppId() == null ? "appidempty" : message.getAppId())
             .append(":")
             .append(message.getEvent())
             .append(":")
@@ -89,7 +94,16 @@ public class ByteDanceOpenMessageRouter {
             .append(message.getEventTime() == null ? "eventtimeempty" : message.getEventTime().getTime())
             .append(":")
             .append(message.getCreateTime() == null ? "creatimeempty" : message.getCreateTime().getTime());
-        log.info("进行消息重复性检查: {}", messageId.toString());
+        return sb.toString();
+    }
+
+    private boolean isMsgDuplicated(final ByteDanceOpenMessage message){
+        if(this.messageDuplicateChecker == null){
+            log.warn("没有配置消息重复检查器，不进行消息重复性检查");
+            return false;
+        }
+        String messageId = getMessageId(message);
+        log.info("进行消息重复性检查: {}", messageId);
         return this.messageDuplicateChecker.isDuplicate(messageId.toString());
     }
 }

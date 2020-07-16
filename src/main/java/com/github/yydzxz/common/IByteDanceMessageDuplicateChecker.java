@@ -14,4 +14,11 @@ public interface IByteDanceMessageDuplicateChecker {
      * @return
      */
     boolean isDuplicate(String messageId);
+
+    /**
+     * 让messageId不再处于重复状态.
+     * @param messageId
+     * @return
+     */
+    boolean clearDuplicate(String messageId);
 }

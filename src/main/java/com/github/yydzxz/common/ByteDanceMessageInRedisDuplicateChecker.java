@@ -27,4 +27,9 @@ public class ByteDanceMessageInRedisDuplicateChecker implements IByteDanceMessag
             return true;
         }
     }
+
+    @Override
+    public boolean clearDuplicate(String messageId){
+        return byteDanceRedisOps.deleteKey(messageId);
+    }
 }

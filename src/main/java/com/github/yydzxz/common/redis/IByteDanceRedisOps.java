@@ -18,4 +18,6 @@ public interface IByteDanceRedisOps {
 
     Lock getLock(String key);
 
+    boolean deleteKey(String key);
+
 }

@@ -49,4 +49,9 @@ public class RedissonByteDanceRedisOps implements IByteDanceRedisOps {
     public Lock getLock(String key) {
         return redissonClient.getLock(key);
     }
+
+    @Override
+    public boolean deleteKey(String key) {
+        return redissonClient.getBucket(key).delete();
+    }
 }
