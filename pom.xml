@@ -6,7 +6,7 @@
 
   <groupId>com.github.yydzxz</groupId>
   <artifactId>bytedance-open</artifactId>
-  <version>1.0.2.RELEASE</version>
+  <version>1.0.3.RELEASE</version>
 
   <name>ByteDance - Open Java SDK</name>
   <description>字节跳动开放平台Java SDK</description>
