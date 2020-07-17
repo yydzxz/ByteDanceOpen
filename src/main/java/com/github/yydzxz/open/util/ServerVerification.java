@@ -3,6 +3,9 @@ package com.github.yydzxz.open.util;
 import java.util.Arrays;
 import java.security.MessageDigest;
 
+/**
+ * 字节跳动提供的代码
+ */
 public class ServerVerification {
 
     public static String getMsgSignature(String tpToken, String timestamp, String nonce, String encrypt) throws Exception {

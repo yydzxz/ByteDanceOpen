@@ -8,7 +8,6 @@ import org.redisson.api.RedissonClient;
  * @author yangyidian
  * @date 2020/06/23
  **/
-//@Component
 public class RedissonByteDanceRedisOps implements IByteDanceRedisOps {
     private final RedissonClient redissonClient;
 

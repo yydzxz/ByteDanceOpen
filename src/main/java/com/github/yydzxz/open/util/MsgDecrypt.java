@@ -12,7 +12,9 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
-
+/**
+ * 字节跳动提供的代码
+ */
 public class MsgDecrypt {
 
     private Cipher cipher;
@@ -82,10 +84,5 @@ public class MsgDecrypt {
             throw new Exception("Buffer异常");
         }
         return message;
-    }
-
-    public static void main(String[] args) throws Exception {
-        MsgDecrypt test = new MsgDecrypt("1234567890123456789012345678901234567890qwe");
-        test.decrypt("JymxvCwHjeN9hQvdN6uAOpq4QS2FmN3TOynFXfn/q8Ye8mcBHXCKC0/yRf/kwPFg4enZd30CuKjlfcJ23HStIPDe2HR9lbQ/9cgpPb0Iw/NFRFeFsBjYJKddlpSYGuUt3t78wv+vKLmLPxKB+4uGS0LPgprIGRiGomq0P2Pc8ZJkCJ/WoOkNUrD3zldKWIUuZPOeQXoMl2K//vGoH66c/GJd8KvICVjb90ZhUu7XaLU2+5vfPssh3CB23+/smGOEISwJZJOuftF+IFXSudQ49g==");
     }
 }

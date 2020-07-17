@@ -56,7 +56,7 @@ public class RestTemplateByteDanceHttpRequestServiceImpl implements IByteDanceHt
                 if(e instanceof ByteDanceErrorException){
                     throw e;
                 }else{
-                    //doNothing
+                    // do nothing
                 }
             }
         }
