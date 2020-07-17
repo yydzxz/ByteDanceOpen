@@ -9,6 +9,9 @@ import lombok.Data;
  **/
 @Data
 public class ByteDanceAccessToken implements Serializable {
+
+    private static final long serialVersionUID = 4456833691693275326L;
+
     private String accessToken;
 
     private int expiresIn = -1;

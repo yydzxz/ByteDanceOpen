@@ -9,6 +9,8 @@ import lombok.Data;
  **/
 @Data
 public class ByteDanceError implements Serializable {
+
+    private static final long serialVersionUID = 8757224149770373443L;
     /**
      * 错误代码.
      */

@@ -74,7 +74,7 @@ public class ByteDanceOpenMessageRouter {
             try{
                 result = rule.handle(message, context);
             }catch (Exception e){
-                log.error("消息处理失败，清除消息重复状态");
+                log.info("{}===>消息处理失败，清除消息重复状态", JSONUtil.toJsonStr(message));
                 //如果这条消息处理报错，那么清除这条消息的重复状态，这样字节服务再次推送这条消息的时候，可以再次处理
                 this.messageDuplicateChecker.clearDuplicate(getMessageId(message));
                 throw e;
@@ -104,6 +104,6 @@ public class ByteDanceOpenMessageRouter {
         }
         String messageId = getMessageId(message);
         log.info("进行消息重复性检查: {}", messageId);
-        return this.messageDuplicateChecker.isDuplicate(messageId.toString());
+        return this.messageDuplicateChecker.isDuplicate(messageId);
     }
 }

@@ -11,6 +11,8 @@ import lombok.Data;
 @Data
 public class ByteDanceOpenComponentAccessToken implements Serializable {
 
+    private static final long serialVersionUID = 6417155856835777760L;
+
     private String componentAccessToken;
 
     private int expiresIn = -1;
