@@ -1,6 +1,5 @@
 package com.github.yydzxz.open.api.impl;
 
-import cn.hutool.json.JSONUtil;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramInfoService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.request.appinfo.AppQrCodeRequest;
@@ -22,8 +21,7 @@ public class ByteDanceOpenMiniProgramInfoServiceImpl implements IByteDanceOpenMi
 
     @Override
     public AppInfoResponse getAppInfo() {
-        String response = byteDanceOpenMiniProgramService.get(APP_INFO_URL);
-        return JSONUtil.toBean(response, AppInfoResponse.class);
+        return byteDanceOpenMiniProgramService.get(APP_INFO_URL, AppInfoResponse.class);
     }
 
     @Override
