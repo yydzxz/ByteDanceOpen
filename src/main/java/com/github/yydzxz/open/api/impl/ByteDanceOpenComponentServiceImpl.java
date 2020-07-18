@@ -28,7 +28,6 @@ import org.slf4j.Logger;
  * @date 2020/06/19
  **/
 @Slf4j
-//@Service
 public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponentService, IRetryableExecutor {
     private long retrySleepMillis = 1000;
 
@@ -147,8 +146,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
         String url = API_GET_OAUTH_TOKEN_URL
             + "?authorization_code=" + authorizationCode
             + "&grant_type=app_to_tp_authorization_code";
-        String responseContent = get(url);
-        GetAuthorizerAccessTokenReponse response = JSONUtil.toBean(responseContent, GetAuthorizerAccessTokenReponse.class);
+        GetAuthorizerAccessTokenReponse response = get(url, GetAuthorizerAccessTokenReponse.class);
 
         if (!StringUtils.isEmpty(response.getAuthorizerAccessToken())) {
             getByteDanceOpenConfigStorage().updateAuthorizerAccessToken(response.getAuthorizerAppid(),
@@ -160,7 +158,6 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
         return response;
     }
 
-    //TODO test
     @Override
     public String getAuthorizerAccessToken(String appId, boolean forceRefresh) {
         IByteDanceOpenConfigStorage config = getByteDanceOpenConfigStorage();
@@ -176,9 +173,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
             String url = API_GET_OAUTH_TOKEN_URL
                 + "?authorizer_refresh_token=" + getByteDanceOpenConfigStorage().getAuthorizerRefreshToken(appId)
                 + "&grant_type=app_to_tp_refresh_token";
-            String responseContent = get(url);
-
-            GetAuthorizerAccessTokenReponse response = JSONUtil.toBean(responseContent, GetAuthorizerAccessTokenReponse.class);
+            GetAuthorizerAccessTokenReponse response = get(url, GetAuthorizerAccessTokenReponse.class);
 
             config.updateAuthorizerAccessToken(appId, response.getAuthorizerAccessToken(), response.getExpiresIn());
             config.setAuthorizerRefreshToken(appId, response.getAuthorizerRefreshToken());

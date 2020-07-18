@@ -81,7 +81,6 @@ public interface IRetryableExecutor {
                 }else {
                     throw e;
                 }
-
             }
         }
         return response;
