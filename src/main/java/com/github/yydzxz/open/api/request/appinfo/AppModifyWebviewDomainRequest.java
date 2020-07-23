@@ -4,6 +4,7 @@ import java.util.List;
 import lombok.Data;
 
 /**
+ * 修改 webview 域名
  * @author yangyidian
  * @date 2020/07/20
  **/
