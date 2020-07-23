@@ -9,4 +9,5 @@ import com.github.yydzxz.common.error.ByteDanceError;
  **/
 public class TemplateAddTplResponse extends ByteDanceError {
 
+    private static final long serialVersionUID = 4114119119270278142L;
 }

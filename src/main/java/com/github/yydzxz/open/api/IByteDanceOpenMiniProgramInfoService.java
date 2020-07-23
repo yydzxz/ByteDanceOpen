@@ -1,8 +1,16 @@
 package com.github.yydzxz.open.api;
 
 
+import com.github.yydzxz.open.api.request.appinfo.AppCheckAppNameRequest;
+import com.github.yydzxz.open.api.request.appinfo.AppModifyAppIconRequest;
+import com.github.yydzxz.open.api.request.appinfo.AppModifyAppIntroRequest;
+import com.github.yydzxz.open.api.request.appinfo.AppModifyAppNameRequest;
 import com.github.yydzxz.open.api.request.appinfo.AppQrCodeRequest;
+import com.github.yydzxz.open.api.response.appinfo.AppCheckAppNameResponse;
 import com.github.yydzxz.open.api.response.appinfo.AppInfoResponse;
+import com.github.yydzxz.open.api.response.appinfo.AppModifyAppIconResponse;
+import com.github.yydzxz.open.api.response.appinfo.AppModifyAppIntroResponse;
+import com.github.yydzxz.open.api.response.appinfo.AppModifyAppNameResponse;
 
 /**
  * 代授权小程序业务-基本信息配置 相关API
@@ -63,4 +71,32 @@ public interface IByteDanceOpenMiniProgramInfoService {
      * @return
      */
     byte[] getAppQrCode(AppQrCodeRequest request);
+
+    /**
+     * 小程序名称检测
+     * @param appName 小程序待检测名称
+     * @return
+     */
+    AppCheckAppNameResponse checkAppName(String appName);
+
+    /**
+     * 修改小程序名称
+     * @param request
+     * @return
+     */
+    AppModifyAppNameResponse modifyAppName(AppModifyAppNameRequest request);
+
+    /**
+     * 修改小程序简介
+     * @param request
+     * @return
+     */
+    AppModifyAppIntroResponse modifyAppIntro(AppModifyAppIntroRequest request);
+
+    /**
+     * 修改小程序图标
+     * @param request
+     * @return
+     */
+    AppModifyAppIconResponse modifyAppIcon(AppModifyAppIconRequest request);
 }

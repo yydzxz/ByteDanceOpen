@@ -4,7 +4,6 @@ package com.github.yydzxz.open.bean.message;
 import lombok.Data;
 
 /**
- * TODO
  * 消息经过处理后的返回结果. 目前处理后没有需要返回的
  * @author yangyidian
  * @date 2020/07/08
@@ -13,4 +12,6 @@ import lombok.Data;
 public class ByteDanceOpenMessageHandleResult {
 
     private String defaultResult = "success";
+
+    private Object result;
 }

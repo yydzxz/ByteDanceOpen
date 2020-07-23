@@ -11,6 +11,9 @@ import lombok.Data;
  **/
 @Data
 public class GetAuthorizerAccessTokenReponse extends ByteDanceError {
+
+    private static final long serialVersionUID = -8337462028108565681L;
+
     @JSONField(name = "authorizer_access_token")
     @JsonAlias("authorizer_access_token")
     private String authorizerAccessToken;

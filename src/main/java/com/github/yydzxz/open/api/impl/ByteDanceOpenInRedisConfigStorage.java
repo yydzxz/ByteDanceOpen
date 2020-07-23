@@ -3,10 +3,6 @@ package com.github.yydzxz.open.api.impl;
 import com.github.yydzxz.open.bean.ByteDanceOpenAuthorizerAccessToken;
 import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
 import com.github.yydzxz.common.redis.IByteDanceRedisOps;
-import com.github.yydzxz.miniprogram.config.ByteDanceMiniProgramConfig;
-import com.github.yydzxz.miniprogram.config.ByteDanceMiniProgramRedissonConfigImpl;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import lombok.NonNull;
@@ -22,8 +18,6 @@ public class ByteDanceOpenInRedisConfigStorage extends AbstractByteDanceOpenInRe
     private final IByteDanceRedisOps redisOps;
 
     private Lock accessTokenLockInstance;
-
-    private Map<String, ByteDanceMiniProgramConfig> BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP = new ConcurrentHashMap<>();
 
     public ByteDanceOpenInRedisConfigStorage(@NonNull IByteDanceRedisOps redisOps, String keyPrefix) {
         this.redisOps = redisOps;
@@ -63,14 +57,14 @@ public class ByteDanceOpenInRedisConfigStorage extends AbstractByteDanceOpenInRe
 
     }
 
-    @Override
-    public ByteDanceMiniProgramConfig getByteDanceMiniProgramConfig(String appId) {
-        ByteDanceMiniProgramConfig config = BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP.get(appId);
-        if(config == null){
-            BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP.put(appId, new ByteDanceMiniProgramRedissonConfigImpl(redisOps, keyPrefix, appId));
-        }
-        return BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP.get(appId);
-    }
+//    @Override
+//    public ByteDanceMiniProgramConfig getByteDanceMiniProgramConfig(String appId) {
+//        ByteDanceMiniProgramConfig config = BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP.get(appId);
+//        if(config == null){
+//            BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP.put(appId, new ByteDanceMiniProgramRedissonConfigImpl(redisOps, keyPrefix, appId));
+//        }
+//        return BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP.get(appId);
+//    }
 
     @Override
     public Lock getComponentAccessTokenLock() {
@@ -149,7 +143,7 @@ public class ByteDanceOpenInRedisConfigStorage extends AbstractByteDanceOpenInRe
     }
 
     @Override
-    public Lock getAccessTokenLock() {
-        return getLockByKey(this.lockKey.concat(":").concat("accessToken"));
+    public Lock getAccessTokenLock(String appId) {
+        return getLockByKey(this.lockKey.concat(":").concat("accessToken").concat(":").concat(appId));
     }
 }

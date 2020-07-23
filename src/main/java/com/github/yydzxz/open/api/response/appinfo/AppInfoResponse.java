@@ -3,6 +3,7 @@ package com.github.yydzxz.open.api.response.appinfo;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.github.yydzxz.common.error.ByteDanceError;
+import java.io.Serializable;
 import java.util.List;
 import lombok.Data;
 
@@ -14,10 +15,15 @@ import lombok.Data;
 @Data
 public class AppInfoResponse extends ByteDanceError {
 
+    private static final long serialVersionUID = 7185827129499371169L;
+
     private AppInfoResponseData data;
 
     @Data
-    public static class AppInfoResponseData{
+    public static class AppInfoResponseData implements Serializable {
+
+        private static final long serialVersionUID = -8475639238202299161L;
+
         @JSONField(name = "app_id")
         @JsonAlias("app_id")
         private String appId;

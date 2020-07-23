@@ -38,6 +38,12 @@ public interface IByteDanceOpenComponentService extends IByteDanceHttpRequestSer
 
     IByteDanceOpenConfigStorage getOpenConfigStorage();
 
+    /**
+     * 获取素材管理service
+     * @return
+     */
+    IByteDanceOpenMaterialService getByteDanceOpenMaterialService();
+
 
     /**
      * 获取模版管理service

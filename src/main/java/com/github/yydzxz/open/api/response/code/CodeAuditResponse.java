@@ -10,4 +10,5 @@ import lombok.Data;
 @Data
 public class CodeAuditResponse extends ByteDanceError {
 
+    private static final long serialVersionUID = -5789908116611917739L;
 }
