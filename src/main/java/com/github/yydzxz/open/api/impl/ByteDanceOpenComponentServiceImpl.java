@@ -1,6 +1,7 @@
 package com.github.yydzxz.open.api.impl;
 
 import cn.hutool.json.JSONUtil;
+import com.github.yydzxz.common.error.InvalidAuthorizerRefreshToken;
 import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
 import com.github.yydzxz.open.api.IByteDanceOpenMaterialService;
@@ -180,17 +181,23 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
             if (!config.isAuthorizerAccessTokenExpired(appId) && !forceRefresh) {
                 return config.getAuthorizerAccessToken(appId);
             }
+            String authorizerRefreshToken = getByteDanceOpenConfigStorage().getAuthorizerRefreshToken(appId);
+            if(StringUtils.isEmpty(authorizerRefreshToken)){
+                throw new InvalidAuthorizerRefreshToken("authorizerRefreshToken为空，需要重新授权");
+            }
             String url = API_GET_OAUTH_TOKEN_URL
-                + "?authorizer_refresh_token=" + getByteDanceOpenConfigStorage().getAuthorizerRefreshToken(appId)
+                + "?authorizer_refresh_token=" + authorizerRefreshToken
                 + "&grant_type=app_to_tp_refresh_token";
             GetAuthorizerAccessTokenReponse response = get(url, GetAuthorizerAccessTokenReponse.class);
 
             config.updateAuthorizerAccessToken(appId, response.getAuthorizerAccessToken(), response.getExpiresIn());
             config.setAuthorizerRefreshToken(appId, response.getAuthorizerRefreshToken());
             return config.getAuthorizerAccessToken(appId);
+        } catch (InvalidAuthorizerRefreshToken e){
+            throw e;
         } catch (Exception e){
             log.error(e.getMessage(), e);
-            throw new RuntimeException(appId + "获取 AuthorizerAccessToken 失败");
+            throw new RuntimeException(appId + "获取 AuthorizerAccessToken 失败, 请尝试解绑后重新授权");
         }finally {
             lock.unlock();
         }

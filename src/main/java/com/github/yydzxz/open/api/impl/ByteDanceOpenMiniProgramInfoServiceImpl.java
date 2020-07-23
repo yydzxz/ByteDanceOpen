@@ -5,12 +5,16 @@ import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.request.appinfo.AppModifyAppIconRequest;
 import com.github.yydzxz.open.api.request.appinfo.AppModifyAppIntroRequest;
 import com.github.yydzxz.open.api.request.appinfo.AppModifyAppNameRequest;
+import com.github.yydzxz.open.api.request.appinfo.AppModifyServerDomainRequest;
+import com.github.yydzxz.open.api.request.appinfo.AppModifyWebviewDomainRequest;
 import com.github.yydzxz.open.api.request.appinfo.AppQrCodeRequest;
 import com.github.yydzxz.open.api.response.appinfo.AppCheckAppNameResponse;
 import com.github.yydzxz.open.api.response.appinfo.AppInfoResponse;
 import com.github.yydzxz.open.api.response.appinfo.AppModifyAppIconResponse;
 import com.github.yydzxz.open.api.response.appinfo.AppModifyAppIntroResponse;
 import com.github.yydzxz.open.api.response.appinfo.AppModifyAppNameResponse;
+import com.github.yydzxz.open.api.response.appinfo.AppModifyServerDomainResponse;
+import com.github.yydzxz.open.api.response.appinfo.AppModifyWebviewDomainResponse;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -55,5 +59,15 @@ public class ByteDanceOpenMiniProgramInfoServiceImpl implements IByteDanceOpenMi
     @Override
     public AppModifyAppIconResponse modifyAppIcon(AppModifyAppIconRequest request) {
         return byteDanceOpenMiniProgramService.post(APP_MODIFY_APP_ICON_URL, request, AppModifyAppIconResponse.class);
+    }
+
+    @Override
+    public AppModifyServerDomainResponse modifyServerDomain(AppModifyServerDomainRequest request){
+        return byteDanceOpenMiniProgramService.post(APP_MODIFY_SERVER_DOMAIN_URL, request, AppModifyServerDomainResponse.class);
+    }
+
+    @Override
+    public AppModifyWebviewDomainResponse modifyWebviewDomain(AppModifyWebviewDomainRequest request){
+        return byteDanceOpenMiniProgramService.post(APP_MODIFY_WEBVIEW_DOMAIN_URL, request, AppModifyWebviewDomainResponse.class);
     }
 }
