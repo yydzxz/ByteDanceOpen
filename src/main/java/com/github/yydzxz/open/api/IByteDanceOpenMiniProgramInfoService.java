@@ -1,7 +1,6 @@
 package com.github.yydzxz.open.api;
 
 
-import com.github.yydzxz.open.api.request.appinfo.AppCheckAppNameRequest;
 import com.github.yydzxz.open.api.request.appinfo.AppModifyAppIconRequest;
 import com.github.yydzxz.open.api.request.appinfo.AppModifyAppIntroRequest;
 import com.github.yydzxz.open.api.request.appinfo.AppModifyAppNameRequest;
@@ -106,6 +105,8 @@ public interface IByteDanceOpenMiniProgramInfoService {
 
     /**
      * 修改服务器域名
+     * 注意：事先需要在第三方平台（https://open.microapp.bytedance.com）设置好第三方平台的服务器域名，接口服务器域名的选项必须在第三方平台的服务器域名列表内
+     * 提示：设置的服务器域名可以是第三方平台服务器域名的子域名
      * @param request
      * @return
      */
