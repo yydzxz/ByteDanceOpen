@@ -9,7 +9,7 @@
  <dependency>
    <groupId>com.github.yydzxz</groupId>
    <artifactId>bytedance-open</artifactId>
-   <version>1.0.14.RELEASE</version>
+   <version>1.0.15.RELEASE</version>
  </dependency>
  ```
 然后自己实例化一个`IByteDanceOpenService`
