@@ -9,7 +9,7 @@ import lombok.Getter;
  * @date 2020/06/28
  **/
 @Getter
-public enum ByteDanceMiniProgramErrorMsgEnum {
+public enum ByteDanceErrorMsgEnum {
 
 
     CODE_40000(40000, "系统错误"),
@@ -76,7 +76,7 @@ public enum ByteDanceMiniProgramErrorMsgEnum {
     private int code;
     private String msg;
 
-    ByteDanceMiniProgramErrorMsgEnum(int code, String msg) {
+    ByteDanceErrorMsgEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
@@ -85,7 +85,7 @@ public enum ByteDanceMiniProgramErrorMsgEnum {
      * 通过错误代码查找其中文含义.
      */
     public static String findMsgByCode(int code) {
-        for (ByteDanceMiniProgramErrorMsgEnum value : ByteDanceMiniProgramErrorMsgEnum.values()) {
+        for (ByteDanceErrorMsgEnum value : ByteDanceErrorMsgEnum.values()) {
             if (value.code == code) {
                 return value.msg;
             }

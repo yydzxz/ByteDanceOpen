@@ -3,12 +3,13 @@ package com.github.yydzxz.open.api.impl;
 import com.github.yydzxz.open.api.IExecutable;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
-import com.github.yydzxz.common.error.ByteDanceMiniProgramErrorMsgEnum;
+import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
 import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramCodeService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramInfoService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.IRetryableExecutor;
+import com.github.yydzxz.open.error.ByteDanceOpenMiniProgramException;
 import com.google.common.collect.Multimap;
 import java.util.concurrent.locks.Lock;
 import lombok.extern.slf4j.Slf4j;
@@ -155,7 +156,7 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
             }
             if (error.getErrno() != null && error.getErrno() != 0) {
                 log.error("\n【请求地址】: {}\n【错误信息】：{}", url, error);
-                throw new ByteDanceErrorException(error, e);
+                throw new ByteDanceOpenMiniProgramException(appId, error, e);
             }
         }catch (Exception e) {
             log.error("\n【请求地址】: {}\n【异常信息】：{}", url, e.getMessage());
@@ -171,8 +172,8 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
      * @return
      */
     private boolean shouldExpireAccessToken(ByteDanceError error){
-        return ByteDanceMiniProgramErrorMsgEnum.CODE_40020.getCode() == error.getErrno()
-            ||ByteDanceMiniProgramErrorMsgEnum.CODE_40021.getCode() == error.getErrno();
+        return ByteDanceErrorMsgEnum.CODE_40020.getCode() == error.getErrno()
+            || ByteDanceErrorMsgEnum.CODE_40021.getCode() == error.getErrno();
     }
 
     /**
@@ -184,7 +185,7 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
     @Override
     public boolean shouldRetry(ByteDanceError error){
         return shouldExpireAccessToken(error)
-            || ByteDanceMiniProgramErrorMsgEnum.CODE_40000.getCode() == error.getErrno();
+            || ByteDanceErrorMsgEnum.CODE_40000.getCode() == error.getErrno();
     }
 
     @Override
