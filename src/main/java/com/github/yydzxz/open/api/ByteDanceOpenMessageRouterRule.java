@@ -61,9 +61,10 @@ public class ByteDanceOpenMessageRouterRule {
         ByteDanceOpenMessageHandleResult result = null;
         for(IByteDanceOpenMessageHandler handler : this.handlers){
             if(handler == null){
-               log.warn("存在为null的handler");
+                log.warn("处理event:[{}],msgType:[{}]的handler为null", event, msgType);
+            }else{
+                result = handler.handle(message, context);
             }
-            result = handler.handle(message, context);
         }
         // 返回最后handler的结果
         return result;
