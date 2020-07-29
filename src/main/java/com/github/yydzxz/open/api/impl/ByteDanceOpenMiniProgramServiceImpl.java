@@ -10,7 +10,6 @@ import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramInfoService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.IRetryableExecutor;
 import com.github.yydzxz.open.error.ByteDanceOpenMiniProgramException;
-import com.github.yydzxz.open.error.NonAuthorizedAppException;
 import com.google.common.collect.Multimap;
 import java.util.concurrent.locks.Lock;
 import lombok.extern.slf4j.Slf4j;
@@ -157,11 +156,7 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
             }
             if (error.getErrno() != null && error.getErrno() != 0) {
                 log.error("\n【请求地址】: {}\n【错误信息】：{}", url, error);
-                if(error.getErrno() == ByteDanceErrorMsgEnum.CODE_40022.getCode()){
-                    throw new NonAuthorizedAppException(appId, error, e);
-                }else{
-                    throw new ByteDanceOpenMiniProgramException(appId, error, e);
-                }
+                throw new ByteDanceOpenMiniProgramException(appId, error, e);
             }
         }catch (Exception e) {
             log.error("\n【请求地址】: {}\n【异常信息】：{}", url, e.getMessage());
