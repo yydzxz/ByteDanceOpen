@@ -16,7 +16,7 @@ import com.github.yydzxz.open.util.ServerVerification;
 import com.github.yydzxz.open.util.URIUtil;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
-import com.github.yydzxz.common.error.ByteDanceMiniProgramErrorMsgEnum;
+import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
 import com.github.yydzxz.open.api.response.auth.GetAuthorizerAccessTokenReponse;
 import com.google.common.collect.Multimap;
 import java.util.Map;
@@ -265,7 +265,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
     @Override
     public boolean shouldRetry(ByteDanceError error) {
         return shouldExpireComponentAccessToken(error)
-            || ByteDanceMiniProgramErrorMsgEnum.CODE_40000.getCode() == error.getErrno();
+            || ByteDanceErrorMsgEnum.CODE_40000.getCode() == error.getErrno();
     }
 
     @Override
@@ -323,7 +323,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
      * @return
      */
     private boolean shouldExpireComponentAccessToken(ByteDanceError error){
-        return error.getErrno() == ByteDanceMiniProgramErrorMsgEnum.CODE_40009.getCode()
-            || error.getErrno() == ByteDanceMiniProgramErrorMsgEnum.CODE_40010.getCode();
+        return error.getErrno() == ByteDanceErrorMsgEnum.CODE_40009.getCode()
+            || error.getErrno() == ByteDanceErrorMsgEnum.CODE_40010.getCode();
     }
 }
