@@ -5,10 +5,8 @@ import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.request.material.UploadPicMaterialRequest;
 import com.github.yydzxz.open.api.response.material.UploadPicMaterialResponse;
 import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimap;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.FileSystemResource;
 
 /**
  * @author yangyidian
