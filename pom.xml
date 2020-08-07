@@ -6,7 +6,7 @@
 
   <groupId>com.github.yydzxz</groupId>
   <artifactId>bytedance-open</artifactId>
-  <version>1.0.15.RELEASE</version>
+  <version>2.0.0.RELEASE</version>
 
   <name>ByteDance - Open Java SDK</name>
   <description>字节跳动开放平台Java SDK</description>
@@ -49,7 +49,7 @@
     </dependency>
     <dependency>
       <groupId>cn.hutool</groupId>
-      <artifactId>hutool-all</artifactId>
+      <artifactId>hutool-core</artifactId>
       <version>5.3.6</version>
     </dependency>
     <dependency>
@@ -58,37 +58,60 @@
       <version>3.12.0</version>
     </dependency>
     <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-      <version>1.2.25.sec10</version>
-    </dependency>
-    <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.10</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.directory.studio</groupId>
-      <artifactId>org.apache.commons.codec</artifactId>
-      <version>1.8</version>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>29.0-jre</version>
     </dependency>
+
+    <!-- json序列化工具类 start-->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.6</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.67</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- json序列化工具类 end-->
+
+
+    <!-- http客户端 start-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
       <version>5.2.7.RELEASE</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
     <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>29.0-jre</version>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>4.8.0</version>
+      <scope>provided</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
+    <!-- http客户端 end-->
+
+    <!-- 单元测试 start-->
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-text</artifactId>
-      <version>1.8</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- 单元测试 end-->
 
   </dependencies>
 

@@ -1,6 +1,5 @@
 package com.github.yydzxz.open.api.impl;
 
-import com.github.yydzxz.open.bean.ByteDanceOpenAuthorizerAccessToken;
 import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
 import com.github.yydzxz.common.redis.IByteDanceRedisOps;
 import java.util.concurrent.TimeUnit;
@@ -57,15 +56,6 @@ public class ByteDanceOpenInRedisConfigStorage extends AbstractByteDanceOpenInRe
 
     }
 
-//    @Override
-//    public ByteDanceMiniProgramConfig getByteDanceMiniProgramConfig(String appId) {
-//        ByteDanceMiniProgramConfig config = BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP.get(appId);
-//        if(config == null){
-//            BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP.put(appId, new ByteDanceMiniProgramRedissonConfigImpl(redisOps, keyPrefix, appId));
-//        }
-//        return BYTE_DANCE_MINI_PROGRAM_CONFIG_MAP.get(appId);
-//    }
-
     @Override
     public Lock getComponentAccessTokenLock() {
         if (this.accessTokenLockInstance == null) {
@@ -118,11 +108,6 @@ public class ByteDanceOpenInRedisConfigStorage extends AbstractByteDanceOpenInRe
     public void expireAuthorizerAccessToken(String appId) {
         redisOps.expire(this.getKey(this.authorizerAccessTokenKey, appId), 0, TimeUnit.SECONDS);
     }
-
-    @Override
-    public void updateAuthorizerAccessToken(String appId, ByteDanceOpenAuthorizerAccessToken authorizerAccessToken) {
-        updateAuthorizerAccessToken(appId, authorizerAccessToken.getAuthorizerAccessToken(),
-            authorizerAccessToken.getExpiresIn());    }
 
     @Override
     public void updateAuthorizerAccessToken(String appId, String authorizerAccessToken, int expiresInSeconds) {

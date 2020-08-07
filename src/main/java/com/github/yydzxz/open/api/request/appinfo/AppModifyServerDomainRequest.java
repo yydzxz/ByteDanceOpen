@@ -1,5 +1,6 @@
 package com.github.yydzxz.open.api.request.appinfo;
 
+import com.github.yydzxz.common.service.IByteDanceRequest;
 import java.util.List;
 import lombok.Data;
 
@@ -9,7 +10,7 @@ import lombok.Data;
  * @date 2020/07/20
  **/
 @Data
-public class AppModifyServerDomainRequest {
+public class AppModifyServerDomainRequest implements IByteDanceRequest {
 
     private List<String> request;
 

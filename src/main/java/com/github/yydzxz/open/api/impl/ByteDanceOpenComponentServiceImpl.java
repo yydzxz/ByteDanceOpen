@@ -1,6 +1,8 @@
 package com.github.yydzxz.open.api.impl;
 
-import cn.hutool.json.JSONUtil;
+import com.github.yydzxz.common.error.ByteDanceError;
+import com.github.yydzxz.common.error.ByteDanceErrorException;
+import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
 import com.github.yydzxz.common.error.InvalidAuthorizerRefreshToken;
 import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
@@ -10,14 +12,11 @@ import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.IByteDanceOpenTemplateService;
 import com.github.yydzxz.open.api.IExecutable;
 import com.github.yydzxz.open.api.IRetryableExecutor;
+import com.github.yydzxz.open.api.response.auth.GetAuthorizerAccessTokenReponse;
 import com.github.yydzxz.open.api.response.auth.GetPreAuthCodeResponse;
 import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
 import com.github.yydzxz.open.util.ServerVerification;
 import com.github.yydzxz.open.util.URIUtil;
-import com.github.yydzxz.common.error.ByteDanceError;
-import com.github.yydzxz.common.error.ByteDanceErrorException;
-import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
-import com.github.yydzxz.open.api.response.auth.GetAuthorizerAccessTokenReponse;
 import com.google.common.collect.Multimap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -111,8 +110,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
                 + "&component_appsecret=" + getByteDanceOpenConfigStorage().getComponentAppSecret()
                 + "&component_appid=" + getByteDanceOpenConfigStorage().getComponentAppId();
 
-            String responseContent = this.getByteDanceOpenService().getByteDanceHttpRequestService().get(url);
-            ByteDanceOpenComponentAccessToken componentAccessToken = ByteDanceOpenComponentAccessToken.fromJson(responseContent);
+            ByteDanceOpenComponentAccessToken componentAccessToken = this.getByteDanceOpenService().getByteDanceHttpRequestService().get(url, ByteDanceOpenComponentAccessToken.class);
             config.updateComponentAccessToken(componentAccessToken);
             return config.getComponentAccessToken();
         } finally {
@@ -142,8 +140,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
      * @return
      */
     private String createPreAuthUrl(String redirectURI){
-        String responseContent = get(API_CREATE_PRE_AUTH_CODE_URL);
-        GetPreAuthCodeResponse response = JSONUtil.toBean(responseContent, GetPreAuthCodeResponse.class);
+        GetPreAuthCodeResponse response = get(API_CREATE_PRE_AUTH_CODE_URL, GetPreAuthCodeResponse.class);
         StringBuilder preAuthUrl = new StringBuilder(String.format(COMPONENT_LOGIN_PAGE_URL,
             getByteDanceOpenConfigStorage().getComponentAppId(),
             response.getPreAuthCode(),
@@ -222,6 +219,11 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
     }
 
     @Override
+    public String get(String url) {
+        return get(url, String.class);
+    }
+
+    @Override
     public <T> T get(String url, Class<T> t) {
         return retryableExecuteRequest(
             (url2, headers, request2, t2) -> {
@@ -229,7 +231,6 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
             },
             url,null, null, t);
     }
-
 
     private <T> T getInternal(String url, Class<T> t) {
         return executeRequest((uriWithCommonParam, headers, request, t2)->{

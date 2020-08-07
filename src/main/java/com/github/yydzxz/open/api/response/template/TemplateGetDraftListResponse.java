@@ -3,6 +3,7 @@ package com.github.yydzxz.open.api.response.template;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.github.yydzxz.common.error.ByteDanceError;
+import com.github.yydzxz.common.service.IByteDanceResponse;
 import java.io.Serializable;
 import java.util.List;
 import lombok.Data;
@@ -12,7 +13,7 @@ import lombok.Data;
  * @date 2020/07/01
  **/
 @Data
-public class TemplateGetDraftListResponse extends ByteDanceError {
+public class TemplateGetDraftListResponse extends ByteDanceError implements IByteDanceResponse {
 
     private static final long serialVersionUID = 5546828774858997621L;
 

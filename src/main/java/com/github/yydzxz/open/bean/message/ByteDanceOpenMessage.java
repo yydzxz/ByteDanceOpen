@@ -5,13 +5,14 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.yydzxz.common.util.json.JsonSerializer;
 import com.github.yydzxz.open.util.MsgDecrypt;
+import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-//import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author yangyidian
@@ -21,6 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 public class ByteDanceOpenMessage implements Serializable {
     private static final long serialVersionUID = -4239087053795085852L;
+
+    private JsonSerializer jsonSerializer;
 
     public static int FAILED = 0;
 
@@ -74,38 +77,42 @@ public class ByteDanceOpenMessage implements Serializable {
      */
     public static final String EVENT_MODIFY_APP_ICON = "MODIFY_APP_ICON";
 
-//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    @JSONField(name = "CreateTime")
+    @JSONField(name = "CreateTime", format = "yyyy-MM-dd HH:mm:ss")
     @JsonAlias("CreateTime")
     @JsonProperty("CreateTime")
+    @SerializedName("CreateTime")
     private Date createTime;
 
-//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    @JSONField(name = "EventTime")
+    @JSONField(name = "EventTime", format = "yyyy-MM-dd HH:mm:ss")
     @JsonAlias("EventTime")
     @JsonProperty("EventTime")
+    @SerializedName("EventTime")
     private Date eventTime;
 
     @JSONField(name = "Event")
     @JsonAlias("Event")
     @JsonProperty("Event")
+    @SerializedName("Event")
     private String event;
 
     @JSONField(name = "FromUserName")
     @JsonAlias("FromUserName")
     @JsonProperty("FromUserName")
+    @SerializedName("FromUserName")
     private String fromUserName;
 
     @JSONField(name = "MsgType")
     @JsonAlias("MsgType")
     @JsonProperty("MsgType")
+    @SerializedName("MsgType")
     private String msgType;
 
     @JSONField(name = "Ticket")
     @JsonAlias("Ticket")
     @JsonProperty("Ticket")
+    @SerializedName("Ticket")
     private String ticket;
 
     private String fromTpAppId;
@@ -113,21 +120,25 @@ public class ByteDanceOpenMessage implements Serializable {
     @JSONField(name = "TpAppId")
     @JsonAlias("TpAppId")
     @JsonProperty("TpAppId")
+    @SerializedName("TpAppId")
     private String tpAppId;
 
     @JSONField(name = "AppId")
     @JsonAlias("AppId")
     @JsonProperty("AppId")
+    @SerializedName("AppId")
     private String appId;
 
     @JSONField(name = "AuthorizationCode")
     @JsonAlias("AuthorizationCode")
     @JsonProperty("AuthorizationCode")
+    @SerializedName("AuthorizationCode")
     private String authorizationCode;
 
     @JSONField(name = "AuthorizationCodeExpiresIn")
     @JsonAlias("AuthorizationCodeExpiresIn")
     @JsonProperty("AuthorizationCodeExpiresIn")
+    @SerializedName("AuthorizationCodeExpiresIn")
     private String authorizationCodeExpiresIn;
 
     /**
@@ -136,6 +147,7 @@ public class ByteDanceOpenMessage implements Serializable {
     @JSONField(name = "AuditResults")
     @JsonAlias("AuditResults")
     @JsonProperty("AuditResults")
+    @SerializedName("AuditResults")
     private List<AuditResult> auditResults;
 
     @Data
@@ -164,6 +176,7 @@ public class ByteDanceOpenMessage implements Serializable {
     @JSONField(name = "ModifyAppNameResults")
     @JsonAlias("ModifyAppNameResults")
     @JsonProperty("ModifyAppNameResults")
+    @SerializedName("ModifyAppNameResults")
     private List<ModifyAppNameResult> modifyAppNameResults;
 
 
@@ -192,6 +205,7 @@ public class ByteDanceOpenMessage implements Serializable {
     @JSONField(name = "ModifyAppIntroResults")
     @JsonAlias("ModifyAppIntroResults")
     @JsonProperty("ModifyAppIntroResults")
+    @SerializedName("ModifyAppIntroResults")
     private List<ModifyAppIntroResult> modifyAppIntroResults;
 
     @Data
@@ -216,6 +230,7 @@ public class ByteDanceOpenMessage implements Serializable {
     @JSONField(name = "ModifyAppIconResults")
     @JsonAlias("ModifyAppIconResults")
     @JsonProperty("ModifyAppIconResults")
+    @SerializedName("ModifyAppIconResults")
     private List<ModifyAppIconResult> modifyAppIconResults;
 
     @Data

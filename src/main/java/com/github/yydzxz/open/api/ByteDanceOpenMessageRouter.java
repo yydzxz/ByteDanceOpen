@@ -1,8 +1,10 @@
 package com.github.yydzxz.open.api;
 
-import cn.hutool.json.JSONUtil;
 import com.github.yydzxz.common.IByteDanceMessageDuplicateChecker;
 import com.github.yydzxz.common.redis.IByteDanceRedisOps;
+import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
+import com.github.yydzxz.common.util.json.GsonSerializer;
+import com.github.yydzxz.common.util.json.JsonSerializer;
 import com.github.yydzxz.open.bean.message.ByteDanceOpenMessage;
 import com.github.yydzxz.open.bean.message.ByteDanceOpenMessageHandleResult;
 import java.util.ArrayList;
@@ -26,11 +28,18 @@ public class ByteDanceOpenMessageRouter {
 
     private IByteDanceMessageDuplicateChecker messageDuplicateChecker;
 
+    private JsonSerializer jsonSerializer;
+
     public ByteDanceOpenMessageRouter() {
     }
 
     public ByteDanceOpenMessageRouter(IByteDanceMessageDuplicateChecker messageDuplicateChecker) {
+        this(messageDuplicateChecker, ByteDanceJsonBuilder.instance());
+    }
+
+    public ByteDanceOpenMessageRouter(IByteDanceMessageDuplicateChecker messageDuplicateChecker, JsonSerializer jsonSerializer) {
         this.messageDuplicateChecker = messageDuplicateChecker;
+        this.jsonSerializer = jsonSerializer;
     }
 
     /**
@@ -53,7 +62,7 @@ public class ByteDanceOpenMessageRouter {
         ByteDanceOpenMessageHandleResult result = new ByteDanceOpenMessageHandleResult();
 
         if (isMsgDuplicated(message)) {
-            log.warn("重复消息，不做处理. {}", JSONUtil.toJsonStr(message));
+            log.warn("重复消息，不做处理. {}", jsonSerializer.toJson(message));
             return result;
         }
 
@@ -74,7 +83,7 @@ public class ByteDanceOpenMessageRouter {
             try{
                 result = rule.handle(message, context);
             }catch (Exception e){
-                log.error("消息处理失败，清除消息重复状态===>{}", JSONUtil.toJsonStr(message));
+                log.error("消息处理失败，清除消息重复状态===>{}", jsonSerializer.toJson(message));
                 //如果这条消息处理报错，那么清除这条消息的重复状态，这样字节服务再次推送这条消息的时候，可以再次处理
                 this.messageDuplicateChecker.clearDuplicate(getMessageId(message));
                 throw e;

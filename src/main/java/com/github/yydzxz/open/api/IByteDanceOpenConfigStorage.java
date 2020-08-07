@@ -1,7 +1,6 @@
 package com.github.yydzxz.open.api;
 
 
-import com.github.yydzxz.open.bean.ByteDanceOpenAuthorizerAccessToken;
 import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
 import java.util.concurrent.locks.Lock;
 
@@ -69,13 +68,6 @@ public interface IByteDanceOpenConfigStorage {
      * 强制将access token过期掉
      */
     void expireAuthorizerAccessToken(String appId);
-
-    /**
-     * 应该是线程安全的
-     *
-     * @param authorizerAccessToken 要更新的ByteDanceAccessToken对象
-     */
-    void updateAuthorizerAccessToken(String appId, ByteDanceOpenAuthorizerAccessToken authorizerAccessToken);
 
     /**
      * 应该是线程安全的
