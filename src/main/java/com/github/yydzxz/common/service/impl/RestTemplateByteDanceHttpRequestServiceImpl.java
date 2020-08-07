@@ -6,13 +6,11 @@ import com.google.common.collect.Multimap;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.Collection;
-import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.ClassUtils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -30,6 +28,16 @@ public class RestTemplateByteDanceHttpRequestServiceImpl extends AbstractByteDan
 
     private JsonSerializer jsonSerializer;
 
+    public RestTemplateByteDanceHttpRequestServiceImpl() {
+        this.restTemplate = new RestTemplate();
+        this.jsonSerializer = ByteDanceJsonBuilder.instance();
+    }
+
+    public RestTemplateByteDanceHttpRequestServiceImpl(JsonSerializer jsonSerializer) {
+        this.jsonSerializer = jsonSerializer;
+        this.restTemplate = new RestTemplate();
+    }
+
     public RestTemplateByteDanceHttpRequestServiceImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
         this.jsonSerializer = ByteDanceJsonBuilder.instance();
@@ -43,10 +51,6 @@ public class RestTemplateByteDanceHttpRequestServiceImpl extends AbstractByteDan
     @Override
     public JsonSerializer getJsonSerializer() {
         return jsonSerializer;
-    }
-
-    public void setJsonSerializer(JsonSerializer jsonSerializer) {
-        this.jsonSerializer = jsonSerializer;
     }
 
     @Override

@@ -27,15 +27,27 @@ public class OkHttpClientByteDanceHttpRequestServiceImpl extends AbstractByteDan
 
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-    public final OkHttpClient client = new OkHttpClient();
+    public OkHttpClient client;
 
     private JsonSerializer jsonSerializer;
 
     public OkHttpClientByteDanceHttpRequestServiceImpl() {
+        this.client = new OkHttpClient();
         this.jsonSerializer = ByteDanceJsonBuilder.instance();
     }
 
     public OkHttpClientByteDanceHttpRequestServiceImpl(JsonSerializer jsonSerializer) {
+        this.jsonSerializer = jsonSerializer;
+        this.client = new OkHttpClient();
+    }
+
+    public OkHttpClientByteDanceHttpRequestServiceImpl(OkHttpClient client) {
+        this.client = client;
+        this.jsonSerializer = ByteDanceJsonBuilder.instance();
+    }
+
+    public OkHttpClientByteDanceHttpRequestServiceImpl(OkHttpClient client, JsonSerializer jsonSerializer) {
+        this.client = client;
         this.jsonSerializer = jsonSerializer;
     }
 
