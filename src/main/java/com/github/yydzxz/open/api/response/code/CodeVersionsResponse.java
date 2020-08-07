@@ -5,6 +5,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.yydzxz.common.error.ByteDanceError;
+import com.github.yydzxz.common.service.IByteDanceResponse;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ import lombok.Data;
  * @date 2020/07/01
  **/
 @Data
-public class CodeVersionsResponse extends ByteDanceError {
+public class CodeVersionsResponse extends ByteDanceError implements IByteDanceResponse {
 
     private static final long serialVersionUID = -8055885355865015602L;
 

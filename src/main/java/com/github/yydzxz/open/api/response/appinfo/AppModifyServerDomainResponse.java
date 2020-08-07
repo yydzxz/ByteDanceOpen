@@ -1,6 +1,7 @@
 package com.github.yydzxz.open.api.response.appinfo;
 
 import com.github.yydzxz.common.error.ByteDanceError;
+import com.github.yydzxz.common.service.IByteDanceResponse;
 import java.io.Serializable;
 import java.util.List;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.Data;
  * @date 2020/07/20
  **/
 @Data
-public class AppModifyServerDomainResponse extends ByteDanceError {
+public class AppModifyServerDomainResponse extends ByteDanceError implements IByteDanceResponse {
 
     private static final long serialVersionUID = -4787789592142103564L;
 

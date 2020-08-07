@@ -1,5 +1,6 @@
 package com.github.yydzxz.open.api;
 
+import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
 import com.github.yydzxz.open.api.request.code.CodeUploadRequest;
 import com.github.yydzxz.open.api.response.code.CodeAuditResponse;
 import com.github.yydzxz.open.api.response.code.CodeReleaseResponse;

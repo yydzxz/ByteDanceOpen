@@ -1,5 +1,6 @@
 package com.github.yydzxz.open.api.impl;
 
+import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
 import com.github.yydzxz.open.api.IExecutable;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
@@ -22,9 +23,10 @@ import org.slf4j.Logger;
  **/
 @Slf4j
 public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniProgramService, IRetryableExecutor {
+    private String appId;
+
     private IByteDanceOpenComponentService byteDanceOpenComponentService;
 
-    private String appId;
 
     private IByteDanceOpenMiniProgramCodeService byteDanceOpenMiniProgramCodeService;
 
@@ -85,6 +87,11 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
     }
 
     @Override
+    public String get(String url){
+        return get(url, String.class);
+    }
+
+    @Override
     public <T> T get(String url, Class<T> t){
         return retryableExecuteRequest((url2 ,headers, request2, t2)->{
                 return getInternal(url2, t2);
@@ -94,11 +101,10 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
     private <T> T getInternal(String url, Class<T> t){
         return executeRequest(
             (uriWithCommonParam, headers, request2, t2) -> {
-                return getByteDanceOpenComponentService().getByteDanceOpenService().getByteDanceHttpRequestService().get(uriWithCommonParam, t2);
+                return byteDanceOpenComponentService.getByteDanceOpenService().getByteDanceHttpRequestService().get(uriWithCommonParam, t2);
             },url, null, null, t
         );
     }
-
 
     @Override
     public <T> T post(String url, Object request, Class<T> t){
@@ -110,7 +116,7 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
     private <T> T postInternal(String url, Object request, Class<T> t){
         return executeRequest(
             (uriWithCommonParam, headers, request2, t2) -> {
-                return getByteDanceOpenComponentService().getByteDanceOpenService().getByteDanceHttpRequestService().post(uriWithCommonParam, request2, t2);
+                return byteDanceOpenComponentService.getByteDanceOpenService().getByteDanceHttpRequestService().post(uriWithCommonParam, request2, t2);
             },url, null, request, t
         );
     }
@@ -125,11 +131,10 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
     private <T> T postWithHeadersInternal(String url, Multimap<String, String> headers, Object request, Class<T> t){
         return executeRequest(
             (uriWithCommonParam, headers2, request2, t2) -> {
-                return getByteDanceOpenComponentService().getByteDanceOpenService().getByteDanceHttpRequestService().post(uriWithCommonParam, request2, t2);
+                return byteDanceOpenComponentService.getByteDanceOpenService().getByteDanceHttpRequestService().post(uriWithCommonParam, request2, t2);
             },url, headers, request, t
         );
     }
-
 
     private <T> T executeRequest(IExecutable<T> executable, String url, Multimap<String,String> headers, Object request, Class<T> t){
         String accessToken = getAccessToken(false);

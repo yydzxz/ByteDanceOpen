@@ -3,6 +3,8 @@ package com.github.yydzxz.open.api.request.material;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.yydzxz.common.service.IByteDanceRequest;
+import com.google.gson.annotations.SerializedName;
 import java.io.File;
 import lombok.Data;
 
@@ -11,7 +13,7 @@ import lombok.Data;
  * @date 2020/07/20
  **/
 @Data
-public class UploadPicMaterialRequest {
+public class UploadPicMaterialRequest implements IByteDanceRequest {
     /**
      * 上传的文件类型:
      * 1: 小程序图标材料
@@ -21,11 +23,13 @@ public class UploadPicMaterialRequest {
     @JSONField(name = "material_type")
     @JsonAlias("material_type")
     @JsonProperty("material_type")
+    @SerializedName("material_type")
     private String materialType;
 
     @JSONField(name = "material_file")
     @JsonAlias("material_file")
     @JsonProperty("material_file")
+    @SerializedName("material_file")
     private File materialFile;
 
 }

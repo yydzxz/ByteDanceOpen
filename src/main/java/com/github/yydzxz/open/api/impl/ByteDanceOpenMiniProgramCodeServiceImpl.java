@@ -1,5 +1,6 @@
 package com.github.yydzxz.open.api.impl;
 
+import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramCodeService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.request.code.CodeUploadRequest;
@@ -16,9 +17,11 @@ public class ByteDanceOpenMiniProgramCodeServiceImpl implements IByteDanceOpenMi
 
     private IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService;
 
+
     public ByteDanceOpenMiniProgramCodeServiceImpl(IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService) {
         this.byteDanceOpenMiniProgramService = byteDanceOpenMiniProgramService;
     }
+
 
     @Override
     public CodeUploadResponse upload(CodeUploadRequest request) {

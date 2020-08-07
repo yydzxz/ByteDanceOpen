@@ -1,13 +1,15 @@
 package com.github.yydzxz.common.service;
 
+import com.github.yydzxz.common.util.json.JsonSerializer;
 import com.google.common.collect.Multimap;
-import org.springframework.http.HttpHeaders;
 
 /**
  * @author yangyidian
  * @date 2020/07/10
  **/
 public interface IByteDanceHttpRequestService {
+
+    JsonSerializer getJsonSerializer();
 
     /**
      * 当本Service没有实现某个API的时候，可以用这个，针对所有API中的GET请求.
@@ -39,7 +41,7 @@ public interface IByteDanceHttpRequestService {
         return post(url, obj, String.class);
     }
 
-    <T> T postWithHeaders(String url, Multimap<String,String> headers, Object request, Class<T> t);
+    <T> T postWithHeaders(String url, Multimap<String, String> headers, Object request, Class<T> t);
 
     /**
      * 当本Service没有实现某个API的时候，可以用这个，针对所有API中的POST请求.

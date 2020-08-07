@@ -3,12 +3,14 @@ package com.github.yydzxz.open.api.request.appinfo;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.yydzxz.common.service.IByteDanceRequest;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * @author yangyidian
  * @date 2020/07/20
  **/
-public class AppModifyAppIconRequest {
+public class AppModifyAppIconRequest implements IByteDanceRequest {
 
     /**
      * 授权小程序准备修改的图标路径
@@ -17,6 +19,7 @@ public class AppModifyAppIconRequest {
     @JSONField(name = "new_icon_path")
     @JsonAlias("new_icon_path")
     @JsonProperty("new_icon_path")
+    @SerializedName("new_icon_path")
     private String newIconPath;
 
 }

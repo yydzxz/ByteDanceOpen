@@ -3,6 +3,8 @@ package com.github.yydzxz.open.api.request.appinfo;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.yydzxz.common.service.IByteDanceRequest;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 /**
@@ -10,7 +12,7 @@ import lombok.Data;
  * @date 2020/07/20
  **/
 @Data
-public class AppModifyAppNameRequest {
+public class AppModifyAppNameRequest implements IByteDanceRequest {
 
     /**
      * 授权小程序准备修改的名称
@@ -18,6 +20,7 @@ public class AppModifyAppNameRequest {
     @JSONField(name = "new_name")
     @JsonAlias("new_name")
     @JsonProperty("new_name")
+    @SerializedName("new_name")
     private String newName;
 
     /**
@@ -28,5 +31,6 @@ public class AppModifyAppNameRequest {
     @JSONField(name = "material_file_path")
     @JsonAlias("material_file_path")
     @JsonProperty("material_file_path")
+    @SerializedName("material_file_path")
     private String materialFilePath;
 }

@@ -1,5 +1,6 @@
 package com.github.yydzxz.open.api.request.appinfo;
 
+import com.github.yydzxz.common.service.IByteDanceRequest;
 import lombok.Data;
 
 /**
@@ -7,7 +8,7 @@ import lombok.Data;
  * @date 2020/07/06
  **/
 @Data
-public class AppQrCodeRequest {
+public class AppQrCodeRequest implements IByteDanceRequest {
 
     /**
      * 入参：current 或 audit 或 latest

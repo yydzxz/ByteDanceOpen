@@ -1,6 +1,9 @@
 package com.github.yydzxz.open.util;
 
 import com.alibaba.fastjson.JSON;
+import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
+import com.github.yydzxz.common.util.json.GsonSerializer;
+import com.github.yydzxz.common.util.json.JsonSerializer;
 import com.github.yydzxz.open.bean.message.ByteDanceOpenMessage;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -11,16 +14,25 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 字节跳动提供的代码
  */
+@Slf4j
 public class MsgDecrypt {
 
     private Cipher cipher;
     public static int RANDOM_BYTES_POS = 32;
 
+    private JsonSerializer jsonSerializer;
+
     public MsgDecrypt(String encodingAesKey) throws Exception {
+        this(encodingAesKey, ByteDanceJsonBuilder.instance());
+    }
+
+    public MsgDecrypt(String encodingAesKey, JsonSerializer jsonSerializer) throws Exception {
+        this.jsonSerializer = jsonSerializer;
         //AES key长度固定
         if (encodingAesKey.length() != 43) {
             throw new Exception("AES key 长度不合法");
@@ -73,12 +85,12 @@ public class MsgDecrypt {
 
             //根据解析出来的消息体长度值，截取真实的消息体
             Content = new String(Arrays.copyOfRange(bytes, RANDOM_BYTES_POS + 4, RANDOM_BYTES_POS + 4 + msgLength), StandardCharsets.UTF_8);
+            log.info("字节跳动消息解密后的内容:[{}]", Content);
             //byte数组截去真实消息后，末尾剩下的字符就是appid
             AppId = new String(Arrays.copyOfRange(bytes, RANDOM_BYTES_POS + 4 + msgLength, bytes.length), StandardCharsets.UTF_8);
 
-            message = JSON.parseObject(Content, ByteDanceOpenMessage.class);
+            message = jsonSerializer.parse(Content, ByteDanceOpenMessage.class);
             message.setFromTpAppId(AppId);
-            System.out.println(message);
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("Buffer异常");
