@@ -6,7 +6,6 @@ import com.google.common.collect.Multimap;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +18,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
+ * https://square.github.io/okhttp/
  * @author yangyidian
  * @date 2020/08/03
  **/
@@ -29,31 +29,24 @@ public class OkHttpClientByteDanceHttpRequestServiceImpl extends AbstractByteDan
 
     public OkHttpClient client;
 
-    private JsonSerializer jsonSerializer;
-
     public OkHttpClientByteDanceHttpRequestServiceImpl() {
+        super(ByteDanceJsonBuilder.instance());
         this.client = new OkHttpClient();
-        this.jsonSerializer = ByteDanceJsonBuilder.instance();
     }
 
     public OkHttpClientByteDanceHttpRequestServiceImpl(JsonSerializer jsonSerializer) {
-        this.jsonSerializer = jsonSerializer;
+        super(jsonSerializer);
         this.client = new OkHttpClient();
     }
 
     public OkHttpClientByteDanceHttpRequestServiceImpl(OkHttpClient client) {
+        super(ByteDanceJsonBuilder.instance());
         this.client = client;
-        this.jsonSerializer = ByteDanceJsonBuilder.instance();
     }
 
     public OkHttpClientByteDanceHttpRequestServiceImpl(OkHttpClient client, JsonSerializer jsonSerializer) {
+        super(jsonSerializer);
         this.client = client;
-        this.jsonSerializer = jsonSerializer;
-    }
-
-    @Override
-    public JsonSerializer getJsonSerializer() {
-        return jsonSerializer;
     }
 
     @Override
@@ -66,18 +59,16 @@ public class OkHttpClientByteDanceHttpRequestServiceImpl extends AbstractByteDan
 
     @Override
     public <T> T doPostWithHeaders(String url, Multimap<String, String> headers, Object requestParam, Class<T> clazz) {
+        Map<String, String> headersMap = multimapHeaders2MapHeaders(headers);
         Headers.Builder headersBuilder = Headers.of().newBuilder();
-        for(String headerName: headers.keySet()){
-            Collection<String> headerValues = headers.get(headerName);
-            for(String headerValue : headerValues){
-                headersBuilder.add(headerName, headerValue);
-            }
+        for(String headerName: headersMap.keySet()){
+            String headerValue = headersMap.get(headerName);
+            headersBuilder.add(headerName, headerValue);
         }
-
         Map<String, Object> paramsMap = (Map)handlerRequestParam(requestParam);
         MultipartBody.Builder requestBodyBuilder = new MultipartBody.Builder();
 
-        if(headers.get("Content-Type") != null && headers.get("Content-Type").contains("multipart/form-data")){
+        if(headersMap.get("Content-Type") != null && headersMap.get("Content-Type").contains("form-data")){
             requestBodyBuilder = requestBodyBuilder.setType(MultipartBody.FORM);
         }
 
@@ -120,7 +111,7 @@ public class OkHttpClientByteDanceHttpRequestServiceImpl extends AbstractByteDan
 
     @Override
     public <T> T doPost(String url, Object requestParam, Class<T> clazz) {
-        RequestBody body = RequestBody.create(jsonSerializer.toJson(requestParam), JSON);
+        RequestBody body = RequestBody.create(getJsonSerializer().toJson(requestParam), JSON);
         Request request = new Request.Builder()
             .url(url)
             .post(body)

@@ -1,6 +1,8 @@
 package com.github.yydzxz.common.service.impl;
 
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
+import com.github.yydzxz.common.util.json.FastJsonSerializer;
 import com.github.yydzxz.common.util.json.JsonSerializer;
 import com.google.common.collect.Multimap;
 import java.io.File;
@@ -26,31 +28,27 @@ public class RestTemplateByteDanceHttpRequestServiceImpl extends AbstractByteDan
 
     private RestTemplate restTemplate;
 
-    private JsonSerializer jsonSerializer;
-
     public RestTemplateByteDanceHttpRequestServiceImpl() {
+        super(ByteDanceJsonBuilder.instance());
         this.restTemplate = new RestTemplate();
-        this.jsonSerializer = ByteDanceJsonBuilder.instance();
     }
 
     public RestTemplateByteDanceHttpRequestServiceImpl(JsonSerializer jsonSerializer) {
-        this.jsonSerializer = jsonSerializer;
+        super(jsonSerializer);
         this.restTemplate = new RestTemplate();
+        if(jsonSerializer instanceof FastJsonSerializer){
+            this.restTemplate.getMessageConverters().add(new FastJsonHttpMessageConverter());
+        }
     }
 
     public RestTemplateByteDanceHttpRequestServiceImpl(RestTemplate restTemplate) {
+        super(ByteDanceJsonBuilder.instance());
         this.restTemplate = restTemplate;
-        this.jsonSerializer = ByteDanceJsonBuilder.instance();
     }
 
     public RestTemplateByteDanceHttpRequestServiceImpl(RestTemplate restTemplate, JsonSerializer jsonSerializer) {
+        super(jsonSerializer);
         this.restTemplate = restTemplate;
-        this.jsonSerializer = jsonSerializer;
-    }
-
-    @Override
-    public JsonSerializer getJsonSerializer() {
-        return jsonSerializer;
     }
 
     @Override
