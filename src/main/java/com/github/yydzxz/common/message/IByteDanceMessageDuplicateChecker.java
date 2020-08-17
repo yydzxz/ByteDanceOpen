@@ -1,4 +1,4 @@
-package com.github.yydzxz.common;
+package com.github.yydzxz.common.message;
 
 /**
  * 消息重复检查器。

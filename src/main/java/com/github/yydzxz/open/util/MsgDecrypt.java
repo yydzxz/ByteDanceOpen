@@ -1,10 +1,8 @@
 package com.github.yydzxz.open.util;
 
-import com.alibaba.fastjson.JSON;
 import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
-import com.github.yydzxz.common.util.json.GsonSerializer;
 import com.github.yydzxz.common.util.json.JsonSerializer;
-import com.github.yydzxz.open.bean.message.ByteDanceOpenMessage;
+import com.github.yydzxz.open.message.ByteDanceOpenMessage;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
@@ -69,7 +67,7 @@ public class MsgDecrypt {
             byte[] encrypted = Base64.getDecoder().decode(text);
             original = cipher.doFinal(encrypted);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
             throw new Exception("解码异常");
         }
 
@@ -92,7 +90,7 @@ public class MsgDecrypt {
             message = jsonSerializer.parse(Content, ByteDanceOpenMessage.class);
             message.setFromTpAppId(AppId);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
             throw new Exception("Buffer异常");
         }
         return message;

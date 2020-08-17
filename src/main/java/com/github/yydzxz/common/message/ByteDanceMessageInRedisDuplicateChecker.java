@@ -1,9 +1,9 @@
-package com.github.yydzxz.common;
+package com.github.yydzxz.common.message;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.StrUtil;
 import com.github.yydzxz.common.redis.IByteDanceRedisOps;
 import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author yangyidian
@@ -19,7 +19,7 @@ public class ByteDanceMessageInRedisDuplicateChecker implements IByteDanceMessag
 
     @Override
     public boolean isDuplicate(String messageId) {
-        boolean notExist = StringUtils.isEmpty(byteDanceRedisOps.getValue(messageId));
+        boolean notExist = StrUtil.isEmpty(byteDanceRedisOps.getValue(messageId));
         if(notExist){
             byteDanceRedisOps.setValue(messageId, DateUtil.now(), 6, TimeUnit.MINUTES);
             return false;

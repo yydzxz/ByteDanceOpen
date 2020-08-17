@@ -92,24 +92,6 @@ public class OkHttpClientByteDanceHttpRequestServiceImpl extends AbstractByteDan
     }
 
     @Override
-    Object handlerRequestParam(Object requestParams) {
-        Field[] fields = requestParams.getClass().getDeclaredFields();
-        Map<String, Object> paramsMap = new HashMap<>(fields.length);
-        for(Field field : fields){
-            field.setAccessible(true);
-            Object value;
-            try {
-                value = field.get(requestParams);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-            String aliasName = getJsonSerializer().getFieldAliasName(field);
-            paramsMap.put(aliasName, value);
-        }
-        return paramsMap;
-    }
-
-    @Override
     public <T> T doPost(String url, Object requestParam, Class<T> clazz) {
         RequestBody body = RequestBody.create(getJsonSerializer().toJson(requestParam), JSON);
         Request request = new Request.Builder()

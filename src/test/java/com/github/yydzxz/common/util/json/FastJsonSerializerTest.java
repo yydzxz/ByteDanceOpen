@@ -34,7 +34,7 @@ class FastJsonSerializerTest {
 
     @Test
     void parse() {
-        JsonTestClass testClass = jsonSerializer.parse("{\"aaaaa\":\"value\",\"bbbbb\":\"value\"}", JsonTestClass.class);
+        JsonTestClass testClass = jsonSerializer.parse("{\"aaaaa\":\"value\",\"bbbbb\":\"value\",\"ccccc\":\"value\"}", JsonTestClass.class);
         assertEquals("value", testClass.getAbcdEfG());
     }
 

@@ -1,5 +1,6 @@
 package com.github.yydzxz.common.util.json;
 
+import cn.hutool.core.util.StrUtil;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,13 +30,15 @@ public class GsonSerializer implements JsonSerializer {
 
     @Override
     public String getFieldAliasName(Field field){
+        String fieldAliasName = field.getName();
         Annotation annotation = field.getAnnotation(SerializedName.class);
         if(annotation != null){
             SerializedName serializedNameAnnotation = (SerializedName)annotation;
-            return serializedNameAnnotation.value();
-        }else {
-            return field.getName();
+            if(!StrUtil.isEmpty(serializedNameAnnotation.value())){
+                fieldAliasName = serializedNameAnnotation.value();
+            }
         }
+        return fieldAliasName;
     }
 
 

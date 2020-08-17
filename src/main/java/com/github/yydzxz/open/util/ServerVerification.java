@@ -2,10 +2,12 @@ package com.github.yydzxz.open.util;
 
 import java.util.Arrays;
 import java.security.MessageDigest;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 字节跳动提供的验签工具类
  */
+@Slf4j
 public class ServerVerification {
 
     public static String getMsgSignature(String tpToken, String timestamp, String nonce, String encrypt) throws Exception {
@@ -39,7 +41,7 @@ public class ServerVerification {
 
             return hexStr.toString();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
             throw new Exception("不能生成签名");
         }
     }

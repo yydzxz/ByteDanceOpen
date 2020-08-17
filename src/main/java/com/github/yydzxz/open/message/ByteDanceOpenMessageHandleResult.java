@@ -1,4 +1,4 @@
-package com.github.yydzxz.open.bean.message;
+package com.github.yydzxz.open.message;
 
 
 import lombok.Data;
@@ -10,8 +10,5 @@ import lombok.Data;
  **/
 @Data
 public class ByteDanceOpenMessageHandleResult {
-
-    private String defaultResult = "success";
-
-    private Object result;
+    private Object handleResult;
 }
