@@ -8,8 +8,20 @@ import java.lang.reflect.Field;
  **/
 public interface JsonSerializer {
 
+    /**
+     * 对象转json字符串
+     * @param object
+     * @return
+     */
     String toJson(Object object);
 
+    /**
+     * json字符串转对象
+     * @param jsonString
+     * @param clazz
+     * @param <T>
+     * @return
+     */
     <T> T parse(String jsonString, Class<T> clazz);
 
     /**

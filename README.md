@@ -3,8 +3,7 @@
 - 支持字节跳动(抖音，头条..)开放平台小程序代开发功能的后端开发。
 部分代码参考了[WxJava](https://github.com/Wechat-Group/WxJava)的实现，使用方式也大同小异。
 - 支持`JoddHttp`, `OkHttpClient`, `RestTemplate`
-- 支持`Gson`, `Jackson`, `FastJson`
-- 提供Docker版本, 填写好第三方配置后, 通过`docker-compose`一键启动所有所需服务
+- 支持`Gson`, `Jackson`, `FastJson`(不推荐使用FastJson,[原因](https://segmentfault.com/a/1190000015634321))
 ## 使用方式
 
 #### Maven 引用
@@ -25,3 +24,4 @@
   </dependency>
   ```
 具体可以参考[ByteDance-Open-Demo](https://github.com/yydzxz/ByteDance-Open-Demo)
+  - Demo提供了Docker版本, 填写好第三方配置后, 通过`docker-compose`一键启动所有所需服务

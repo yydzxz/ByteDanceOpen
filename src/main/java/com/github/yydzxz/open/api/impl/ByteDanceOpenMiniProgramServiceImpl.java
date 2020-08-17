@@ -1,5 +1,6 @@
 package com.github.yydzxz.open.api.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
 import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
@@ -13,7 +14,6 @@ import com.github.yydzxz.open.error.ByteDanceOpenMiniProgramException;
 import com.google.common.collect.Multimap;
 import java.util.concurrent.locks.Lock;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
 /**
@@ -149,7 +149,7 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
                 Lock lock = getByteDanceOpenComponentService().getOpenConfigStorage().getAccessTokenLock(appId);
                 lock.lock();
                 try {
-                    if(StringUtils.equals(getAccessToken(false), accessToken)){
+                    if(StrUtil.equals(getAccessToken(false), accessToken)){
                         getByteDanceOpenComponentService().getOpenConfigStorage().expireAuthorizerAccessToken(appId);
                     }
                 }catch (Exception ex){

@@ -73,22 +73,4 @@ public class JoddHttpByteDanceHttpRequestServiceImpl extends AbstractByteDanceHt
             return getJsonSerializer().parse(response.bodyText(), clazz);
         }
     }
-
-    @Override
-    Object handlerRequestParam(Object requestParams) {
-        Map<String, Object> paramsMap = new HashMap<>();
-        Field[] fields = requestParams.getClass().getDeclaredFields();
-        for(Field field : fields){
-            field.setAccessible(true);
-            Object value;
-            try {
-                value = field.get(requestParams);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-            String aliasName = getJsonSerializer().getFieldAliasName(field);
-            paramsMap.put(aliasName, value);
-        }
-        return paramsMap;
-    }
 }

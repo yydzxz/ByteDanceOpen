@@ -1,5 +1,6 @@
 package com.github.yydzxz.common.util.json;
 
+import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,7 +26,7 @@ public class JacksonSerializer implements JsonSerializer {
     public String toJson(Object object) {
         mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE)
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        String jsonStr = null;
+        String jsonStr;
         try {
             jsonStr = mapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
@@ -48,18 +49,22 @@ public class JacksonSerializer implements JsonSerializer {
 
     @Override
     public String getFieldAliasName(Field field) {
+        String fieldAliasName = field.getName();
         Annotation annotation = field.getAnnotation(JsonAlias.class);
         if(annotation != null){
             JsonAlias jsonAnnotation = (JsonAlias)annotation;
-            return jsonAnnotation.value()[0];
+            if(jsonAnnotation.value().length > 0 && !StrUtil.isEmpty(jsonAnnotation.value()[0])){
+                fieldAliasName = jsonAnnotation.value()[0];
+            }
         }else {
             annotation = field.getAnnotation(JsonProperty.class);
             if(annotation != null){
                 JsonProperty jsonAnnotation = (JsonProperty)annotation;
-                return jsonAnnotation.value();
-            }else {
-                return field.getName();
+                if(!StrUtil.isEmpty(jsonAnnotation.value())){
+                    fieldAliasName = jsonAnnotation.value();
+                }
             }
         }
+        return fieldAliasName;
     }
 }

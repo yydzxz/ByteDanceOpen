@@ -1,16 +1,15 @@
 package com.github.yydzxz.open.util;
 
 
+import cn.hutool.core.util.StrUtil;
 import java.nio.charset.StandardCharsets;
-
-import org.apache.commons.lang3.StringUtils;
 
 public class URIUtil {
 
     private static final String ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.!~*'()";
 
     public static String encodeURIComponent(String input) {
-        if (StringUtils.isEmpty(input)) {
+        if (StrUtil.isEmpty(input)) {
             return input;
         }
 

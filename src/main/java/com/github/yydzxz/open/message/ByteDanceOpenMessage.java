@@ -1,4 +1,4 @@
-package com.github.yydzxz.open.bean.message;
+package com.github.yydzxz.open.message;
 
 
 import com.alibaba.fastjson.annotation.JSONField;

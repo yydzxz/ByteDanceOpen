@@ -1,5 +1,6 @@
 package com.github.yydzxz.open.api.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
 import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
@@ -22,7 +23,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
 /**
@@ -156,11 +156,11 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
             + "&grant_type=app_to_tp_authorization_code";
         GetAuthorizerAccessTokenReponse response = get(url, GetAuthorizerAccessTokenReponse.class);
 
-        if (!StringUtils.isEmpty(response.getAuthorizerAccessToken())) {
+        if (!StrUtil.isEmpty(response.getAuthorizerAccessToken())) {
             getByteDanceOpenConfigStorage().updateAuthorizerAccessToken(response.getAuthorizerAppid(),
                 response.getAuthorizerAccessToken(), response.getExpiresIn());
         }
-        if (!StringUtils.isEmpty(response.getAuthorizerRefreshToken())) {
+        if (!StrUtil.isEmpty(response.getAuthorizerRefreshToken())) {
             getByteDanceOpenConfigStorage().setAuthorizerRefreshToken(response.getAuthorizerAppid(), response.getAuthorizerRefreshToken());
         }
         return response;
@@ -179,7 +179,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
                 return config.getAuthorizerAccessToken(appId);
             }
             String authorizerRefreshToken = getByteDanceOpenConfigStorage().getAuthorizerRefreshToken(appId);
-            if(StringUtils.isEmpty(authorizerRefreshToken)){
+            if(StrUtil.isEmpty(authorizerRefreshToken)){
                 throw new InvalidAuthorizerRefreshToken("authorizerRefreshToken为空，需要重新授权");
             }
             String url = API_GET_OAUTH_TOKEN_URL
@@ -191,6 +191,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
             config.setAuthorizerRefreshToken(appId, response.getAuthorizerRefreshToken());
             return config.getAuthorizerAccessToken(appId);
         } catch (InvalidAuthorizerRefreshToken e){
+            log.error("AuthorizerRefreshToken 不合法, 请尝试解绑后重新授权");
             throw e;
         } catch (Exception e){
             log.error(e.getMessage(), e);
@@ -295,14 +296,14 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
             /*
              * 发生以下情况时尝试刷新access_token
              * 40009 第三方平台AccessToken已过期
-             * 420010 第三方平台AccessToken不正确
+             * 40010 第三方平台AccessToken不正确
              */
             if (shouldExpireComponentAccessToken(error)) {
                 // 强制设置componentAccessToken过期，这样在下一次请求里就会刷新componentAccessToken
                 Lock lock = this.getByteDanceOpenConfigStorage().getComponentAccessTokenLock();
                 lock.lock();
                 try {
-                    if (StringUtils.equals(componentAccessToken, this.getByteDanceOpenConfigStorage().getComponentAccessToken())) {
+                    if (StrUtil.equals(componentAccessToken, this.getByteDanceOpenConfigStorage().getComponentAccessToken())) {
                         this.getByteDanceOpenConfigStorage().expireComponentAccessToken();
                     }
                 } catch (Exception ex) {

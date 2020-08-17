@@ -1,11 +1,11 @@
 package com.github.yydzxz.open.api.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;
 import lombok.Data;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author yangyidian
@@ -55,8 +55,8 @@ public abstract class AbstractByteDanceOpenInRedisConfigStorage implements IByte
     @Override
     public void setComponentAppId(String componentAppId) {
         this.componentAppId = componentAppId;
-        String prefix = StringUtils.isBlank(keyPrefix) ? "" :
-            (StringUtils.endsWith(keyPrefix, ":") ? keyPrefix : (keyPrefix + ":"));
+        String prefix = StrUtil.isBlank(keyPrefix) ? "" :
+            (StrUtil.endWith(keyPrefix, ":") ? keyPrefix : (keyPrefix + ":"));
         componentVerifyTicketKey = prefix + COMPONENT_VERIFY_TICKET_KEY.concat(componentAppId);
         componentAccessTokenKey = prefix + COMPONENT_ACCESS_TOKEN_KEY.concat(componentAppId);
         authorizerRefreshTokenKey = prefix + AUTHORIZER_REFRESH_TOKEN_KEY.concat(componentAppId);
