@@ -1,4 +1,5 @@
-# ByteDanceOpen 
+# ByteDanceOpen ![image](https://github.com/yydzxz/ByteDanceOpen/workflows/Master%20Branch%20Deploy/badge.svg)
+
 - 字节跳动 Java SDK
 - 支持字节跳动(抖音，头条..)开放平台小程序代开发功能的后端开发。
 部分代码参考了[WxJava](https://github.com/Wechat-Group/WxJava)的实现，使用方式也大同小异。
@@ -20,7 +21,7 @@
   <dependency>
     <groupId>com.github.yydzxz</groupId>
     <artifactId>bytedance-open</artifactId>
-    <version>2.1.1.RELEASE</version>
+    <version>2.1.3.SNAPSHOT</version>
   </dependency>
   ```
 具体可以参考[ByteDance-Open-Demo](https://github.com/yydzxz/ByteDance-Open-Demo)
