@@ -5,8 +5,6 @@ import com.github.yydzxz.common.util.json.JsonSerializer;
 import com.google.common.collect.Multimap;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Headers;
