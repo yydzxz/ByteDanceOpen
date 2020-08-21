@@ -10,6 +10,8 @@ name: Master Branch Deploy
 on:
   push:
     branches: [ master ]
+    paths-ignore:
+      - 'README.md'
   pull_request:
     branches: [ master ]
 
@@ -33,3 +35,7 @@ jobs:
         run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -P github
         env:
           GITHUB_TOKEN: ${{ github.token }}
+        id: publish
+      # This step prints an output (time) from the previous step's action.
+      - name: Echo the Publish time
+        run: echo 'The time was ${{ steps.publish.outputs.time }}.'
