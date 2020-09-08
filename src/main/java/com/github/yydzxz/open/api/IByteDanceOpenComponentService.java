@@ -1,6 +1,6 @@
 package com.github.yydzxz.open.api;
 
-import com.github.yydzxz.open.api.response.auth.GetAuthorizerAccessTokenReponse;
+import com.github.yydzxz.open.api.response.auth.GetAuthorizerAccessTokenResponse;
 import com.google.common.collect.Multimap;
 
 /**
@@ -80,7 +80,7 @@ public interface IByteDanceOpenComponentService {
      * 使用授权码换取小程序的接口调用凭据.
      * @param authorizationCode
      */
-    GetAuthorizerAccessTokenReponse getAuthorizerAccessTokenByAuthorizationCode(String authorizationCode);
+    GetAuthorizerAccessTokenResponse getAuthorizerAccessTokenByAuthorizationCode(String authorizationCode);
 
 
     /**

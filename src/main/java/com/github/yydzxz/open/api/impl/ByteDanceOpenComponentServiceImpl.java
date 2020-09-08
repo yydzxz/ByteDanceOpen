@@ -13,7 +13,7 @@ import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.IByteDanceOpenTemplateService;
 import com.github.yydzxz.open.api.IExecutable;
 import com.github.yydzxz.open.api.IRetryableExecutor;
-import com.github.yydzxz.open.api.response.auth.GetAuthorizerAccessTokenReponse;
+import com.github.yydzxz.open.api.response.auth.GetAuthorizerAccessTokenResponse;
 import com.github.yydzxz.open.api.response.auth.GetPreAuthCodeResponse;
 import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
 import com.github.yydzxz.open.util.ServerVerification;
@@ -150,11 +150,11 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
     }
 
     @Override
-    public GetAuthorizerAccessTokenReponse getAuthorizerAccessTokenByAuthorizationCode(String authorizationCode){
+    public GetAuthorizerAccessTokenResponse getAuthorizerAccessTokenByAuthorizationCode(String authorizationCode){
         String url = API_GET_OAUTH_TOKEN_URL
             + "?authorization_code=" + authorizationCode
             + "&grant_type=app_to_tp_authorization_code";
-        GetAuthorizerAccessTokenReponse response = get(url, GetAuthorizerAccessTokenReponse.class);
+        GetAuthorizerAccessTokenResponse response = get(url, GetAuthorizerAccessTokenResponse.class);
 
         if (!StrUtil.isEmpty(response.getAuthorizerAccessToken())) {
             getByteDanceOpenConfigStorage().updateAuthorizerAccessToken(response.getAuthorizerAppid(),
@@ -185,7 +185,7 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
             String url = API_GET_OAUTH_TOKEN_URL
                 + "?authorizer_refresh_token=" + authorizerRefreshToken
                 + "&grant_type=app_to_tp_refresh_token";
-            GetAuthorizerAccessTokenReponse response = get(url, GetAuthorizerAccessTokenReponse.class);
+            GetAuthorizerAccessTokenResponse response = get(url, GetAuthorizerAccessTokenResponse.class);
 
             config.updateAuthorizerAccessToken(appId, response.getAuthorizerAccessToken(), response.getExpiresIn());
             config.setAuthorizerRefreshToken(appId, response.getAuthorizerRefreshToken());

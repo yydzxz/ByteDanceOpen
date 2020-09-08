@@ -15,7 +15,7 @@ import lombok.Data;
  * @date 2020/06/28
  **/
 @Data
-public class GetAuthorizerAccessTokenReponse extends ByteDanceError implements IByteDanceResponse {
+public class GetAuthorizerAccessTokenResponse extends ByteDanceError implements IByteDanceResponse {
 
     private static final long serialVersionUID = -8337462028108565681L;
 
