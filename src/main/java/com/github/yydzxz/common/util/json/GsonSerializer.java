@@ -13,7 +13,10 @@ import java.lang.reflect.Field;
  * @date 2020/08/03
  **/
 public class GsonSerializer implements JsonSerializer {
-    private static final Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
+    private static final Gson gson = new GsonBuilder()
+        .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+        .setDateFormat("yyyy-MM-dd HH:mm:ss")
+        .create();
 
     @Override
     public String toJson(Object object) {
