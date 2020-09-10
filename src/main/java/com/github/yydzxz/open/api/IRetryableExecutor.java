@@ -47,6 +47,7 @@ public interface IRetryableExecutor {
      * 带有重试功能的请求
      * @param executable
      * @param url
+     * @param headers
      * @param request
      * @param t
      * @param <T>

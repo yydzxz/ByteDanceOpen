@@ -90,7 +90,6 @@ public enum ByteDanceErrorMsgEnum {
                 return value.msg;
             }
         }
-
-        return null;
+        return "";
     }
 }
