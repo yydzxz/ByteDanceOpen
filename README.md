@@ -18,7 +18,7 @@
   <dependency>
    <groupId>com.github.yydzxz</groupId>
    <artifactId>bytedance-open</artifactId>
-   <version>2.1.1.RELEASE</version>
+   <version>3.0.4.RELEASE</version>
   </dependency>
   ```
   ##### 最新版
@@ -26,7 +26,7 @@
   <dependency>
     <groupId>com.github.yydzxz</groupId>
     <artifactId>bytedance-open</artifactId>
-    <version>2.1.4.SNAPSHOT</version>
+    <version>3.0.4.RELEASE</version>
   </dependency>
   ```
 具体可以参考[ByteDance-Open-Demo](https://github.com/yydzxz/ByteDance-Open-Demo)
