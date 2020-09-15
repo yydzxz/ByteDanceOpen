@@ -1,6 +1,6 @@
 package com.github.yydzxz.open.api.v2.impl;
 
-import com.github.yydzxz.open.api.v1.IByteDanceOpenService;
+import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenComponentServiceImpl;
 import com.github.yydzxz.open.api.v1.response.auth.GetPreAuthCodeResponse;
 import com.github.yydzxz.open.api.v2.IByteDanceOpenV2ComponentService;

@@ -1,7 +1,7 @@
-package com.github.yydzxz.open.api.v1.impl;
+package com.github.yydzxz.open.api.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenConfigStorage;
+import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;

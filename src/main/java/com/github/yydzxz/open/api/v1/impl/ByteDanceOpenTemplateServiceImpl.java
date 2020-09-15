@@ -1,7 +1,7 @@
 package com.github.yydzxz.open.api.v1.impl;
 
 
-import com.github.yydzxz.open.api.v1.IByteDanceOpenService;
+import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenTemplateService;
 import com.github.yydzxz.open.api.v1.request.template.TemplateAddTplRequest;
 import com.github.yydzxz.open.api.v1.request.template.TemplateDelTplRequest;

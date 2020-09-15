@@ -1,4 +1,4 @@
-package com.github.yydzxz.open.api.v1.impl;
+package com.github.yydzxz.open.api.impl;
 
 import cn.hutool.core.util.StrUtil;
 import com.github.yydzxz.common.error.ByteDanceError;
@@ -7,9 +7,11 @@ import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramCodeService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramInfoService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramService;
+import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.IExecutable;
 import com.github.yydzxz.open.api.IRetryableExecutor;
+import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenMiniProgramCodeServiceImpl;
+import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenMiniProgramInfoServiceImpl;
 import com.github.yydzxz.open.error.ByteDanceOpenMiniProgramException;
 import com.google.common.collect.Multimap;
 import java.util.concurrent.locks.Lock;

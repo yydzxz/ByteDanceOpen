@@ -1,5 +1,8 @@
 package com.github.yydzxz.open.api.v1;
 
+import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
+import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
+import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.v1.response.auth.GetAuthorizerAccessTokenResponse;
 import com.google.common.collect.Multimap;
 
