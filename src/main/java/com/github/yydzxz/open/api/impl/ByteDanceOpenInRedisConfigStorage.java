@@ -1,5 +1,6 @@
-package com.github.yydzxz.open.api.v1.impl;
+package com.github.yydzxz.open.api.impl;
 
+import com.github.yydzxz.open.api.impl.AbstractByteDanceOpenInRedisConfigStorage;
 import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
 import com.github.yydzxz.common.redis.IByteDanceRedisOps;
 import java.util.concurrent.TimeUnit;

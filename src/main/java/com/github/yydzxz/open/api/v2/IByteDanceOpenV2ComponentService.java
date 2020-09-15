@@ -1,7 +1,6 @@
 package com.github.yydzxz.open.api.v2;
 
 import com.github.yydzxz.open.api.v1.IByteDanceOpenComponentService;
-import com.github.yydzxz.open.api.v1.response.auth.GetPreAuthCodeResponse;
 import com.github.yydzxz.open.api.v2.request.auth.GetPreAuthCodeRequest;
 
 /**

@@ -1,7 +1,7 @@
 package com.github.yydzxz.open.api.v1.impl;
 
 import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramInfoService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramService;
+import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIconRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIntroRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppNameRequest;

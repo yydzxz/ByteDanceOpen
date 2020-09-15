@@ -1,7 +1,7 @@
 package com.github.yydzxz.open.api.v1.impl;
 
 import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramCodeService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramService;
+import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeReleaseResponse;
