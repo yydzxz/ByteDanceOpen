@@ -1,11 +1,11 @@
 package com.github.yydzxz.open.api;
 
-import com.github.yydzxz.open.api.request.template.TemplateAddTplRequest;
-import com.github.yydzxz.open.api.response.template.TemplateGetDraftListResponse;
-import com.github.yydzxz.open.api.response.template.TemplateGetTplListResponse;
-import com.github.yydzxz.open.api.request.template.TemplateDelTplRequest;
-import com.github.yydzxz.open.api.response.template.TemplateAddTplResponse;
-import com.github.yydzxz.open.api.response.template.TemplateDelTplResponse;
+import com.github.yydzxz.open.api.v1.request.template.TemplateAddTplRequest;
+import com.github.yydzxz.open.api.v1.response.template.TemplateGetDraftListResponse;
+import com.github.yydzxz.open.api.v1.response.template.TemplateGetTplListResponse;
+import com.github.yydzxz.open.api.v1.request.template.TemplateDelTplRequest;
+import com.github.yydzxz.open.api.v1.response.template.TemplateAddTplResponse;
+import com.github.yydzxz.open.api.v1.response.template.TemplateDelTplResponse;
 
 /**
  * 模版管理

@@ -9,5 +9,13 @@ import com.google.common.collect.Multimap;
 @FunctionalInterface
 public interface IExecutable<T> {
 
-    T execute(String uriWithCommonParam, Multimap<String,String> headers, Object request, Class<T> t);
+    /**
+     *
+     * @param url 请求地址
+     * @param headers 请求头
+     * @param request 请求参数
+     * @param t 返回值类型
+     * @return
+     */
+    T execute(String url, Multimap<String,String> headers, Object request, Class<T> t);
 }

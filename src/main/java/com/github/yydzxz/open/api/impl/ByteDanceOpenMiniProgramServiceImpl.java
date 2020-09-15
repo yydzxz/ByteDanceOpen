@@ -10,6 +10,8 @@ import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramInfoService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.IExecutable;
 import com.github.yydzxz.open.api.IRetryableExecutor;
+import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenV1MiniProgramCodeServiceImpl;
+import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenV1MiniProgramInfoServiceImpl;
 import com.github.yydzxz.open.error.ByteDanceOpenMiniProgramException;
 import com.google.common.collect.Multimap;
 import java.util.concurrent.locks.Lock;
@@ -38,8 +40,8 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
     public ByteDanceOpenMiniProgramServiceImpl(IByteDanceOpenComponentService byteDanceOpenComponentService, String appId) {
         this.byteDanceOpenComponentService = byteDanceOpenComponentService;
         this.appId = appId;
-        this.byteDanceOpenMiniProgramCodeService = new ByteDanceOpenMiniProgramCodeServiceImpl(this);
-        this.byteDanceOpenMiniProgramInfoService = new ByteDanceOpenMiniProgramInfoServiceImpl(this);
+        this.byteDanceOpenMiniProgramCodeService = new ByteDanceOpenV1MiniProgramCodeServiceImpl(this);
+        this.byteDanceOpenMiniProgramInfoService = new ByteDanceOpenV1MiniProgramInfoServiceImpl(this);
     }
 
     @Override

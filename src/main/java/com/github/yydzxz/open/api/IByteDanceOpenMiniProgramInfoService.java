@@ -1,19 +1,19 @@
 package com.github.yydzxz.open.api;
 
 
-import com.github.yydzxz.open.api.request.appinfo.AppModifyAppIconRequest;
-import com.github.yydzxz.open.api.request.appinfo.AppModifyAppIntroRequest;
-import com.github.yydzxz.open.api.request.appinfo.AppModifyAppNameRequest;
-import com.github.yydzxz.open.api.request.appinfo.AppModifyServerDomainRequest;
-import com.github.yydzxz.open.api.request.appinfo.AppModifyWebviewDomainRequest;
-import com.github.yydzxz.open.api.request.appinfo.AppQrCodeRequest;
-import com.github.yydzxz.open.api.response.appinfo.AppCheckAppNameResponse;
-import com.github.yydzxz.open.api.response.appinfo.AppInfoResponse;
-import com.github.yydzxz.open.api.response.appinfo.AppModifyAppIconResponse;
-import com.github.yydzxz.open.api.response.appinfo.AppModifyAppIntroResponse;
-import com.github.yydzxz.open.api.response.appinfo.AppModifyAppNameResponse;
-import com.github.yydzxz.open.api.response.appinfo.AppModifyServerDomainResponse;
-import com.github.yydzxz.open.api.response.appinfo.AppModifyWebviewDomainResponse;
+import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIconRequest;
+import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIntroRequest;
+import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppNameRequest;
+import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyServerDomainRequest;
+import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyWebviewDomainRequest;
+import com.github.yydzxz.open.api.v1.request.appinfo.AppQrCodeRequest;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppCheckAppNameResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppInfoResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIconResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIntroResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppNameResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyServerDomainResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyWebviewDomainResponse;
 
 /**
  * 代授权小程序业务-基本信息配置 相关API

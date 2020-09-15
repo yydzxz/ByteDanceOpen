@@ -1,6 +1,5 @@
 package com.github.yydzxz.open.api;
 
-import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
 import com.google.common.collect.Multimap;
 
 /**

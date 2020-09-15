@@ -1,7 +1,7 @@
 package com.github.yydzxz.open.api;
 
-import com.github.yydzxz.open.api.request.material.UploadPicMaterialRequest;
-import com.github.yydzxz.open.api.response.material.UploadPicMaterialResponse;
+import com.github.yydzxz.open.api.v1.request.material.UploadPicMaterialRequest;
+import com.github.yydzxz.open.api.v1.response.material.UploadPicMaterialResponse;
 
 /**
  * 图片材料

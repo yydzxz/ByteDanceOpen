@@ -1,11 +1,10 @@
 package com.github.yydzxz.open.api;
 
-import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
-import com.github.yydzxz.open.api.request.code.CodeUploadRequest;
-import com.github.yydzxz.open.api.response.code.CodeAuditResponse;
-import com.github.yydzxz.open.api.response.code.CodeReleaseResponse;
-import com.github.yydzxz.open.api.response.code.CodeRollbackResponse;
-import com.github.yydzxz.open.api.response.code.CodeUploadResponse;
+import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
+import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
+import com.github.yydzxz.open.api.v1.response.code.CodeReleaseResponse;
+import com.github.yydzxz.open.api.v1.response.code.CodeRollbackResponse;
+import com.github.yydzxz.open.api.v1.response.code.CodeUploadResponse;
 
 /**
  * 代授权小程序业务-代码包管理 相关API
