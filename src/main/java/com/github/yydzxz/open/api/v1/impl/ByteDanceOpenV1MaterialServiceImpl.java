@@ -1,6 +1,6 @@
 package com.github.yydzxz.open.api.v1.impl;
 
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMaterialService;
+import com.github.yydzxz.open.api.IByteDanceOpenMaterialService;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.v1.request.material.UploadPicMaterialRequest;
 import com.github.yydzxz.open.api.v1.response.material.UploadPicMaterialResponse;
@@ -13,11 +13,11 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2020/07/21
  **/
 @Slf4j
-public class ByteDanceOpenMaterialServiceImpl implements IByteDanceOpenMaterialService {
+public class ByteDanceOpenV1MaterialServiceImpl implements IByteDanceOpenMaterialService {
 
     private IByteDanceOpenService byteDanceOpenService;
 
-    public ByteDanceOpenMaterialServiceImpl(IByteDanceOpenService byteDanceOpenService) {
+    public ByteDanceOpenV1MaterialServiceImpl(IByteDanceOpenService byteDanceOpenService) {
         this.byteDanceOpenService = byteDanceOpenService;
     }
 

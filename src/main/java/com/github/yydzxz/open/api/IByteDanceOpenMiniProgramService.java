@@ -1,8 +1,5 @@
 package com.github.yydzxz.open.api;
 
-import com.github.yydzxz.open.api.v1.IByteDanceOpenComponentService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramCodeService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramInfoService;
 import com.google.common.collect.Multimap;
 
 /**

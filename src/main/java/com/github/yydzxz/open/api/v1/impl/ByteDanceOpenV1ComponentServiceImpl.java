@@ -6,12 +6,12 @@ import com.github.yydzxz.common.error.ByteDanceErrorException;
 import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
 import com.github.yydzxz.common.error.InvalidAuthorizerRefreshToken;
 import com.github.yydzxz.open.api.impl.ByteDanceOpenMiniProgramServiceImpl;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenComponentService;
+import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMaterialService;
+import com.github.yydzxz.open.api.IByteDanceOpenMaterialService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenTemplateService;
+import com.github.yydzxz.open.api.IByteDanceOpenTemplateService;
 import com.github.yydzxz.open.api.IExecutable;
 import com.github.yydzxz.open.api.IRetryableExecutor;
 import com.github.yydzxz.open.api.v1.response.auth.GetAuthorizerAccessTokenResponse;
@@ -31,7 +31,7 @@ import org.slf4j.Logger;
  * @date 2020/06/19
  **/
 @Slf4j
-public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponentService, IRetryableExecutor {
+public class ByteDanceOpenV1ComponentServiceImpl implements IByteDanceOpenComponentService, IRetryableExecutor {
     private long retrySleepMillis = 1000;
 
     private int maxRetryTimes = 5;
@@ -44,10 +44,10 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
 
     private IByteDanceOpenMaterialService byteDanceOpenMaterialService;
 
-    public ByteDanceOpenComponentServiceImpl(IByteDanceOpenService byteDanceOpenService) {
+    public ByteDanceOpenV1ComponentServiceImpl(IByteDanceOpenService byteDanceOpenService) {
         this.byteDanceOpenService = byteDanceOpenService;
-        byteDanceOpenTemplateService = new ByteDanceOpenTemplateServiceImpl(byteDanceOpenService);
-        byteDanceOpenMaterialService = new ByteDanceOpenMaterialServiceImpl(byteDanceOpenService);
+        byteDanceOpenTemplateService = new ByteDanceOpenV1TemplateServiceImpl(byteDanceOpenService);
+        byteDanceOpenMaterialService = new ByteDanceOpenV1MaterialServiceImpl(byteDanceOpenService);
     }
 
     @Override
@@ -131,23 +131,12 @@ public class ByteDanceOpenComponentServiceImpl implements IByteDanceOpenComponen
 
     @Override
     public String getPreAuthUrl(String redirectURI){
-        return createPreAuthUrl(redirectURI);
-    }
-
-    /**
-     * 创建预授权链接
-     *
-     * @param redirectURI
-     * @return
-     */
-    private String createPreAuthUrl(String redirectURI){
         GetPreAuthCodeResponse response = get(API_CREATE_PRE_AUTH_CODE_URL, GetPreAuthCodeResponse.class);
         StringBuilder preAuthUrl = new StringBuilder(String.format(COMPONENT_LOGIN_PAGE_URL,
             getByteDanceOpenConfigStorage().getComponentAppId(),
             response.getPreAuthCode(),
             URIUtil.encodeURIComponent(redirectURI)));
-        String preAuthUrlStr = preAuthUrl.toString();
-        return preAuthUrlStr;
+        return preAuthUrl.toString();
     }
 
     @Override
