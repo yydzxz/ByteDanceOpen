@@ -2,6 +2,8 @@ package com.github.yydzxz.open.bean;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.yydzxz.common.error.ByteDanceError;
+import com.github.yydzxz.common.service.IByteDanceResponse;
 import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
@@ -12,7 +14,7 @@ import lombok.Data;
  * @date 2020/06/28
  **/
 @Data
-public class ByteDanceOpenComponentAccessToken implements Serializable {
+public class ByteDanceOpenComponentAccessToken extends ByteDanceError implements IByteDanceResponse, Serializable {
 
     private static final long serialVersionUID = 6417155856835777760L;
 
