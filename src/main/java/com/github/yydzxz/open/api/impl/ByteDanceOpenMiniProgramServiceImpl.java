@@ -4,14 +4,14 @@ import cn.hutool.core.util.StrUtil;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
 import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenComponentService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramCodeService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramInfoService;
+import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
+import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramCodeService;
+import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramInfoService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.IExecutable;
 import com.github.yydzxz.open.api.IRetryableExecutor;
-import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenMiniProgramCodeServiceImpl;
-import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenMiniProgramInfoServiceImpl;
+import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenV1MiniProgramCodeServiceImpl;
+import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenV1MiniProgramInfoServiceImpl;
 import com.github.yydzxz.open.error.ByteDanceOpenMiniProgramException;
 import com.google.common.collect.Multimap;
 import java.util.concurrent.locks.Lock;
@@ -40,8 +40,8 @@ public class ByteDanceOpenMiniProgramServiceImpl implements IByteDanceOpenMiniPr
     public ByteDanceOpenMiniProgramServiceImpl(IByteDanceOpenComponentService byteDanceOpenComponentService, String appId) {
         this.byteDanceOpenComponentService = byteDanceOpenComponentService;
         this.appId = appId;
-        this.byteDanceOpenMiniProgramCodeService = new ByteDanceOpenMiniProgramCodeServiceImpl(this);
-        this.byteDanceOpenMiniProgramInfoService = new ByteDanceOpenMiniProgramInfoServiceImpl(this);
+        this.byteDanceOpenMiniProgramCodeService = new ByteDanceOpenV1MiniProgramCodeServiceImpl(this);
+        this.byteDanceOpenMiniProgramInfoService = new ByteDanceOpenV1MiniProgramInfoServiceImpl(this);
     }
 
     @Override

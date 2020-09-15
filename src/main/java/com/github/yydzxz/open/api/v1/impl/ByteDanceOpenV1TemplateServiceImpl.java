@@ -2,7 +2,7 @@ package com.github.yydzxz.open.api.v1.impl;
 
 
 import com.github.yydzxz.open.api.IByteDanceOpenService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenTemplateService;
+import com.github.yydzxz.open.api.IByteDanceOpenTemplateService;
 import com.github.yydzxz.open.api.v1.request.template.TemplateAddTplRequest;
 import com.github.yydzxz.open.api.v1.request.template.TemplateDelTplRequest;
 import com.github.yydzxz.open.api.v1.response.template.TemplateAddTplResponse;
@@ -16,11 +16,11 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2020/07/01
  **/
 @Slf4j
-public class ByteDanceOpenTemplateServiceImpl implements IByteDanceOpenTemplateService {
+public class ByteDanceOpenV1TemplateServiceImpl implements IByteDanceOpenTemplateService {
 
     private IByteDanceOpenService byteDanceOpenService;
 
-    public ByteDanceOpenTemplateServiceImpl(IByteDanceOpenService byteDanceOpenService) {
+    public ByteDanceOpenV1TemplateServiceImpl(IByteDanceOpenService byteDanceOpenService) {
         this.byteDanceOpenService = byteDanceOpenService;
     }
 

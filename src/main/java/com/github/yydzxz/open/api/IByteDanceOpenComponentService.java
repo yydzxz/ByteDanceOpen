@@ -1,9 +1,7 @@
-package com.github.yydzxz.open.api.v1;
+package com.github.yydzxz.open.api;
 
-import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
-import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
-import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.v1.response.auth.GetAuthorizerAccessTokenResponse;
+import com.github.yydzxz.open.api.v2.request.auth.GetPreAuthCodeRequest;
 import com.google.common.collect.Multimap;
 
 /**
@@ -23,7 +21,7 @@ public interface IByteDanceOpenComponentService {
      */
     String API_CREATE_PRE_AUTH_CODE_URL = "https://open.microapp.bytedance.com/openapi/v1/create/tp/pre_auth_code";
 
-
+    String V2_API_CREATE_PRE_AUTH_CODE_URL = "https://open.microapp.bytedance.com/openapi/v2/auth/pre_auth_code";
     /**
      * 使用授权码换取小程序的接口调用凭据
      */
@@ -78,6 +76,16 @@ public interface IByteDanceOpenComponentService {
      * 获取用户授权页URL（来路URL和成功跳转URL 的域名都需要为三方平台设置的 登录授权的发起页域名）.
      */
     String getPreAuthUrl(String redirectURI);
+
+    /**
+     * v2 获取用户授权页URL
+     * @param redirectURI
+     * @param request com.github.yydzxz.open.api.v2.request.auth.GetPreAuthCodeRequest
+     * @return
+     */
+    default String getPreAuthUrl(String redirectURI, GetPreAuthCodeRequest request){
+        throw new RuntimeException("该接口尚未实现");
+    }
 
     /**
      * 使用授权码换取小程序的接口调用凭据.

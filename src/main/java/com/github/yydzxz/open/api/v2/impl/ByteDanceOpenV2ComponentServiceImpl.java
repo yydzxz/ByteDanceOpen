@@ -1,9 +1,9 @@
 package com.github.yydzxz.open.api.v2.impl;
 
+import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
-import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenComponentServiceImpl;
+import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenV1ComponentServiceImpl;
 import com.github.yydzxz.open.api.v1.response.auth.GetPreAuthCodeResponse;
-import com.github.yydzxz.open.api.v2.IByteDanceOpenV2ComponentService;
 import com.github.yydzxz.open.api.v2.request.auth.GetPreAuthCodeRequest;
 import com.github.yydzxz.open.util.URIUtil;
 
@@ -11,7 +11,7 @@ import com.github.yydzxz.open.util.URIUtil;
  * @author yangyidian
  * @date 2020/09/09
  **/
-public class ByteDanceOpenV2ComponentServiceImpl extends ByteDanceOpenComponentServiceImpl implements IByteDanceOpenV2ComponentService {
+public class ByteDanceOpenV2ComponentServiceImpl extends ByteDanceOpenV1ComponentServiceImpl implements IByteDanceOpenComponentService {
 
     public ByteDanceOpenV2ComponentServiceImpl(IByteDanceOpenService byteDanceOpenService) {
         super(byteDanceOpenService);
@@ -29,7 +29,6 @@ public class ByteDanceOpenV2ComponentServiceImpl extends ByteDanceOpenComponentS
             getByteDanceOpenConfigStorage().getComponentAppId(),
             response.getPreAuthCode(),
             URIUtil.encodeURIComponent(redirectURI)));
-        String preAuthUrlStr = preAuthUrl.toString();
-        return preAuthUrlStr;
+        return preAuthUrl.toString();
     }
 }

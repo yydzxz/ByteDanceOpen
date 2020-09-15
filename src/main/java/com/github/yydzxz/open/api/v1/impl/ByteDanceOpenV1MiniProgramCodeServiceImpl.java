@@ -1,6 +1,6 @@
 package com.github.yydzxz.open.api.v1.impl;
 
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramCodeService;
+import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramCodeService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
@@ -12,12 +12,12 @@ import com.github.yydzxz.open.api.v1.response.code.CodeUploadResponse;
  * @author yangyidian
  * @date 2020/07/01
  **/
-public class ByteDanceOpenMiniProgramCodeServiceImpl implements IByteDanceOpenMiniProgramCodeService {
+public class ByteDanceOpenV1MiniProgramCodeServiceImpl implements IByteDanceOpenMiniProgramCodeService {
 
     private IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService;
 
 
-    public ByteDanceOpenMiniProgramCodeServiceImpl(IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService) {
+    public ByteDanceOpenV1MiniProgramCodeServiceImpl(IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService) {
         this.byteDanceOpenMiniProgramService = byteDanceOpenMiniProgramService;
     }
 

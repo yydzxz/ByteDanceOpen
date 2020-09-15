@@ -1,6 +1,6 @@
 package com.github.yydzxz.open.api.v1.impl;
 
-import com.github.yydzxz.open.api.v1.IByteDanceOpenMiniProgramInfoService;
+import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramInfoService;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIconRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIntroRequest;
@@ -22,11 +22,11 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2020/07/02
  **/
 @Slf4j
-public class ByteDanceOpenMiniProgramInfoServiceImpl implements IByteDanceOpenMiniProgramInfoService {
+public class ByteDanceOpenV1MiniProgramInfoServiceImpl implements IByteDanceOpenMiniProgramInfoService {
 
     private IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService;
 
-    public ByteDanceOpenMiniProgramInfoServiceImpl(IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService) {
+    public ByteDanceOpenV1MiniProgramInfoServiceImpl(IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService) {
         this.byteDanceOpenMiniProgramService = byteDanceOpenMiniProgramService;
     }
 
