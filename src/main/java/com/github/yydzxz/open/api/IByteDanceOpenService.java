@@ -3,6 +3,8 @@ package com.github.yydzxz.open.api;
 
 import com.github.yydzxz.common.redis.IByteDanceRedisOps;
 import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
+import com.github.yydzxz.open.api.v1.IByteDanceOpenV1ComponentService;
+import com.github.yydzxz.open.api.v2.IByteDanceOpenV2ComponentService;
 
 /**
  * @author yangyidian
@@ -11,9 +13,13 @@ import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
 public interface IByteDanceOpenService{
 
 
-    IByteDanceOpenComponentService getByteDanceOpenComponentService();
+    IByteDanceOpenV1ComponentService getByteDanceOpenV1ComponentService();
 
-    void setByteDanceOpenComponentService(IByteDanceOpenComponentService byteDanceOpenComponentService);
+    void setByteDanceOpenV1ComponentService(IByteDanceOpenV1ComponentService byteDanceOpenComponentService);
+
+    IByteDanceOpenV2ComponentService getByteDanceOpenV2ComponentService();
+
+    void setByteDanceOpenV2ComponentService(IByteDanceOpenV2ComponentService byteDanceOpenComponentService);
 
     IByteDanceOpenConfigStorage getByteDanceOpenConfigStorage();
 
