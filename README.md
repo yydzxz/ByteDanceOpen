@@ -26,7 +26,7 @@
   <dependency>
     <groupId>com.github.yydzxz</groupId>
     <artifactId>bytedance-open</artifactId>
-    <version>3.0.4.RELEASE</version>
+    <version>3.1.0.SNAPSHOT</version>
   </dependency>
   ```
 具体可以参考[ByteDance-Open-Demo](https://github.com/yydzxz/ByteDance-Open-Demo)
