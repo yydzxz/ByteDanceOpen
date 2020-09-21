@@ -1,4 +1,4 @@
-package com.github.yydzxz.open.api;
+package com.github.yydzxz.open.api.v1;
 
 import com.github.yydzxz.open.api.v1.request.template.TemplateAddTplRequest;
 import com.github.yydzxz.open.api.v1.response.template.TemplateGetDraftListResponse;
@@ -12,7 +12,7 @@ import com.github.yydzxz.open.api.v1.response.template.TemplateDelTplResponse;
  * @author yangyidian
  * @date 2020/07/01
  **/
-public interface IByteDanceOpenTemplateService {
+public interface IByteDanceOpenV1TemplateService {
 
     /**
      * 获取第三方应用的所有模版

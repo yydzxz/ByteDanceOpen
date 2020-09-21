@@ -1,4 +1,4 @@
-package com.github.yydzxz.open.api;
+package com.github.yydzxz.open.api.v1;
 
 import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
@@ -11,7 +11,7 @@ import com.github.yydzxz.open.api.v1.response.code.CodeUploadResponse;
  * @author yangyidian
  * @date 2020/06/24
  **/
-public interface IByteDanceOpenMiniProgramCodeService {
+public interface IByteDanceOpenV1MiniProgramCodeService {
 
     /**
      * 提交代码

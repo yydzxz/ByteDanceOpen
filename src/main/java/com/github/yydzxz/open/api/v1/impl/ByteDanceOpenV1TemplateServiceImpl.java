@@ -2,7 +2,7 @@ package com.github.yydzxz.open.api.v1.impl;
 
 
 import com.github.yydzxz.open.api.IByteDanceOpenService;
-import com.github.yydzxz.open.api.IByteDanceOpenTemplateService;
+import com.github.yydzxz.open.api.v1.IByteDanceOpenV1TemplateService;
 import com.github.yydzxz.open.api.v1.request.template.TemplateAddTplRequest;
 import com.github.yydzxz.open.api.v1.request.template.TemplateDelTplRequest;
 import com.github.yydzxz.open.api.v1.response.template.TemplateAddTplResponse;
@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2020/07/01
  **/
 @Slf4j
-public class ByteDanceOpenV1TemplateServiceImpl implements IByteDanceOpenTemplateService {
+public class ByteDanceOpenV1TemplateServiceImpl implements IByteDanceOpenV1TemplateService {
 
     private IByteDanceOpenService byteDanceOpenService;
 
@@ -26,21 +26,21 @@ public class ByteDanceOpenV1TemplateServiceImpl implements IByteDanceOpenTemplat
 
     @Override
     public TemplateGetTplListResponse getTplList() {
-        return byteDanceOpenService.getByteDanceOpenComponentService().get(GET_TPL_LIST_URL, TemplateGetTplListResponse.class);
+        return byteDanceOpenService.getByteDanceOpenV1ComponentService().get(GET_TPL_LIST_URL, TemplateGetTplListResponse.class);
     }
 
     @Override
     public TemplateGetDraftListResponse getDraftList() {
-        return byteDanceOpenService.getByteDanceOpenComponentService().get(GET_DRAFT_LIST_URL, TemplateGetDraftListResponse.class);
+        return byteDanceOpenService.getByteDanceOpenV1ComponentService().get(GET_DRAFT_LIST_URL, TemplateGetDraftListResponse.class);
     }
 
     @Override
     public TemplateAddTplResponse addTpl(TemplateAddTplRequest request) {
-        return byteDanceOpenService.getByteDanceOpenComponentService().post(ADD_TPL_URL, request, TemplateAddTplResponse.class);
+        return byteDanceOpenService.getByteDanceOpenV1ComponentService().post(ADD_TPL_URL, request, TemplateAddTplResponse.class);
     }
 
     @Override
     public TemplateDelTplResponse delTpl(TemplateDelTplRequest request) {
-        return byteDanceOpenService.getByteDanceOpenComponentService().post(DEL_TPL_URL, request, TemplateDelTplResponse.class);
+        return byteDanceOpenService.getByteDanceOpenV1ComponentService().post(DEL_TPL_URL, request, TemplateDelTplResponse.class);
     }
 }
