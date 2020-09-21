@@ -10,6 +10,7 @@
 部分代码参考了[WxJava](https://github.com/Wechat-Group/WxJava)的实现，使用方式也大同小异。
 - 支持`JoddHttp`, `OkHttpClient`, `RestTemplate`
 - 支持`Gson`, `Jackson`, `FastJson`(不推荐使用FastJson,[原因](https://segmentfault.com/a/1190000015634321))
+- 同时支持字节的v1,v2接口
 ## 使用方式
 
 #### Maven 引用

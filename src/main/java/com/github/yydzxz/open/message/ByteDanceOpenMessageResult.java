@@ -20,6 +20,10 @@ public class ByteDanceOpenMessageResult {
         addExceptions(routerRuleResult.getExceptions());
     }
 
+    /**
+     * 如果所有handler都正常处理，也就是exceptions.isEmpty()为true，那么返回success，否则返回failed
+     * @return
+     */
     public String getDefaultResult(){
         if(exceptions.isEmpty()){
             return "success";
