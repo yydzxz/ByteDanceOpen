@@ -1,4 +1,4 @@
-package com.github.yydzxz.open.api;
+package com.github.yydzxz.open.api.v1;
 
 import com.github.yydzxz.open.api.v1.request.material.UploadPicMaterialRequest;
 import com.github.yydzxz.open.api.v1.response.material.UploadPicMaterialResponse;
@@ -8,7 +8,7 @@ import com.github.yydzxz.open.api.v1.response.material.UploadPicMaterialResponse
  * @author yangyidian
  * @date 2020/07/20
  **/
-public interface IByteDanceOpenMaterialService {
+public interface IByteDanceOpenV1MaterialService {
     String UPLOAD_PIC_MATERIAL_URL = "https://open.microapp.bytedance.com/openapi/v1/tp/upload_pic_material";
 
     /**

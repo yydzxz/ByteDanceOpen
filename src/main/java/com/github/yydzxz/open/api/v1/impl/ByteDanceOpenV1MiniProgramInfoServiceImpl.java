@@ -1,7 +1,7 @@
 package com.github.yydzxz.open.api.v1.impl;
 
-import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramInfoService;
-import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
+import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramInfoService;
+import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramService;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIconRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIntroRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppNameRequest;
@@ -22,52 +22,52 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2020/07/02
  **/
 @Slf4j
-public class ByteDanceOpenV1MiniProgramInfoServiceImpl implements IByteDanceOpenMiniProgramInfoService {
+public class ByteDanceOpenV1MiniProgramInfoServiceImpl implements IByteDanceOpenV1MiniProgramInfoService {
 
-    private IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService;
+    private IByteDanceOpenV1MiniProgramService byteDanceOpenV1MiniProgramService;
 
-    public ByteDanceOpenV1MiniProgramInfoServiceImpl(IByteDanceOpenMiniProgramService byteDanceOpenMiniProgramService) {
-        this.byteDanceOpenMiniProgramService = byteDanceOpenMiniProgramService;
+    public ByteDanceOpenV1MiniProgramInfoServiceImpl(IByteDanceOpenV1MiniProgramService byteDanceOpenMiniProgramService) {
+        this.byteDanceOpenV1MiniProgramService = byteDanceOpenMiniProgramService;
     }
 
     @Override
     public AppInfoResponse getAppInfo() {
-        return byteDanceOpenMiniProgramService.get(APP_INFO_URL, AppInfoResponse.class);
+        return byteDanceOpenV1MiniProgramService.get(APP_INFO_URL, AppInfoResponse.class);
     }
 
     @Override
     public byte[] getAppQrCode(AppQrCodeRequest request) {
-        return byteDanceOpenMiniProgramService.post(APP_QRCODE_URL, request, byte[].class);
+        return byteDanceOpenV1MiniProgramService.post(APP_QRCODE_URL, request, byte[].class);
     }
 
     @Override
     public AppCheckAppNameResponse checkAppName(String appName) {
         String url = APP_CHECK_APP_NAME_URL + "?app_name=" + appName;
-        return byteDanceOpenMiniProgramService.get(url, AppCheckAppNameResponse.class);
+        return byteDanceOpenV1MiniProgramService.get(url, AppCheckAppNameResponse.class);
     }
 
     @Override
     public AppModifyAppNameResponse modifyAppName(AppModifyAppNameRequest request) {
-        return byteDanceOpenMiniProgramService.post(APP_MODIFY_APP_NAME_URL, request, AppModifyAppNameResponse.class);
+        return byteDanceOpenV1MiniProgramService.post(APP_MODIFY_APP_NAME_URL, request, AppModifyAppNameResponse.class);
     }
 
     @Override
     public AppModifyAppIntroResponse modifyAppIntro(AppModifyAppIntroRequest request) {
-        return byteDanceOpenMiniProgramService.post(APP_MODIFY_APP_INTRO_URL, request, AppModifyAppIntroResponse.class);
+        return byteDanceOpenV1MiniProgramService.post(APP_MODIFY_APP_INTRO_URL, request, AppModifyAppIntroResponse.class);
     }
 
     @Override
     public AppModifyAppIconResponse modifyAppIcon(AppModifyAppIconRequest request) {
-        return byteDanceOpenMiniProgramService.post(APP_MODIFY_APP_ICON_URL, request, AppModifyAppIconResponse.class);
+        return byteDanceOpenV1MiniProgramService.post(APP_MODIFY_APP_ICON_URL, request, AppModifyAppIconResponse.class);
     }
 
     @Override
     public AppModifyServerDomainResponse modifyServerDomain(AppModifyServerDomainRequest request){
-        return byteDanceOpenMiniProgramService.post(APP_MODIFY_SERVER_DOMAIN_URL, request, AppModifyServerDomainResponse.class);
+        return byteDanceOpenV1MiniProgramService.post(APP_MODIFY_SERVER_DOMAIN_URL, request, AppModifyServerDomainResponse.class);
     }
 
     @Override
     public AppModifyWebviewDomainResponse modifyWebviewDomain(AppModifyWebviewDomainRequest request){
-        return byteDanceOpenMiniProgramService.post(APP_MODIFY_WEBVIEW_DOMAIN_URL, request, AppModifyWebviewDomainResponse.class);
+        return byteDanceOpenV1MiniProgramService.post(APP_MODIFY_WEBVIEW_DOMAIN_URL, request, AppModifyWebviewDomainResponse.class);
     }
 }

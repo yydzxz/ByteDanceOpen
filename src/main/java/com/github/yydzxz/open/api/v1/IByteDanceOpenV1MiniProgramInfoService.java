@@ -1,4 +1,4 @@
-package com.github.yydzxz.open.api;
+package com.github.yydzxz.open.api.v1;
 
 
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIconRequest;
@@ -20,7 +20,7 @@ import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyWebviewDomainResp
  * @author yangyidian
  * @date 2020/07/02
  **/
-public interface IByteDanceOpenMiniProgramInfoService {
+public interface IByteDanceOpenV1MiniProgramInfoService {
 
     /**
      * 获取小程序基本信息
