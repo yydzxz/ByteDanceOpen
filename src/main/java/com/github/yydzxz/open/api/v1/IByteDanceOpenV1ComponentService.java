@@ -70,12 +70,4 @@ public interface IByteDanceOpenV1ComponentService extends IByteDanceOpenComponen
      */
     String getAuthorizerAccessToken(String appId, boolean forceRefresh);
 
-    /**
-     * 获取第三方平台 component_access_token
-     * 第三方平台 component_access_token 是第三方平台的接口调用凭据，也叫做令牌
-     * @param forceRefresh
-     * @return
-     */
-    String getComponentAccessToken(boolean forceRefresh);
-
 }

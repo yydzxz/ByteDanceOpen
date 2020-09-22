@@ -1,8 +1,7 @@
 package com.github.yydzxz.open.api.impl;
 
-import com.github.yydzxz.open.api.impl.AbstractByteDanceOpenInRedisConfigStorage;
-import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
 import com.github.yydzxz.common.redis.IByteDanceRedisOps;
+import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import lombok.NonNull;
@@ -31,7 +30,7 @@ public class ByteDanceOpenInRedisConfigStorage extends AbstractByteDanceOpenInRe
 
     @Override
     public void setComponentVerifyTicket(String componentVerifyTicket) {
-        log.info("redis config set componentVerifyTicketKey, key->{}, value->{}", this.componentVerifyTicketKey, componentVerifyTicket);
+        log.debug("redis config set componentVerifyTicketKey, key->{}, value->{}", this.componentVerifyTicketKey, componentVerifyTicket);
         redisOps.setValue(this.componentVerifyTicketKey, componentVerifyTicket, Integer.MAX_VALUE, TimeUnit.SECONDS);
     }
 

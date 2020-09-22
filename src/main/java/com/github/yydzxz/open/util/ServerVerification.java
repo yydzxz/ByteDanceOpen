@@ -5,7 +5,9 @@ import java.security.MessageDigest;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 字节跳动提供的验签工具类
+ * 验签工具类
+ * 代码由字节跳动提供
+ * https://sf3-ttcdn-tos.pstatp.com/obj/developer/thirdparty/demo.zip
  */
 @Slf4j
 public class ServerVerification {

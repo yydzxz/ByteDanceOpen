@@ -136,4 +136,16 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
         return ByteDanceErrorMsgEnum.CODE_40020.getCode() == error.getErrno()
             || ByteDanceErrorMsgEnum.CODE_40021.getCode() == error.getErrno();
     }
+
+    /**
+     * 是否应该进行请求重试
+     * 当字节跳动系统响应系统错误或者accessToken失效时，应该重试
+     * @param error
+     * @return
+     */
+    @Override
+    public boolean shouldRetry(ByteDanceError error){
+        return shouldExpireAccessToken(error)
+            || ByteDanceErrorMsgEnum.CODE_40000.getCode() == error.getErrno();
+    }
 }

@@ -37,9 +37,7 @@ public interface IRetryableExecutor {
      * @param error 根据error判断是否应该重试
      * @return
      */
-    default boolean shouldRetry(ByteDanceError error){
-        return false;
-    }
+    boolean shouldRetry(ByteDanceError error);
 
     Logger getLogger();
 
