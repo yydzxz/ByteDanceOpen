@@ -15,7 +15,9 @@ import java.util.Base64;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 字节跳动提供的代码
+ * 消息解密工具类
+ * 代码由字节跳动提供
+ * https://sf3-ttcdn-tos.pstatp.com/obj/developer/thirdparty/demo.zip
  */
 @Slf4j
 public class MsgDecrypt {
@@ -83,7 +85,7 @@ public class MsgDecrypt {
 
             //根据解析出来的消息体长度值，截取真实的消息体
             Content = new String(Arrays.copyOfRange(bytes, RANDOM_BYTES_POS + 4, RANDOM_BYTES_POS + 4 + msgLength), StandardCharsets.UTF_8);
-            log.info("字节跳动消息解密后的内容:[{}]", Content);
+            log.debug("字节跳动消息解密后的内容:[{}]", Content);
             //byte数组截去真实消息后，末尾剩下的字符就是appid
             AppId = new String(Arrays.copyOfRange(bytes, RANDOM_BYTES_POS + 4 + msgLength, bytes.length), StandardCharsets.UTF_8);
 
