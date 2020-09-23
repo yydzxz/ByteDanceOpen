@@ -43,6 +43,4 @@ public class GsonSerializer implements JsonSerializer {
         }
         return fieldAliasName;
     }
-
-
 }
