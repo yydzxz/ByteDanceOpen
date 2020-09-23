@@ -1,8 +1,6 @@
 package com.github.yydzxz.open.api.v1;
 
-import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
-import com.google.common.collect.Multimap;
 
 /**
  * 开放平台代小程序实现服务能力(代授权小程序业务)

@@ -32,3 +32,8 @@
   ```
 具体可以参考[ByteDance-Open-Demo](https://github.com/yydzxz/ByteDance-Open-Demo)
   - Demo提供了Docker版本, 填写好第三方配置后, 通过`docker-compose`一键启动所有所需服务
+  
+## 架构设计
+- 配色不重要(ノへ￣、)
+![image](https://6465-dev-forfun-1300825075.tcb.qcloud.la/bytedance/2681600847869_.pic_hd.jpg?sign=5c151ba936ce8924940f7bf35a07da13&t=1600848139)
+
