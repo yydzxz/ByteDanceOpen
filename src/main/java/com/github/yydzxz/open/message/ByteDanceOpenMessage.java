@@ -6,6 +6,10 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.yydzxz.common.util.json.JsonSerializer;
+import com.github.yydzxz.open.message.event.AuditResult;
+import com.github.yydzxz.open.message.event.ModifyAppIconResult;
+import com.github.yydzxz.open.message.event.ModifyAppIntroResult;
+import com.github.yydzxz.open.message.event.ModifyAppNameResult;
 import com.github.yydzxz.open.util.MsgDecrypt;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
@@ -150,26 +154,6 @@ public class ByteDanceOpenMessage implements Serializable {
     @SerializedName("AuditResults")
     private List<AuditResult> auditResults;
 
-    @Data
-    public static class AuditResult implements Serializable{
-
-        private static final long serialVersionUID = 7998839283597570430L;
-
-        /**
-         * 宿主端英文简称
-         */
-        private String hostName;
-        /**
-         * 如果被拒，被拒原因
-         */
-        private List<String> reason;
-        /**
-         * 0或1，0代表不通过，1代表通过
-         */
-        private int status;
-    }
-
-
     /**
      * 小程序的修改名称的审核结果
      */
@@ -178,26 +162,6 @@ public class ByteDanceOpenMessage implements Serializable {
     @JsonProperty("ModifyAppNameResults")
     @SerializedName("ModifyAppNameResults")
     private List<ModifyAppNameResult> modifyAppNameResults;
-
-
-    @Data
-    public static class ModifyAppNameResult implements Serializable {
-
-        private static final long serialVersionUID = 1801596491109493189L;
-
-        /**
-         * 如果被拒，修改建议
-         */
-        private String advice;
-        /**
-         * 如果被拒，被拒原因
-         */
-        private String reason;
-        /**
-         * 0或1，0代表不通过，1代表通过
-         */
-        private Integer status;
-    }
 
     /**
      * 小程序的修改简介的审核结果
@@ -208,22 +172,6 @@ public class ByteDanceOpenMessage implements Serializable {
     @SerializedName("ModifyAppIntroResults")
     private List<ModifyAppIntroResult> modifyAppIntroResults;
 
-    @Data
-    public static class ModifyAppIntroResult implements Serializable{
-
-        private static final long serialVersionUID = -7804129576582677615L;
-
-        /**
-         * 如果被拒，被拒原因
-         */
-        private String reason;
-
-        /**
-         * 0或1，0代表不通过，1代表通过
-         */
-        private Integer status;
-    }
-
     /**
      * 小程序的修改图标的审核结果
      */
@@ -232,22 +180,6 @@ public class ByteDanceOpenMessage implements Serializable {
     @JsonProperty("ModifyAppIconResults")
     @SerializedName("ModifyAppIconResults")
     private List<ModifyAppIconResult> modifyAppIconResults;
-
-    @Data
-    public static class ModifyAppIconResult implements Serializable {
-
-        private static final long serialVersionUID = 8668242945522877197L;
-        /**
-         * 如果被拒，被拒原因
-         */
-        private String reason;
-
-        /**
-         * 0或1，0代表不通过，1代表通过
-         */
-        private Integer status;
-    }
-
 
     public static ByteDanceOpenMessage fromEncrypted(String encrypted, String key) throws Exception {
         MsgDecrypt msgDecrypt = new MsgDecrypt(key);
