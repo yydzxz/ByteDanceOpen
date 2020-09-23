@@ -35,5 +35,5 @@
   
 ## 架构设计
 - 配色不重要(ノへ￣、)
-![image](https://6465-dev-forfun-1300825075.tcb.qcloud.la/bytedance/2681600847869_.pic_hd.jpg?sign=5c151ba936ce8924940f7bf35a07da13&t=1600848139)
+![image](https://6465-dev-forfun-1300825075.tcb.qcloud.la/bytedance/2691600849023_.pic_hd.jpg?sign=77cd785b657f588a2ee0413a89087dc6&t=1600849050)
 
