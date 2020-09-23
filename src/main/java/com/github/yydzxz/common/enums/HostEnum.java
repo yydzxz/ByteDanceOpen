@@ -1,6 +1,7 @@
 package com.github.yydzxz.common.enums;
 
 /**
+ * 字节跳动各宿主端对应关系
  * @author yangyidian
  * @date 2020/09/23
  **/
