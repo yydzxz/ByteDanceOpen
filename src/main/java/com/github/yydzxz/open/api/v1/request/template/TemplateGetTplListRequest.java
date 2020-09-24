@@ -1,7 +1,7 @@
 package com.github.yydzxz.open.api.v1.request.template;
 
 
-import com.github.yydzxz.common.service.IByteDanceRequest;
+import com.github.yydzxz.common.http.IByteDanceRequest;
 
 /**
  * 获取第三方应用的所有模版

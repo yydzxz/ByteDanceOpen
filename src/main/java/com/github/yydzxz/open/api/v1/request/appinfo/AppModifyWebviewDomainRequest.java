@@ -1,6 +1,6 @@
 package com.github.yydzxz.open.api.v1.request.appinfo;
 
-import com.github.yydzxz.common.service.IByteDanceRequest;
+import com.github.yydzxz.common.http.IByteDanceRequest;
 import java.util.List;
 import lombok.Data;
 

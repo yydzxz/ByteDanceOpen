@@ -2,7 +2,7 @@ package com.github.yydzxz.open.api;
 
 
 import com.github.yydzxz.common.redis.IByteDanceRedisOps;
-import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
+import com.github.yydzxz.common.http.IByteDanceHttpRequestClient;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1ComponentService;
 import com.github.yydzxz.open.api.v2.IByteDanceOpenV2ComponentService;
 
@@ -25,9 +25,9 @@ public interface IByteDanceOpenService{
 
     void setByteDanceOpenConfigStorage(IByteDanceOpenConfigStorage openConfigStorage);
 
-    IByteDanceHttpRequestService getByteDanceHttpRequestService();
+    IByteDanceHttpRequestClient getByteDanceHttpRequestService();
 
-    void setByteDanceHttpRequestService(IByteDanceHttpRequestService byteDanceHttpRequestService);
+    void setByteDanceHttpRequestService(IByteDanceHttpRequestClient byteDanceHttpRequestService);
 
     IByteDanceRedisOps getByteDanceRedisOps();
 

@@ -1,4 +1,4 @@
-package com.github.yydzxz.common.service.impl;
+package com.github.yydzxz.common.http.impl;
 
 import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
 import com.github.yydzxz.common.util.json.JsonSerializer;
@@ -21,28 +21,28 @@ import okhttp3.Response;
  * @date 2020/08/03
  **/
 @Slf4j
-public class OkHttpClientByteDanceHttpRequestServiceImpl extends AbstractByteDanceHttpRequestService {
+public class OkHttpClientByteDanceHttpRequestClient extends AbstractByteDanceHttpRequestClient {
 
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     public OkHttpClient client;
 
-    public OkHttpClientByteDanceHttpRequestServiceImpl() {
+    public OkHttpClientByteDanceHttpRequestClient() {
         super(ByteDanceJsonBuilder.instance());
         this.client = new OkHttpClient();
     }
 
-    public OkHttpClientByteDanceHttpRequestServiceImpl(JsonSerializer jsonSerializer) {
+    public OkHttpClientByteDanceHttpRequestClient(JsonSerializer jsonSerializer) {
         super(jsonSerializer);
         this.client = new OkHttpClient();
     }
 
-    public OkHttpClientByteDanceHttpRequestServiceImpl(OkHttpClient client) {
+    public OkHttpClientByteDanceHttpRequestClient(OkHttpClient client) {
         super(ByteDanceJsonBuilder.instance());
         this.client = client;
     }
 
-    public OkHttpClientByteDanceHttpRequestServiceImpl(OkHttpClient client, JsonSerializer jsonSerializer) {
+    public OkHttpClientByteDanceHttpRequestClient(OkHttpClient client, JsonSerializer jsonSerializer) {
         super(jsonSerializer);
         this.client = client;
     }

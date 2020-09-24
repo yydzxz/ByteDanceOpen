@@ -1,4 +1,4 @@
-package com.github.yydzxz.common.service.impl;
+package com.github.yydzxz.common.http.impl;
 
 import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
 import com.github.yydzxz.common.util.json.JsonSerializer;
@@ -13,13 +13,13 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2020/08/10
  **/
 @Slf4j
-public class JoddHttpByteDanceHttpRequestServiceImpl extends AbstractByteDanceHttpRequestService {
+public class JoddHttpByteDanceHttpRequestClient extends AbstractByteDanceHttpRequestClient {
 
-    public JoddHttpByteDanceHttpRequestServiceImpl() {
+    public JoddHttpByteDanceHttpRequestClient() {
         super(ByteDanceJsonBuilder.instance());
     }
 
-    public JoddHttpByteDanceHttpRequestServiceImpl(JsonSerializer jsonSerializer) {
+    public JoddHttpByteDanceHttpRequestClient(JsonSerializer jsonSerializer) {
         super(jsonSerializer);
     }
 

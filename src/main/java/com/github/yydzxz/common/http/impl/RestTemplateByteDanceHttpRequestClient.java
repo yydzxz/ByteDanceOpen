@@ -1,4 +1,4 @@
-package com.github.yydzxz.common.service.impl;
+package com.github.yydzxz.common.http.impl;
 
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
@@ -18,22 +18,20 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * RestTemplateByteDanceHttpRequestServiceImpl
- *
  * @author Clevo
  * @date 2020/7/12
  */
 @Slf4j
-public class RestTemplateByteDanceHttpRequestServiceImpl extends AbstractByteDanceHttpRequestService {
+public class RestTemplateByteDanceHttpRequestClient extends AbstractByteDanceHttpRequestClient {
 
     private RestTemplate restTemplate;
 
-    public RestTemplateByteDanceHttpRequestServiceImpl() {
+    public RestTemplateByteDanceHttpRequestClient() {
         super(ByteDanceJsonBuilder.instance());
         this.restTemplate = new RestTemplate();
     }
 
-    public RestTemplateByteDanceHttpRequestServiceImpl(JsonSerializer jsonSerializer) {
+    public RestTemplateByteDanceHttpRequestClient(JsonSerializer jsonSerializer) {
         super(jsonSerializer);
         this.restTemplate = new RestTemplate();
         if(jsonSerializer instanceof FastJsonSerializer){
@@ -41,12 +39,12 @@ public class RestTemplateByteDanceHttpRequestServiceImpl extends AbstractByteDan
         }
     }
 
-    public RestTemplateByteDanceHttpRequestServiceImpl(RestTemplate restTemplate) {
+    public RestTemplateByteDanceHttpRequestClient(RestTemplate restTemplate) {
         super(ByteDanceJsonBuilder.instance());
         this.restTemplate = restTemplate;
     }
 
-    public RestTemplateByteDanceHttpRequestServiceImpl(RestTemplate restTemplate, JsonSerializer jsonSerializer) {
+    public RestTemplateByteDanceHttpRequestClient(RestTemplate restTemplate, JsonSerializer jsonSerializer) {
         super(jsonSerializer);
         this.restTemplate = restTemplate;
     }
