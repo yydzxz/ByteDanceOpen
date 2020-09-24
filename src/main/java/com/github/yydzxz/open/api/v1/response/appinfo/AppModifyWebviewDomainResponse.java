@@ -1,7 +1,7 @@
 package com.github.yydzxz.open.api.v1.response.appinfo;
 
 import com.github.yydzxz.common.error.ByteDanceError;
-import com.github.yydzxz.common.service.IByteDanceResponse;
+import com.github.yydzxz.common.http.IByteDanceResponse;
 import java.util.List;
 import lombok.Data;
 

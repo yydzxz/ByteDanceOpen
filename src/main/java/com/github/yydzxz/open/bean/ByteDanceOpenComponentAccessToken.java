@@ -3,7 +3,7 @@ package com.github.yydzxz.open.bean;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.yydzxz.common.error.ByteDanceError;
-import com.github.yydzxz.common.service.IByteDanceResponse;
+import com.github.yydzxz.common.http.IByteDanceResponse;
 import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;

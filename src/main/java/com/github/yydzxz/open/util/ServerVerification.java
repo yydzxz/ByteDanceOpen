@@ -47,15 +47,4 @@ public class ServerVerification {
             throw new Exception("不能生成签名");
         }
     }
-
-    private static void verify(String msgSignature, String newMsgSignature) {
-        boolean res = msgSignature.equals(newMsgSignature);
-        System.out.println(res);
-    }
-
-    public static void main(String[] args) throws Exception {
-        String msgSignature = "XXX";
-        String newMsgSignature = getMsgSignature("XXX", "XXX", "XXX", "XXX");
-        verify(msgSignature, newMsgSignature);
-    }
 }

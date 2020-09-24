@@ -1,9 +1,9 @@
-package com.github.yydzxz.common.service.impl;
+package com.github.yydzxz.common.http.impl;
 
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
-import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
-import com.github.yydzxz.common.service.IByteDanceResponse;
+import com.github.yydzxz.common.http.IByteDanceHttpRequestClient;
+import com.github.yydzxz.common.http.IByteDanceResponse;
 import com.github.yydzxz.common.util.json.JsonSerializer;
 import com.google.common.collect.Multimap;
 import java.lang.reflect.Field;
@@ -16,11 +16,11 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2020/08/04
  **/
 @Slf4j
-public abstract class AbstractByteDanceHttpRequestService implements IByteDanceHttpRequestService {
+public abstract class AbstractByteDanceHttpRequestClient implements IByteDanceHttpRequestClient {
 
     private JsonSerializer jsonSerializer;
 
-    public AbstractByteDanceHttpRequestService(JsonSerializer jsonSerializer) {
+    public AbstractByteDanceHttpRequestClient(JsonSerializer jsonSerializer) {
         this.jsonSerializer = jsonSerializer;
     }
 

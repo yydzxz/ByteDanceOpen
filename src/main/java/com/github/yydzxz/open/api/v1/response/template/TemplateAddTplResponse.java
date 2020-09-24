@@ -2,7 +2,7 @@ package com.github.yydzxz.open.api.v1.response.template;
 
 
 import com.github.yydzxz.common.error.ByteDanceError;
-import com.github.yydzxz.common.service.IByteDanceResponse;
+import com.github.yydzxz.common.http.IByteDanceResponse;
 
 /**
  * @author yangyidian

@@ -16,7 +16,7 @@ public class ByteDanceOpenInRedisConfigStorage extends AbstractByteDanceOpenInRe
 
     private final IByteDanceRedisOps redisOps;
 
-    private Lock accessTokenLockInstance;
+    private volatile Lock accessTokenLockInstance;
 
     public ByteDanceOpenInRedisConfigStorage(@NonNull IByteDanceRedisOps redisOps, String keyPrefix) {
         this.redisOps = redisOps;

@@ -1,6 +1,6 @@
 package com.github.yydzxz.open.api.v1.request.code;
 
-import com.github.yydzxz.common.service.IByteDanceRequest;
+import com.github.yydzxz.common.http.IByteDanceRequest;
 
 /**
  * 回退代码版本

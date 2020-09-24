@@ -3,7 +3,7 @@ package com.github.yydzxz.open.api.v1.request.appinfo;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.yydzxz.common.service.IByteDanceRequest;
+import com.github.yydzxz.common.http.IByteDanceRequest;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 

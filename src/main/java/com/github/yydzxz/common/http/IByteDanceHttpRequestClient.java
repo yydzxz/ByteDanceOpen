@@ -1,4 +1,4 @@
-package com.github.yydzxz.common.service;
+package com.github.yydzxz.common.http;
 
 import com.github.yydzxz.common.util.json.JsonSerializer;
 import com.google.common.collect.Multimap;
@@ -7,7 +7,7 @@ import com.google.common.collect.Multimap;
  * @author yangyidian
  * @date 2020/07/10
  **/
-public interface IByteDanceHttpRequestService {
+public interface IByteDanceHttpRequestClient {
 
     JsonSerializer getJsonSerializer();
 
