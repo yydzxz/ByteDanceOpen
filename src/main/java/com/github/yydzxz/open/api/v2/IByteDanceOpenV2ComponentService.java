@@ -23,7 +23,7 @@ public interface IByteDanceOpenV2ComponentService extends IByteDanceOpenComponen
      */
     String getPreAuthUrl(String redirectURI, GetPreAuthCodeRequest request);
 
-    IByteDanceOpenV2MiniProgramService getByteDanceOpenMiniProgramServiceByAppid(String appId);
+    IByteDanceOpenV2MiniProgramService getByteDanceOpenV2MiniProgramServiceByAppid(String appId);
 
     String getAuthorizerAccessToken(String appId, boolean forceRefresh);
 }

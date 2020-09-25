@@ -12,6 +12,6 @@ public interface IByteDanceOpenV2MiniProgramService extends IByteDanceOpenMiniPr
      * 代码包管理v2 service
      * @return
      */
-    IByteDanceOpenV2MiniProgramCodeService getByteDanceOpenMiniProgramCodeService();
+    IByteDanceOpenV2MiniProgramCodeService getByteDanceOpenV2MiniProgramCodeService();
 
 }

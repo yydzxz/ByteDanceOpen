@@ -35,7 +35,7 @@ public class ByteDanceOpenV1ComponentServiceImpl extends AbstractByteDanceOpenCo
     private static final Map<String, IByteDanceOpenV1MiniProgramService> BYTEDANCE_OPEN_MINI_PROGRAM_SERVICE_MAP = new ConcurrentHashMap<>();
 
     @Override
-    public IByteDanceOpenV1MiniProgramService getByteDanceOpenMiniProgramServiceByAppid(String appId) {
+    public IByteDanceOpenV1MiniProgramService getByteDanceOpenV1MiniProgramServiceByAppid(String appId) {
         IByteDanceOpenV1MiniProgramService byteDanceOpenMiniProgramService = BYTEDANCE_OPEN_MINI_PROGRAM_SERVICE_MAP.get(appId);
         if (byteDanceOpenMiniProgramService == null) {
             synchronized (BYTEDANCE_OPEN_MINI_PROGRAM_SERVICE_MAP) {

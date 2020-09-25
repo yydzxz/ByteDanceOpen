@@ -48,7 +48,7 @@ public interface IByteDanceOpenV1ComponentService extends IByteDanceOpenComponen
      * @param appid
      * @return
      */
-    IByteDanceOpenV1MiniProgramService getByteDanceOpenMiniProgramServiceByAppid(String appid);
+    IByteDanceOpenV1MiniProgramService getByteDanceOpenV1MiniProgramServiceByAppid(String appid);
 
     /**
      * 获取用户授权页URL（来路URL和成功跳转URL 的域名都需要为三方平台设置的 登录授权的发起页域名）.

@@ -31,7 +31,7 @@ public class ByteDanceOpenV2ComponentServiceImpl extends AbstractByteDanceOpenCo
     }
 
     @Override
-    public IByteDanceOpenV2MiniProgramService getByteDanceOpenMiniProgramServiceByAppid(String appId) {
+    public IByteDanceOpenV2MiniProgramService getByteDanceOpenV2MiniProgramServiceByAppid(String appId) {
         IByteDanceOpenV2MiniProgramService byteDanceOpenMiniProgramService = BYTEDANCE_OPEN_MINI_PROGRAM_SERVICE_MAP.get(appId);
         if (byteDanceOpenMiniProgramService == null) {
             synchronized (BYTEDANCE_OPEN_MINI_PROGRAM_SERVICE_MAP) {
