@@ -57,7 +57,7 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
     private <T> T getInternal(String url, Class<T> t){
         return executeRequest(
             (uriWithCommonParam, headers, request2, t2) -> {
-                return getByteDanceOpenService().getByteDanceHttpRequestService().get(uriWithCommonParam, t2);
+                return getByteDanceOpenService().getByteDanceHttpClient().get(uriWithCommonParam, t2);
             },url, null, null, t
         );
     }
@@ -72,7 +72,7 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
     private <T> T postInternal(String url, Object request, Class<T> t){
         return executeRequest(
             (uriWithCommonParam, headers, request2, t2) -> {
-                return getByteDanceOpenService().getByteDanceHttpRequestService().post(uriWithCommonParam, request2, t2);
+                return getByteDanceOpenService().getByteDanceHttpClient().post(uriWithCommonParam, request2, t2);
             },url, null, request, t
         );
     }
@@ -87,7 +87,7 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
     private <T> T postWithHeadersInternal(String url, Multimap<String, String> headers, Object request, Class<T> t){
         return executeRequest(
             (uriWithCommonParam, headers2, request2, t2) -> {
-                return getByteDanceOpenService().getByteDanceHttpRequestService().post(uriWithCommonParam, request2, t2);
+                return getByteDanceOpenService().getByteDanceHttpClient().post(uriWithCommonParam, request2, t2);
             },url, headers, request, t
         );
     }

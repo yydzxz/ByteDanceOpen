@@ -22,16 +22,16 @@ import org.springframework.web.client.RestTemplate;
  * @date 2020/7/12
  */
 @Slf4j
-public class RestTemplateByteDanceHttpRequestClient extends AbstractByteDanceHttpRequestClient {
+public class RestTemplateByteDanceHttpClient extends AbstractByteDanceHttpClient {
 
     private RestTemplate restTemplate;
 
-    public RestTemplateByteDanceHttpRequestClient() {
+    public RestTemplateByteDanceHttpClient() {
         super(ByteDanceJsonBuilder.instance());
         this.restTemplate = new RestTemplate();
     }
 
-    public RestTemplateByteDanceHttpRequestClient(JsonSerializer jsonSerializer) {
+    public RestTemplateByteDanceHttpClient(JsonSerializer jsonSerializer) {
         super(jsonSerializer);
         this.restTemplate = new RestTemplate();
         if(jsonSerializer instanceof FastJsonSerializer){
@@ -39,12 +39,12 @@ public class RestTemplateByteDanceHttpRequestClient extends AbstractByteDanceHtt
         }
     }
 
-    public RestTemplateByteDanceHttpRequestClient(RestTemplate restTemplate) {
+    public RestTemplateByteDanceHttpClient(RestTemplate restTemplate) {
         super(ByteDanceJsonBuilder.instance());
         this.restTemplate = restTemplate;
     }
 
-    public RestTemplateByteDanceHttpRequestClient(RestTemplate restTemplate, JsonSerializer jsonSerializer) {
+    public RestTemplateByteDanceHttpClient(RestTemplate restTemplate, JsonSerializer jsonSerializer) {
         super(jsonSerializer);
         this.restTemplate = restTemplate;
     }

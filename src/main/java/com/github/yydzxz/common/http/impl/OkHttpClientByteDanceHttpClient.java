@@ -21,28 +21,28 @@ import okhttp3.Response;
  * @date 2020/08/03
  **/
 @Slf4j
-public class OkHttpClientByteDanceHttpRequestClient extends AbstractByteDanceHttpRequestClient {
+public class OkHttpClientByteDanceHttpClient extends AbstractByteDanceHttpClient {
 
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     public OkHttpClient client;
 
-    public OkHttpClientByteDanceHttpRequestClient() {
+    public OkHttpClientByteDanceHttpClient() {
         super(ByteDanceJsonBuilder.instance());
         this.client = new OkHttpClient();
     }
 
-    public OkHttpClientByteDanceHttpRequestClient(JsonSerializer jsonSerializer) {
+    public OkHttpClientByteDanceHttpClient(JsonSerializer jsonSerializer) {
         super(jsonSerializer);
         this.client = new OkHttpClient();
     }
 
-    public OkHttpClientByteDanceHttpRequestClient(OkHttpClient client) {
+    public OkHttpClientByteDanceHttpClient(OkHttpClient client) {
         super(ByteDanceJsonBuilder.instance());
         this.client = client;
     }
 
-    public OkHttpClientByteDanceHttpRequestClient(OkHttpClient client, JsonSerializer jsonSerializer) {
+    public OkHttpClientByteDanceHttpClient(OkHttpClient client, JsonSerializer jsonSerializer) {
         super(jsonSerializer);
         this.client = client;
     }

@@ -4,7 +4,7 @@ import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1ComponentService;
 import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
 import com.github.yydzxz.common.redis.IByteDanceRedisOps;
-import com.github.yydzxz.common.http.IByteDanceHttpRequestClient;
+import com.github.yydzxz.common.http.IByteDanceHttpClient;
 import com.github.yydzxz.open.api.v2.IByteDanceOpenV2ComponentService;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +20,7 @@ public class ByteDanceOpenServiceImpl implements IByteDanceOpenService {
 
     @Getter
     @Setter
-    private IByteDanceHttpRequestClient byteDanceHttpRequestService;
+    private IByteDanceHttpClient byteDanceHttpClient;
 
     @Getter
     @Setter

@@ -13,13 +13,13 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2020/08/10
  **/
 @Slf4j
-public class JoddHttpByteDanceHttpRequestClient extends AbstractByteDanceHttpRequestClient {
+public class JoddHttpByteDanceHttpClient extends AbstractByteDanceHttpClient {
 
-    public JoddHttpByteDanceHttpRequestClient() {
+    public JoddHttpByteDanceHttpClient() {
         super(ByteDanceJsonBuilder.instance());
     }
 
-    public JoddHttpByteDanceHttpRequestClient(JsonSerializer jsonSerializer) {
+    public JoddHttpByteDanceHttpClient(JsonSerializer jsonSerializer) {
         super(jsonSerializer);
     }
 
