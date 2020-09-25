@@ -83,7 +83,7 @@ public class ByteDanceOpenV1ComponentServiceImpl extends AbstractByteDanceOpenCo
                 + "&component_appsecret=" + getByteDanceOpenService().getByteDanceOpenConfigStorage().getComponentAppSecret()
                 + "&component_appid=" + getByteDanceOpenService().getByteDanceOpenConfigStorage().getComponentAppId();
 
-            ByteDanceOpenComponentAccessToken componentAccessToken = this.getByteDanceOpenService().getByteDanceHttpRequestService().get(url, ByteDanceOpenComponentAccessToken.class);
+            ByteDanceOpenComponentAccessToken componentAccessToken = this.getByteDanceOpenService().getByteDanceHttpClient().get(url, ByteDanceOpenComponentAccessToken.class);
             config.updateComponentAccessToken(componentAccessToken);
             return config.getComponentAccessToken();
         } finally {

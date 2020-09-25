@@ -5,7 +5,6 @@ import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
 import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
 import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
-import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.IExecutable;
 import com.github.yydzxz.open.api.IRetryableExecutor;
@@ -48,7 +47,7 @@ public abstract class AbstractByteDanceOpenComponentService implements IByteDanc
 
     private <T> T getInternal(String url, Class<T> t) {
         return executeRequest((uriWithCommonParam, headers, request, t2)->{
-            return getByteDanceOpenService().getByteDanceHttpRequestService().get(uriWithCommonParam, t2);
+            return getByteDanceOpenService().getByteDanceHttpClient().get(uriWithCommonParam, t2);
         }, url, null, null, t);
     }
 
@@ -61,7 +60,7 @@ public abstract class AbstractByteDanceOpenComponentService implements IByteDanc
 
     private <T> T postInternal(String url, Object request, Class<T> t) {
         return executeRequest((uriWithCommonParam, headers2, request2, t2)->{
-            return getByteDanceOpenService().getByteDanceHttpRequestService().post(uriWithCommonParam, request2, t2);
+            return getByteDanceOpenService().getByteDanceHttpClient().post(uriWithCommonParam, request2, t2);
         }, url, null, request, t);
     }
 
@@ -73,7 +72,7 @@ public abstract class AbstractByteDanceOpenComponentService implements IByteDanc
 
     private <T> T postWithHeadersInternal(String url, Multimap<String,String> headers, Object request, Class<T> t){
         return executeRequest((uriWithCommonParam, headers2, request2, t2)->{
-            return getByteDanceOpenService().getByteDanceHttpRequestService().postWithHeaders(uriWithCommonParam, headers2, request2, t2);
+            return getByteDanceOpenService().getByteDanceHttpClient().postWithHeaders(uriWithCommonParam, headers2, request2, t2);
         }, url, headers, request, t);
     }
 

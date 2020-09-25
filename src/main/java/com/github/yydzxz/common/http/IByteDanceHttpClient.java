@@ -7,7 +7,7 @@ import com.google.common.collect.Multimap;
  * @author yangyidian
  * @date 2020/07/10
  **/
-public interface IByteDanceHttpRequestClient {
+public interface IByteDanceHttpClient {
 
     JsonSerializer getJsonSerializer();
 
