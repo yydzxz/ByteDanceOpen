@@ -28,7 +28,7 @@ public class ByteDanceOpenV2MiniProgramServiceImpl extends AbstractByteDanceOpen
     }
 
     @Override
-    public IByteDanceOpenV2MiniProgramCodeService getByteDanceOpenMiniProgramCodeService() {
+    public IByteDanceOpenV2MiniProgramCodeService getByteDanceOpenV2MiniProgramCodeService() {
         return byteDanceOpenV2MiniProgramCodeService;
     }
 

@@ -13,13 +13,13 @@ public interface IByteDanceOpenV1MiniProgramService extends IByteDanceOpenMiniPr
      * 代码包管理v1 service
      * @return
      */
-    IByteDanceOpenV1MiniProgramCodeService getByteDanceOpenMiniProgramCodeService();
+    IByteDanceOpenV1MiniProgramCodeService getByteDanceOpenV1MiniProgramCodeService();
 
     /**
      * 基本信息配置service
      * @return
      */
-    IByteDanceOpenV1MiniProgramInfoService getByteDanceOpenMiniProgramInfoService();
+    IByteDanceOpenV1MiniProgramInfoService getByteDanceOpenV1MiniProgramInfoService();
 
     IByteDanceOpenV1ComponentService getByteDanceOpenV1ComponentService();
 
