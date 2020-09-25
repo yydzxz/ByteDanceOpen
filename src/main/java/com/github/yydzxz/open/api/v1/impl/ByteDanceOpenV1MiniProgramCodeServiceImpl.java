@@ -4,10 +4,12 @@ import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramCodeService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramService;
 import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
+import com.github.yydzxz.open.api.v1.response.code.CodeAuditHostsResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeReleaseResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeRollbackResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeUploadResponse;
+import com.github.yydzxz.open.api.v1.response.code.CodeVersionsResponse;
 
 /**
  * @author yangyidian
@@ -27,6 +29,11 @@ public class ByteDanceOpenV1MiniProgramCodeServiceImpl implements IByteDanceOpen
     }
 
     @Override
+    public CodeAuditHostsResponse auditHosts() {
+        return byteDanceOpenV1MiniProgramService.get(AUDIT_HOSTS_URL, CodeAuditHostsResponse.class);
+    }
+
+    @Override
     public CodeAuditResponse audit() {
         return byteDanceOpenV1MiniProgramService.post(AUDIT_URL, null, CodeAuditResponse.class);
     }
@@ -42,7 +49,7 @@ public class ByteDanceOpenV1MiniProgramCodeServiceImpl implements IByteDanceOpen
     }
 
     @Override
-    public String versions() {
-        return byteDanceOpenV1MiniProgramService.get(VERSIONS_URL);
+    public CodeVersionsResponse versions() {
+        return byteDanceOpenV1MiniProgramService.get(VERSIONS_URL, CodeVersionsResponse.class);
     }
 }
