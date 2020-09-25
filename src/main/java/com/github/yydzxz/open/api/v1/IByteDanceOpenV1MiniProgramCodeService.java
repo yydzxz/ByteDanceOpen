@@ -1,10 +1,12 @@
 package com.github.yydzxz.open.api.v1;
 
 import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
+import com.github.yydzxz.open.api.v1.response.code.CodeAuditHostsResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeReleaseResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeRollbackResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeUploadResponse;
+import com.github.yydzxz.open.api.v1.response.code.CodeVersionsResponse;
 
 /**
  * 代授权小程序业务-代码包管理 相关API
@@ -17,6 +19,11 @@ public interface IByteDanceOpenV1MiniProgramCodeService {
      * 提交代码
      */
     String UPLOAD_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/package/upload";
+
+    /**
+     * 获取可选审核宿主端列表
+     */
+    String AUDIT_HOSTS_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/package/audit_hosts";
 
     /**
      * 提审代码
@@ -45,6 +52,8 @@ public interface IByteDanceOpenV1MiniProgramCodeService {
      */
     CodeUploadResponse upload(CodeUploadRequest request);
 
+    CodeAuditHostsResponse auditHosts();
+
     /**
      * 提审代码
      * @return
@@ -67,6 +76,6 @@ public interface IByteDanceOpenV1MiniProgramCodeService {
      * 获取小程序版本列表信息
      * @return
      */
-    String versions();
+    CodeVersionsResponse versions();
 
 }
