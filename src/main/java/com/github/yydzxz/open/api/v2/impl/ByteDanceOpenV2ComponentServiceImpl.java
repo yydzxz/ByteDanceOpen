@@ -22,11 +22,10 @@ public class ByteDanceOpenV2ComponentServiceImpl extends AbstractByteDanceOpenCo
 
     private static final Map<String, IByteDanceOpenV2MiniProgramService> BYTEDANCE_OPEN_MINI_PROGRAM_SERVICE_MAP = new ConcurrentHashMap<>();
 
-    public ByteDanceOpenV2ComponentServiceImpl(IByteDanceOpenService byteDanceOpenService) {
+    public ByteDanceOpenV2ComponentServiceImpl(IByteDanceOpenService byteDanceOpenService, IByteDanceOpenV1ComponentService byteDanceOpenV1ComponentService) {
         super(byteDanceOpenService);
         //目前为了简便，getComponentAccessToken,getAuthorizerAccessToken等是直接使用v1版本的，所以这里new ByteDanceOpenV1ComponentServiceImpl()
         //当以后字节有了这些接口的v2版本,使用v2重写后，这里就可以不需要new ByteDanceOpenV1ComponentServiceImpl()了
-        IByteDanceOpenV1ComponentService byteDanceOpenV1ComponentService = new ByteDanceOpenV1ComponentServiceImpl(byteDanceOpenService);
         byteDanceOpenService.setByteDanceOpenV1ComponentService(byteDanceOpenV1ComponentService);
     }
 
@@ -49,6 +48,7 @@ public class ByteDanceOpenV2ComponentServiceImpl extends AbstractByteDanceOpenCo
      * 直接使用v1的实现
      * @param forceRefresh
      * @return
+
      */
     @Override
     public String getComponentAccessToken(boolean forceRefresh) {
