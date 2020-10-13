@@ -5,12 +5,13 @@
 ![forks](https://img.shields.io/github/forks/yydzxz/ByteDanceOpen)
 # ByteDanceOpen
 
-- 字节跳动 Java SDK
+- 字节跳动第三方平台 Java SDK
 - 支持字节跳动(抖音，头条..)开放平台小程序代开发功能的后端开发。
 部分代码参考了[WxJava](https://github.com/Wechat-Group/WxJava)的实现，使用方式也大同小异。
 - 支持`JoddHttp`, `OkHttpClient`, `RestTemplate`
 - 支持`Gson`, `Jackson`, `FastJson`(不推荐使用FastJson,[原因](https://segmentfault.com/a/1190000015634321))
-- 同时支持字节的v1,v2接口
+- 同时支持字节的v1,v2接口, 
+- 接口报错自动重试机制，提高用户体验
 ## 使用方式
 
 #### Maven 引用
