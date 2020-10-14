@@ -12,6 +12,11 @@
 - 支持`Gson`, `Jackson`, `FastJson`(不推荐使用FastJson,[原因](https://segmentfault.com/a/1190000015634321))
 - 同时支持字节的v1,v2接口, 
 - 接口报错自动重试机制，提高用户体验
+
+- ByteDance(Tiktok) third party open platform backend SDK
+- Support `JoddHttp`, `OkHttpClient`, `RestTemplate`
+- Support `Gson`, `Jackson`, `FastJson`
+- Auto retry when bytedance server return error
 ## 使用方式
 
 #### Maven 引用
