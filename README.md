@@ -39,3 +39,5 @@
 具体可以参考[ByteDance-Open-Demo](https://github.com/yydzxz/ByteDance-Open-Demo)
   - Demo提供了Docker版本, 填写好第三方配置后, 通过`docker-compose`一键启动所有所需服务
 
+### Thanks For Jetbrains
+![image](https://raw.githubusercontent.com/yydzxz/ByteDanceOpen/dev/images/2831603780144_.pic_hd.jpg)
