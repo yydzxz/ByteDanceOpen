@@ -4,6 +4,7 @@ import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditHostsResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeReleaseResponse;
+import com.github.yydzxz.open.api.v1.response.code.CodeRevokeAuditResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeRollbackResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeUploadResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeVersionsResponse;
@@ -29,6 +30,11 @@ public interface IByteDanceOpenV1MiniProgramCodeService {
      * 提审代码
      */
     String AUDIT_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/package/audit";
+
+    /**
+     * 审核撤回
+     */
+    String REVOKE_AUDIT_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/package/revoke_audit";
 
     /**
      * 发布代码
@@ -59,6 +65,12 @@ public interface IByteDanceOpenV1MiniProgramCodeService {
      * @return
      */
     CodeAuditResponse audit();
+
+    /**
+     * 审核撤回
+     * @return
+     */
+    CodeRevokeAuditResponse revokeAudit();
 
     /**
      * 发布代码

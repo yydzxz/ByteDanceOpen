@@ -7,6 +7,7 @@ import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditHostsResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeReleaseResponse;
+import com.github.yydzxz.open.api.v1.response.code.CodeRevokeAuditResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeRollbackResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeUploadResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeVersionsResponse;
@@ -36,6 +37,11 @@ public class ByteDanceOpenV1MiniProgramCodeServiceImpl implements IByteDanceOpen
     @Override
     public CodeAuditResponse audit() {
         return byteDanceOpenV1MiniProgramService.post(AUDIT_URL, null, CodeAuditResponse.class);
+    }
+
+    @Override
+    public CodeRevokeAuditResponse revokeAudit(){
+        return byteDanceOpenV1MiniProgramService.post(REVOKE_AUDIT_URL, null, CodeRevokeAuditResponse.class);
     }
 
     @Override

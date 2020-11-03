@@ -1,9 +1,8 @@
 package com.github.yydzxz.open.api.v2.impl;
 
-import com.github.yydzxz.open.api.impl.AbstractByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
+import com.github.yydzxz.open.api.impl.AbstractByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1ComponentService;
-import com.github.yydzxz.open.api.v1.impl.ByteDanceOpenV1ComponentServiceImpl;
 import com.github.yydzxz.open.api.v2.IByteDanceOpenV2ComponentService;
 import com.github.yydzxz.open.api.v2.IByteDanceOpenV2MiniProgramService;
 import com.github.yydzxz.open.api.v2.request.auth.GetPreAuthCodeRequest;
@@ -24,8 +23,8 @@ public class ByteDanceOpenV2ComponentServiceImpl extends AbstractByteDanceOpenCo
 
     public ByteDanceOpenV2ComponentServiceImpl(IByteDanceOpenService byteDanceOpenService, IByteDanceOpenV1ComponentService byteDanceOpenV1ComponentService) {
         super(byteDanceOpenService);
-        //目前为了简便，getComponentAccessToken,getAuthorizerAccessToken等是直接使用v1版本的，所以这里new ByteDanceOpenV1ComponentServiceImpl()
-        //当以后字节有了这些接口的v2版本,使用v2重写后，这里就可以不需要new ByteDanceOpenV1ComponentServiceImpl()了
+        //目前为了简便，getComponentAccessToken,getAuthorizerAccessToken等是直接使用v1版本的，所以这里构造函数中需要IByteDanceOpenV1ComponentService
+        //当以后字节有了这些接口的v2版本,使用v2重写后，这里就可以不需要IByteDanceOpenV1ComponentService了
         byteDanceOpenService.setByteDanceOpenV1ComponentService(byteDanceOpenV1ComponentService);
     }
 
