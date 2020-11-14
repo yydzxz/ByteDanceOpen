@@ -22,6 +22,7 @@ public class TemplateGetTplListResponse extends ByteDanceError implements IByteD
     @SerializedName("template_list")
     @JSONField(name = "template_list")
     @JsonAlias("template_list")
+    @JsonProperty("template_list")
     private List<Template> TemplateList;
 
     @Data
