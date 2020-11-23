@@ -8,12 +8,14 @@ import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyServerDomainReques
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyWebviewDomainRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppQrCodeRequest;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppCheckAppNameResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppCreditScoreResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppInfoResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIconResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIntroResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppNameResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyServerDomainResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyWebviewDomainResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppQualityRatingResponse;
 
 /**
  * 代授权小程序业务-基本信息配置 相关API
@@ -61,6 +63,16 @@ public interface IByteDanceOpenV1MiniProgramInfoService {
      * 修改 webview 域名
      */
     String APP_MODIFY_WEBVIEW_DOMAIN_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/app/modify_webview_domain";
+
+    /**
+     * 查询质量评级信息
+     */
+    String APP_QUALITY_RATING_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/app/quality_rating";
+
+    /**
+     * 查询信用分分值
+     */
+    String APP_CREDIT_SCORE_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/app/credit_score";
 
     /**
      * 获取小程序基本信息
@@ -118,4 +130,8 @@ public interface IByteDanceOpenV1MiniProgramInfoService {
      * @return
      */
     AppModifyWebviewDomainResponse modifyWebviewDomain(AppModifyWebviewDomainRequest request);
+
+    AppQualityRatingResponse qualityRating();
+
+    AppCreditScoreResponse creditScore();
 }
