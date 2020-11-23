@@ -17,6 +17,8 @@ public class AppCreditScoreResponse extends ByteDanceError implements IByteDance
 
     private static final long serialVersionUID = -1473053594294676243L;
 
+    private DataObj data;
+
     @Data
     public static class DataObj{
 
