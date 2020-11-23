@@ -9,12 +9,14 @@ import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyServerDomainReques
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyWebviewDomainRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppQrCodeRequest;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppCheckAppNameResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppCreditScoreResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppInfoResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIconResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIntroResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppNameResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyServerDomainResponse;
 import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyWebviewDomainResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.AppQualityRatingResponse;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -69,5 +71,15 @@ public class ByteDanceOpenV1MiniProgramInfoServiceImpl implements IByteDanceOpen
     @Override
     public AppModifyWebviewDomainResponse modifyWebviewDomain(AppModifyWebviewDomainRequest request){
         return byteDanceOpenV1MiniProgramService.post(APP_MODIFY_WEBVIEW_DOMAIN_URL, request, AppModifyWebviewDomainResponse.class);
+    }
+
+    @Override
+    public AppQualityRatingResponse qualityRating() {
+        return byteDanceOpenV1MiniProgramService.get(APP_QUALITY_RATING_URL, AppQualityRatingResponse.class);
+    }
+
+    @Override
+    public AppCreditScoreResponse creditScore() {
+        return byteDanceOpenV1MiniProgramService.get(APP_CREDIT_SCORE_URL, AppCreditScoreResponse.class);
     }
 }
