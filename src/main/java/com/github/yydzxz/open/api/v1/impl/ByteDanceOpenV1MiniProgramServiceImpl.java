@@ -7,6 +7,7 @@ import com.github.yydzxz.open.api.v1.IByteDanceOpenV1ComponentService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramCodeService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramInfoService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramService;
+import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramOperationService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 
@@ -23,11 +24,14 @@ public class ByteDanceOpenV1MiniProgramServiceImpl extends AbstractByteDanceOpen
 
     private IByteDanceOpenV1MiniProgramInfoService byteDanceOpenMiniProgramInfoService;
 
+    private IByteDanceOpenV1MiniProgramOperationService byteDanceOpenV1MiniprogramOperationService;
+
     public ByteDanceOpenV1MiniProgramServiceImpl(IByteDanceOpenV1ComponentService byteDanceOpenV1ComponentService, String appId) {
         super(appId);
         this.byteDanceOpenV1ComponentService = byteDanceOpenV1ComponentService;
         this.byteDanceOpenV1MiniProgramCodeService = new ByteDanceOpenV1MiniProgramCodeServiceImpl(this);
         this.byteDanceOpenMiniProgramInfoService = new ByteDanceOpenV1MiniProgramInfoServiceImpl(this);
+        this.byteDanceOpenV1MiniprogramOperationService = new ByteDanceOpenV1MiniProgramOperationServiceImpl(this);
     }
 
     @Override

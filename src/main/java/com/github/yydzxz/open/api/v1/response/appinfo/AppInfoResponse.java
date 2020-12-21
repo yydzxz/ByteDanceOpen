@@ -188,6 +188,12 @@ public class AppInfoResponse extends ByteDanceError implements IByteDanceRespons
 
     @Data
     public static class SubjectAuditInfo{
+
+        /**
+         * 12月6日 文档更新
+         * 获取小程序基本信息接口主体号 subject_number 字段，涉及隐私，不再有值返回
+         */
+        @Deprecated
         @JSONField(name = "subject_number")
         @JsonAlias("subject_number")
         @JsonProperty("subject_number")
