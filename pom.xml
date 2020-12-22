@@ -6,7 +6,7 @@
 
   <groupId>com.github.yydzxz</groupId>
   <artifactId>bytedance-open</artifactId>
-  <version>3.4.1</version>
+  <version>3.4.2</version>
 
   <name>ByteDance - Open Java SDK</name>
   <description>字节跳动开放平台Java SDK</description>
@@ -55,7 +55,7 @@
     <dependency>
       <groupId>org.redisson</groupId>
       <artifactId>redisson</artifactId>
-      <version>3.14.0</version>
+      <version>3.12.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
@@ -121,7 +121,6 @@
       <scope>test</scope>
     </dependency>
     <!-- 单元测试 end-->
-
 
   </dependencies>
 
