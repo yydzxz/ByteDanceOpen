@@ -70,6 +70,11 @@ public class ByteDanceOpenV1MiniProgramServiceImpl extends AbstractByteDanceOpen
     }
 
     @Override
+    public IByteDanceOpenV1MiniProgramOperationService getByteDanceOpenV1MiniProgramOperationService() {
+        return byteDanceOpenV1MiniprogramOperationService;
+    }
+
+    @Override
     public Logger getLogger() {
         return log;
     }
