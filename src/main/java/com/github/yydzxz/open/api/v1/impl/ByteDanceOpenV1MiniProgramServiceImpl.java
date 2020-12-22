@@ -24,14 +24,14 @@ public class ByteDanceOpenV1MiniProgramServiceImpl extends AbstractByteDanceOpen
 
     private IByteDanceOpenV1MiniProgramInfoService byteDanceOpenMiniProgramInfoService;
 
-    private IByteDanceOpenV1MiniProgramOperationService byteDanceOpenV1MiniprogramOperationService;
+    private IByteDanceOpenV1MiniProgramOperationService byteDanceOpenV1MiniProgramOperationService;
 
     public ByteDanceOpenV1MiniProgramServiceImpl(IByteDanceOpenV1ComponentService byteDanceOpenV1ComponentService, String appId) {
         super(appId);
         this.byteDanceOpenV1ComponentService = byteDanceOpenV1ComponentService;
         this.byteDanceOpenV1MiniProgramCodeService = new ByteDanceOpenV1MiniProgramCodeServiceImpl(this);
         this.byteDanceOpenMiniProgramInfoService = new ByteDanceOpenV1MiniProgramInfoServiceImpl(this);
-        this.byteDanceOpenV1MiniprogramOperationService = new ByteDanceOpenV1MiniProgramOperationServiceImpl(this);
+        this.byteDanceOpenV1MiniProgramOperationService = new ByteDanceOpenV1MiniProgramOperationServiceImpl(this);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ByteDanceOpenV1MiniProgramServiceImpl extends AbstractByteDanceOpen
 
     @Override
     public IByteDanceOpenV1MiniProgramOperationService getByteDanceOpenV1MiniProgramOperationService() {
-        return byteDanceOpenV1MiniprogramOperationService;
+        return byteDanceOpenV1MiniProgramOperationService;
     }
 
     @Override
