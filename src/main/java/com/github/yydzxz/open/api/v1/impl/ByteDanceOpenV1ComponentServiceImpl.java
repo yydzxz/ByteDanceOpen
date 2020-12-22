@@ -157,7 +157,7 @@ public class ByteDanceOpenV1ComponentServiceImpl extends AbstractByteDanceOpenCo
 
     @Override
     public AuthAppListResponse authAppList(Integer page, Integer size) {
-        String url = API_CREATE_PRE_AUTH_CODE_URL
+        String url = AUTH_APP_LIST_URL
             + "?page=" + page
             + "&size=" + size;
         return get(url, AuthAppListResponse.class);

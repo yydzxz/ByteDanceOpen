@@ -60,7 +60,9 @@ public class ByteDanceOpenMessageRouterRule {
         ByteDanceOpenMessageHandleResult handlerResult = null;
         for(IByteDanceOpenMessageHandler handler : this.handlers){
             String messageId = getMessageId(handler, message);
-            if(!isMessageHandledByHandler(handler, message)){
+            if(isMessageHandledByHandler(handler, message)){
+                log.info("重复消息不做处理");
+            }else {
                 try {
                     handlerResult = handler.handle(message, context);
                     ruleResult.addResult(handler, handlerResult);
