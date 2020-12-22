@@ -75,6 +75,8 @@ public interface IByteDanceOpenV1ComponentService extends IByteDanceOpenComponen
 
     /**
      * 查询所有授权给第三方平台的小程序列表
+     * @param page 页码，从1开始
+     * @param size 页长，从1开始，最多为50
      * @return
      */
     AuthAppListResponse authAppList(Integer page, Integer size);
