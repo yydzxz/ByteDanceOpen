@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.yydzxz.common.util.json.JsonSerializer;
+import com.github.yydzxz.open.message.event.ApplyLiveCapabilityResults;
+import com.github.yydzxz.open.message.event.ApplyPhoneNumberCapabilityResults;
+import com.github.yydzxz.open.message.event.ApplyVideoCapabilityResults;
 import com.github.yydzxz.open.message.event.AuditResult;
 import com.github.yydzxz.open.message.event.ModifyAppIconResult;
 import com.github.yydzxz.open.message.event.ModifyAppIntroResult;
@@ -80,6 +83,21 @@ public class ByteDanceOpenMessage implements Serializable {
      * 小程序修改图标的审核结果事件
      */
     public static final String EVENT_MODIFY_APP_ICON = "MODIFY_APP_ICON";
+
+    /**
+     * 「短视频挂载」能力申请审核结果事件
+     */
+    public static final String APPLY_VIDEO_CAPABILITY = "APPLY_VIDEO_CAPABILITY";
+
+    /**
+     * 「抖音直播组件」申请的审核事件
+     */
+    public static final String APPLY_LIVE_CAPABILITY = "APPLY_LIVE_CAPABILITY";
+
+    /**
+     * 「获取用户手机号」能力申请审核结果通知
+     */
+    public static final String APPLY_PHONE_NUMBER_CAPABILITY = "APPLY_PHONE_NUMBER_CAPABILITY";
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @JSONField(name = "CreateTime", format = "yyyy-MM-dd HH:mm:ss")
@@ -180,6 +198,33 @@ public class ByteDanceOpenMessage implements Serializable {
     @JsonProperty("ModifyAppIconResults")
     @SerializedName("ModifyAppIconResults")
     private List<ModifyAppIconResult> modifyAppIconResults;
+
+    /**
+     * 「短视频挂载」能力申请的审核结果
+     */
+    @JSONField(name = "ApplyVideoCapabilityResults")
+    @JsonAlias("ApplyVideoCapabilityResults")
+    @JsonProperty("ApplyVideoCapabilityResults")
+    @SerializedName("ApplyVideoCapabilityResults")
+    private ApplyVideoCapabilityResults applyVideoCapabilityResults;
+
+    /**
+     * 「抖音直播组件」申请的审核结果
+     */
+    @JSONField(name = "ApplyLiveCapabilityResults")
+    @JsonAlias("ApplyLiveCapabilityResults")
+    @JsonProperty("ApplyLiveCapabilityResults")
+    @SerializedName("ApplyLiveCapabilityResults")
+    private ApplyLiveCapabilityResults applyLiveCapabilityResults;
+
+    /**
+     * 「获取用户手机号」能力申请审核结果
+     */
+    @JSONField(name = "ApplyPhoneNumberCapabilityResults")
+    @JsonAlias("ApplyPhoneNumberCapabilityResults")
+    @JsonProperty("ApplyPhoneNumberCapabilityResults")
+    @SerializedName("ApplyPhoneNumberCapabilityResults")
+    private ApplyPhoneNumberCapabilityResults applyPhoneNumberCapabilityResults;
 
     public static ByteDanceOpenMessage fromEncrypted(String encrypted, String key) throws Exception {
         MsgDecrypt msgDecrypt = new MsgDecrypt(key);
