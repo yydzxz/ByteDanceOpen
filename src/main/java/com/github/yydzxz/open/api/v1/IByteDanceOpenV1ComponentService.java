@@ -1,6 +1,7 @@
 package com.github.yydzxz.open.api.v1;
 
 import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
+import com.github.yydzxz.open.api.v1.response.auth.AuthAppListResponse;
 import com.github.yydzxz.open.api.v1.response.auth.GetAuthorizerAccessTokenResponse;
 
 /**
@@ -29,6 +30,8 @@ public interface IByteDanceOpenV1ComponentService extends IByteDanceOpenComponen
      * 引导小程序管理员对第三方平台进行授权
      */
     String COMPONENT_LOGIN_PAGE_URL = "https://open.microapp.bytedance.com/mappconsole/tp/authorization?component_appid=%s&pre_auth_code=%s&redirect_uri=%s";
+
+    String AUTH_APP_LIST_URL = "https://open.microapp.bytedance.com/openapi/v1/tp/auth_app_list";
 
     /**
      * 获取素材管理service
@@ -69,5 +72,11 @@ public interface IByteDanceOpenV1ComponentService extends IByteDanceOpenComponen
      * @return
      */
     String getAuthorizerAccessToken(String appId, boolean forceRefresh);
+
+    /**
+     * 查询所有授权给第三方平台的小程序列表
+     * @return
+     */
+    AuthAppListResponse authAppList(Integer page, Integer size);
 
 }
