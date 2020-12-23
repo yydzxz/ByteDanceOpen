@@ -33,7 +33,7 @@
   <dependency>
     <groupId>com.github.yydzxz</groupId>
     <artifactId>bytedance-open</artifactId>
-    <version>3.4.3</version>
+    <version>3.4.5</version>
   </dependency>
   ```
 具体可以参考[ByteDance-Open-Demo](https://github.com/yydzxz/ByteDance-Open-Demo)
