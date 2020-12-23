@@ -9,11 +9,16 @@ name: Master Branch Deploy
 
 on:
   push:
-    branches: [ master, dev]
+    branches: [ master]
     paths-ignore:
       - 'README.md'
+      - ".github/**"
   pull_request:
-    branches: [ master, dev]
+    branches: [ master]
+    paths-ignore:
+      - 'README.md'
+      - ".github/**"
+
 
 jobs:
   build:
