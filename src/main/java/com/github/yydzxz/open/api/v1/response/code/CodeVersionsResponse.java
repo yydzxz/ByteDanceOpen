@@ -24,7 +24,7 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
     private DataObj data;
 
     @Data
-    private static class DataObj implements Serializable {
+    public static class DataObj implements Serializable {
 
         private static final long serialVersionUID = 4806706359708124283L;
 
@@ -40,12 +40,28 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
 
         private static final long serialVersionUID = -5005834127995462897L;
 
+        @SerializedName("approvedApps")
+        @JSONField(name = "approvedApps")
+        @JsonAlias("approvedApps")
+        @JsonProperty("approvedApps")
         private List<String> approvedApps;
 
+        @SerializedName("attachInfo")
+        @JSONField(name = "attachInfo")
+        @JsonAlias("attachInfo")
+        @JsonProperty("attachInfo")
         private Map<String,String> attachInfo;
 
+        @SerializedName("categories")
+        @JSONField(name = "categories")
+        @JsonAlias("categories")
+        @JsonProperty("categories")
         private List<String> categories;
 
+        @SerializedName("ctime")
+        @JSONField(name = "ctime")
+        @JsonAlias("ctime")
+        @JsonProperty("ctime")
         private Long ctime;
 
         @SerializedName("developer_avatar")
@@ -94,12 +110,28 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
 
         private static final long serialVersionUID = -5408558277908780764L;
 
+        @SerializedName("approvedApps")
+        @JSONField(name = "approvedApps")
+        @JsonAlias("approvedApps")
+        @JsonProperty("approvedApps")
         private List<String> approvedApps;
 
+        @SerializedName("attachInfo")
+        @JSONField(name = "attachInfo")
+        @JsonAlias("attachInfo")
+        @JsonProperty("attachInfo")
         private Map<String,String> attachInfo;
 
+        @SerializedName("categories")
+        @JSONField(name = "categories")
+        @JsonAlias("categories")
+        @JsonProperty("categories")
         private List<String> categories;
 
+        @SerializedName("ctime")
+        @JSONField(name = "ctime")
+        @JsonAlias("ctime")
+        @JsonProperty("ctime")
         private Long ctime;
 
         @SerializedName("developer_avatar")
@@ -126,10 +158,18 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
         @JsonProperty("has_down")
         private Boolean hasDown;
 
+        @SerializedName("notApprovedApps")
+        @JSONField(name = "notApprovedApps")
+        @JsonAlias("notApprovedApps")
+        @JsonProperty("notApprovedApps")
         private List<String> notApprovedApps;
 
         private String reason;
 
+        @SerializedName("reasonDetail")
+        @JSONField(name = "reasonDetail")
+        @JsonAlias("reasonDetail")
+        @JsonProperty("reasonDetail")
         private Map<String, Object> reasonDetail;
 
         private Rollback rollback;
