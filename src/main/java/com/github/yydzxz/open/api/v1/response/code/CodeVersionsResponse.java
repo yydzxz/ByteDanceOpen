@@ -138,19 +138,19 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
         @JSONField(name = "developer_avatar")
         @JsonAlias("developer_avatar")
         @JsonProperty("developer_avatar")
-        private String developer_avatar;
+        private String developerAvatar;
 
         @SerializedName("developer_id")
         @JSONField(name = "developer_id")
         @JsonAlias("developer_id")
         @JsonProperty("developer_id")
-        private String developer_id;
+        private String developerId;
 
         @SerializedName("developer_name")
         @JSONField(name = "developer_name")
         @JsonAlias("developer_name")
         @JsonProperty("developer_name")
-        private String developer_name;
+        private String developerName;
 
         @SerializedName("has_down")
         @JSONField(name = "has_down")
@@ -206,19 +206,19 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
         @JSONField(name = "developer_avatar")
         @JsonAlias("developer_avatar")
         @JsonProperty("developer_avatar")
-        private String developer_avatar;
+        private String developerAvatar;
 
         @SerializedName("developer_id")
         @JSONField(name = "developer_id")
         @JsonAlias("developer_id")
         @JsonProperty("developer_id")
-        private String developer_id;
+        private String developerId;
 
         @SerializedName("developer_name")
         @JSONField(name = "developer_name")
         @JsonAlias("developer_name")
         @JsonProperty("developer_name")
-        private String developer_name;
+        private String developerName;
 
         @SerializedName("has_audit")
         @JSONField(name = "has_audit")
