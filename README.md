@@ -25,7 +25,7 @@
   <dependency>
    <groupId>com.github.yydzxz</groupId>
    <artifactId>bytedance-open</artifactId>
-   <version>3.3.2</version>
+   <version>3.4.5</version>
   </dependency>
   ```
   ##### 最新版
