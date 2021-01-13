@@ -34,7 +34,7 @@ public class TemplateGetDraftListResponse extends ByteDanceError implements IByt
         @JsonProperty("draft_id")
         @JSONField(name = "draft_id")
         @JsonAlias("draft_id")
-        private Long draft_id;
+        private Long draftId;
 
         @SerializedName("user_version")
         @JsonProperty("user_version")
