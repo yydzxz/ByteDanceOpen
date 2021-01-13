@@ -34,7 +34,7 @@ public class AuditResult implements Serializable {
     /**
      * 0或1，0代表不通过，1代表通过
      */
-    private int status;
+    private Integer status;
 
     /**
      * 审核的具体细节，通过时为 null
