@@ -10,6 +10,7 @@ import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MaterialService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1TemplateService;
 import com.github.yydzxz.open.api.v1.response.auth.AuthAppListResponse;
+import com.github.yydzxz.open.api.v1.response.auth.AuthRetrieveResponse;
 import com.github.yydzxz.open.api.v1.response.auth.GetAuthorizerAccessTokenResponse;
 import com.github.yydzxz.open.api.v1.response.auth.GetPreAuthCodeResponse;
 import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
@@ -161,6 +162,12 @@ public class ByteDanceOpenV1ComponentServiceImpl extends AbstractByteDanceOpenCo
             + "?page=" + page
             + "&size=" + size;
         return get(url, AuthAppListResponse.class);
+    }
+
+    @Override
+    public AuthRetrieveResponse authRetrieve(String appId) {
+        String url = AUTH_RETRIEVE + "?authorization_appid=" + appId;
+        return get(url, AuthRetrieveResponse.class);
     }
 
     @Override
