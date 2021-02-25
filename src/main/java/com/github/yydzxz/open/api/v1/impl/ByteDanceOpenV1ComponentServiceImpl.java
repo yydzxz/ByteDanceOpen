@@ -167,7 +167,7 @@ public class ByteDanceOpenV1ComponentServiceImpl extends AbstractByteDanceOpenCo
     @Override
     public AuthRetrieveResponse authRetrieve(String appId) {
         String url = AUTH_RETRIEVE + "?authorization_appid=" + appId;
-        return get(url, AuthRetrieveResponse.class);
+        return post(url, null, AuthRetrieveResponse.class);
     }
 
     @Override
