@@ -2,6 +2,7 @@ package com.github.yydzxz.open.api.v1;
 
 import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.v1.response.auth.AuthAppListResponse;
+import com.github.yydzxz.open.api.v1.response.auth.AuthRetrieveResponse;
 import com.github.yydzxz.open.api.v1.response.auth.GetAuthorizerAccessTokenResponse;
 
 /**
@@ -32,6 +33,11 @@ public interface IByteDanceOpenV1ComponentService extends IByteDanceOpenComponen
     String COMPONENT_LOGIN_PAGE_URL = "https://open.microapp.bytedance.com/mappconsole/tp/authorization?component_appid=%s&pre_auth_code=%s&redirect_uri=%s";
 
     String AUTH_APP_LIST_URL = "https://open.microapp.bytedance.com/openapi/v1/tp/auth_app_list";
+
+    /**
+     * 找回授权码
+     */
+    String AUTH_RETRIEVE = "https://open.microapp.bytedance.com/openapi/v1/auth/retrieve";
 
     /**
      * 获取素材管理service
@@ -80,5 +86,7 @@ public interface IByteDanceOpenV1ComponentService extends IByteDanceOpenComponen
      * @return
      */
     AuthAppListResponse authAppList(Integer page, Integer size);
+
+    AuthRetrieveResponse authRetrieve(String appId);
 
 }
