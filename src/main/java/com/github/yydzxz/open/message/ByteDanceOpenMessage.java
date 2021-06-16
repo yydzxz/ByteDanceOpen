@@ -179,7 +179,7 @@ public class ByteDanceOpenMessage implements Serializable {
     @JsonAlias("ModifyAppNameResults")
     @JsonProperty("ModifyAppNameResults")
     @SerializedName("ModifyAppNameResults")
-    private List<ModifyAppNameResult> modifyAppNameResults;
+    private ModifyAppNameResult modifyAppNameResults;
 
     /**
      * 小程序的修改简介的审核结果
@@ -188,7 +188,7 @@ public class ByteDanceOpenMessage implements Serializable {
     @JsonAlias("ModifyAppIntroResults")
     @JsonProperty("ModifyAppIntroResults")
     @SerializedName("ModifyAppIntroResults")
-    private List<ModifyAppIntroResult> modifyAppIntroResults;
+    private ModifyAppIntroResult modifyAppIntroResults;
 
     /**
      * 小程序的修改图标的审核结果
@@ -197,7 +197,7 @@ public class ByteDanceOpenMessage implements Serializable {
     @JsonAlias("ModifyAppIconResults")
     @JsonProperty("ModifyAppIconResults")
     @SerializedName("ModifyAppIconResults")
-    private List<ModifyAppIconResult> modifyAppIconResults;
+    private ModifyAppIconResult modifyAppIconResults;
 
     /**
      * 「短视频挂载」能力申请的审核结果

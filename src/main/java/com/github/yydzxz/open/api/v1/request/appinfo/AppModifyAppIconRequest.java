@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.yydzxz.common.http.IByteDanceRequest;
 import com.google.gson.annotations.SerializedName;
+import lombok.Data;
 
 /**
  * @author yangyidian
  * @date 2020/07/20
  **/
+@Data
 public class AppModifyAppIconRequest implements IByteDanceRequest {
 
     /**
