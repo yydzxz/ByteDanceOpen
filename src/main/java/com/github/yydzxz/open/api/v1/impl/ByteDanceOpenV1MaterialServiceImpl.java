@@ -2,7 +2,9 @@ package com.github.yydzxz.open.api.v1.impl;
 
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MaterialService;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
+import com.github.yydzxz.open.api.v1.request.material.UploadMaterialRequest;
 import com.github.yydzxz.open.api.v1.request.material.UploadPicMaterialRequest;
+import com.github.yydzxz.open.api.v1.response.material.UploadMaterialResponse;
 import com.github.yydzxz.open.api.v1.response.material.UploadPicMaterialResponse;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
@@ -28,5 +30,14 @@ public class ByteDanceOpenV1MaterialServiceImpl implements IByteDanceOpenV1Mater
         return byteDanceOpenService
             .getByteDanceOpenV1ComponentService()
             .postWithHeaders(UPLOAD_PIC_MATERIAL_URL, headers, request, UploadPicMaterialResponse.class);
+    }
+
+    @Override
+    public UploadMaterialResponse uploadMaterial(UploadMaterialRequest request) {
+        Multimap<String, String> headers = LinkedListMultimap.create();
+        headers.put("Content-Type", "multipart/form-data");
+        return byteDanceOpenService
+                .getByteDanceOpenV1ComponentService()
+                .postWithHeaders(UPLOAD_MATERIAL_URL, headers, request, UploadMaterialResponse.class);
     }
 }

@@ -8,15 +8,7 @@ import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppNameRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyServerDomainRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyWebviewDomainRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppQrCodeRequest;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppCheckAppNameResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppCreditScoreResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppInfoResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIconResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIntroResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppNameResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyServerDomainResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyWebviewDomainResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppQualityRatingResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.*;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -30,6 +22,12 @@ public class ByteDanceOpenV1MiniProgramInfoServiceImpl implements IByteDanceOpen
 
     public ByteDanceOpenV1MiniProgramInfoServiceImpl(IByteDanceOpenV1MiniProgramService byteDanceOpenMiniProgramService) {
         this.byteDanceOpenV1MiniProgramService = byteDanceOpenMiniProgramService;
+    }
+
+    @Override
+    public Code2SessionResponse code2Session(String code,String anonymousCode) {
+        String url = String.format(CODE_SESSION_URL+"?code=%s&anonymous_code=%s", code, anonymousCode);
+        return byteDanceOpenV1MiniProgramService.get(url, Code2SessionResponse.class);
     }
 
     @Override
