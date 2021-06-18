@@ -2,6 +2,8 @@ package com.github.yydzxz.common.http.impl;
 
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
+import com.github.yydzxz.common.error.ByteDancePayError;
+import com.github.yydzxz.common.error.ByteDancePayErrorException;
 import com.github.yydzxz.common.http.IByteDanceHttpClient;
 import com.github.yydzxz.common.http.IByteDanceResponse;
 import com.github.yydzxz.common.util.json.JsonSerializer;
@@ -67,9 +69,11 @@ public abstract class AbstractByteDanceHttpClient implements IByteDanceHttpClien
 
 
     private <T> T handleResponse(T response){
-        if(response instanceof IByteDanceResponse){
-            checkError(getJsonSerializer().toJson(response));
-        }else if(response instanceof byte[]){
+        if(response instanceof ByteDanceError){
+            checkError((ByteDanceError)response);
+        }else if(response instanceof ByteDancePayError){
+            checkError((ByteDancePayError)response);
+        } else if(response instanceof byte[]){
             try{
                 checkError(new String((byte[])response));
             }catch (RuntimeException e){
@@ -85,8 +89,18 @@ public abstract class AbstractByteDanceHttpClient implements IByteDanceHttpClien
 
     private void checkError(String response){
         ByteDanceError error = getJsonSerializer().parse(response, ByteDanceError.class);
+        checkError(error);
+    }
+
+    private void checkError(ByteDanceError error){
         if(error.getErrno() != null && error.getErrno() != 0){
             throw new ByteDanceErrorException(error);
+        }
+    }
+
+    private void checkError(ByteDancePayError error){
+        if(error.getErrcode() != null && error.getErrcode() != 0){
+            throw new ByteDancePayErrorException(error);
         }
     }
 

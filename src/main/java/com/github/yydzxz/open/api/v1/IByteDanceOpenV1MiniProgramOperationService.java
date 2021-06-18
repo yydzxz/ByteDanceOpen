@@ -11,7 +11,7 @@ import com.github.yydzxz.open.api.v1.response.operation.OperationVideoApplicatio
 import com.github.yydzxz.open.api.v1.response.operation.OperationVideoApplicationStatusResponse;
 
 /**
- * 运营管理
+ * 代授权小程序业务-运营管理
  * @author yangyidian
  * @date 2020/12/11
  **/
