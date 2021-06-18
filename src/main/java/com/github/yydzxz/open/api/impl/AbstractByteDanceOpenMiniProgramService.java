@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
 import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
+import com.github.yydzxz.common.error.ByteDancePayError;
 import com.github.yydzxz.common.error.ByteDancePayErrorMsgEnum;
 import com.github.yydzxz.common.error.IByteDanceError;
 import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
@@ -138,8 +139,11 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
         if(error instanceof ByteDanceError){
             return ByteDanceErrorMsgEnum.CODE_40020.getCode() == error.errorCode()
                 || ByteDanceErrorMsgEnum.CODE_40021.getCode() == error.errorCode();
-        }else{
+        }else if(error instanceof ByteDancePayError){
             return ByteDancePayErrorMsgEnum.CODE_40002.getCode() == error.errorCode();
+        }else {
+            log.error("错误类: {}, 没有设置哪些错误码应该让accessToken进行过期处理", error.getClass());
+            return false;
         }
     }
 
@@ -155,10 +159,12 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
         if(error instanceof ByteDanceError){
             return shouldExpireAccessToken(error)
                 || ByteDanceErrorMsgEnum.CODE_40000.getCode() == error.errorCode();
-        }else {
+        }else if(error instanceof ByteDancePayError){
             return shouldExpireAccessToken(error)
                 || ByteDancePayErrorMsgEnum.CODE_NEGATIVE_1.getCode() == error.errorCode();
+        }else {
+            log.error("错误类: {}, 没有设置哪些错误码应该让请求进行重试", error.getClass());
+            return false;
         }
-
     }
 }
