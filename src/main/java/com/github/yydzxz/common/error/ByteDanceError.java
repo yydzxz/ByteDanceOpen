@@ -27,7 +27,7 @@ public class ByteDanceError implements Serializable {
      * 封装结果判断
      * @return
      */
-    public Boolean isSuccess(){
+    public Boolean checkSuccess(){
         return Objects.equals(this.errno, 0);
     }
 
