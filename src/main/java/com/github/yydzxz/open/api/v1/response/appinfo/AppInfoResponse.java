@@ -37,13 +37,13 @@ public class AppInfoResponse extends ByteDanceError implements IByteDanceRespons
         @JsonAlias("app_type")
         @JsonProperty("app_type")
         @SerializedName("app_type")
-        private String appType;
+        private Integer appType;
 
         @JSONField(name = "app_state")
         @JsonAlias("app_state")
         @JsonProperty("app_state")
         @SerializedName("app_state")
-        private String appState;
+        private Integer appState;
 
         @JSONField(name = "app_name")
         @JsonAlias("app_name")
@@ -106,13 +106,13 @@ public class AppInfoResponse extends ByteDanceError implements IByteDanceRespons
         @JsonAlias("remaining_times")
         @JsonProperty("remaining_times")
         @SerializedName("remaining_times")
-        private String remainingTimes;
+        private Integer remainingTimes;
 
         @JSONField(name = "new_name_audit_state")
         @JsonAlias("new_name_audit_state")
         @JsonProperty("new_name_audit_state")
         @SerializedName("new_name_audit_state")
-        private String newNameAuditState;
+        private Integer newNameAuditState;
         private String reason;
         private String advice;
     }
@@ -129,13 +129,13 @@ public class AppInfoResponse extends ByteDanceError implements IByteDanceRespons
         @JsonAlias("remaining_times")
         @JsonProperty("remaining_times")
         @SerializedName("remaining_times")
-        private String remainingTimes;
+        private Integer remainingTimes;
 
         @JSONField(name = "new_intro_audit_state")
         @JsonAlias("new_intro_audit_state")
         @JsonProperty("new_intro_audit_state")
         @SerializedName("new_intro_audit_state")
-        private String newIntroAuditState;
+        private Integer newIntroAuditState;
         private String reason;
         private String advice;
     }
@@ -152,13 +152,13 @@ public class AppInfoResponse extends ByteDanceError implements IByteDanceRespons
         @JsonAlias("remaining_times")
         @JsonProperty("remaining_times")
         @SerializedName("remaining_times")
-        private String remainingTimes;
+        private Integer remainingTimes;
 
         @JSONField(name = "new_icon_audit_state")
         @JsonAlias("new_icon_audit_state")
         @JsonProperty("new_icon_audit_state")
         @SerializedName("new_icon_audit_state")
-        private String newIconAuditState;
+        private Integer newIconAuditState;
         private String reason;
         private String advice;
     }
@@ -182,7 +182,7 @@ public class AppInfoResponse extends ByteDanceError implements IByteDanceRespons
         @JsonAlias("app_category_audit_state")
         @JsonProperty("app_category_audit_state")
         @SerializedName("app_category_audit_state")
-        private String appCategoryAuditState;
+        private Integer appCategoryAuditState;
         private String reason;
     }
 
@@ -210,13 +210,13 @@ public class AppInfoResponse extends ByteDanceError implements IByteDanceRespons
         @JsonAlias("subject_type")
         @JsonProperty("subject_type")
         @SerializedName("subject_type")
-        private String subjectType;
+        private Integer subjectType;
 
         @JSONField(name = "subject_audit_state")
         @JsonAlias("subject_audit_state")
         @JsonProperty("subject_audit_state")
         @SerializedName("subject_audit_state")
-        private String subjectAuditState;
+        private Integer subjectAuditState;
         private String reason;
 
     }

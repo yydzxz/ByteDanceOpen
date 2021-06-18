@@ -7,15 +7,7 @@ import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppNameRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyServerDomainRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyWebviewDomainRequest;
 import com.github.yydzxz.open.api.v1.request.appinfo.AppQrCodeRequest;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppCheckAppNameResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppCreditScoreResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppInfoResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIconResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppIntroResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyAppNameResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyServerDomainResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppModifyWebviewDomainResponse;
-import com.github.yydzxz.open.api.v1.response.appinfo.AppQualityRatingResponse;
+import com.github.yydzxz.open.api.v1.response.appinfo.*;
 
 /**
  * 代授权小程序业务-基本信息配置 相关API
@@ -23,6 +15,11 @@ import com.github.yydzxz.open.api.v1.response.appinfo.AppQualityRatingResponse;
  * @date 2020/07/02
  **/
 public interface IByteDanceOpenV1MiniProgramInfoService {
+
+    /**
+     * code2session
+     */
+    String CODE_SESSION_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/code2session";
 
     /**
      * 获取小程序基本信息
@@ -73,6 +70,11 @@ public interface IByteDanceOpenV1MiniProgramInfoService {
      * 查询信用分分值
      */
     String APP_CREDIT_SCORE_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/app/credit_score";
+
+    /**
+     * code2session
+     */
+    Code2SessionResponse code2Session(String code, String anonymousCode);
 
     /**
      * 获取小程序基本信息
@@ -134,4 +136,5 @@ public interface IByteDanceOpenV1MiniProgramInfoService {
     AppQualityRatingResponse qualityRating();
 
     AppCreditScoreResponse creditScore();
+
 }
