@@ -1,6 +1,8 @@
 package com.github.yydzxz.open.api.v1;
 
+import com.github.yydzxz.open.api.v1.request.code.CensorImageRequest;
 import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
+import com.github.yydzxz.open.api.v1.response.code.CensorImageResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditHostsResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeReleaseResponse;
@@ -52,12 +54,21 @@ public interface IByteDanceOpenV1MiniProgramCodeService {
     String VERSIONS_URL = "https://open.microapp.bytedance.com/openapi/v1/microapp/package/versions";
 
     /**
+     * 图片检测
+     */
+    String CENSOR_IMAGE_URL = "https://developer.toutiao.com/api/apps/censor/image";
+
+    /**
      * 提交代码
      * @param request
      * @return
      */
     CodeUploadResponse upload(CodeUploadRequest request);
 
+    /**
+     * 获取可选审核宿主端列表
+     * @return
+     */
     CodeAuditHostsResponse auditHosts();
 
     /**
@@ -89,5 +100,12 @@ public interface IByteDanceOpenV1MiniProgramCodeService {
      * @return
      */
     CodeVersionsResponse versions();
+
+    /**
+     * 图片检测
+     * @param request
+     * @return
+     */
+    CensorImageResponse censorImage(CensorImageRequest request);
 
 }

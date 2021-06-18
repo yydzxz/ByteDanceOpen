@@ -1,16 +1,12 @@
 package com.github.yydzxz.open.api.v1;
 
 
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIconRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIntroRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppNameRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyServerDomainRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyWebviewDomainRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppQrCodeRequest;
+import com.github.yydzxz.open.api.v1.request.appinfo.*;
 import com.github.yydzxz.open.api.v1.response.appinfo.*;
 
 /**
  * 代授权小程序业务-基本信息配置 相关API
+ * https://microapp.bytedance.com/docs/zh-CN/mini-app/thirdparty/API/auth-app/package-management/picture-detect
  * @author yangyidian
  * @date 2020/07/02
  **/
@@ -25,6 +21,11 @@ public interface IByteDanceOpenV1MiniProgramInfoService {
      * 获取小程序基本信息
      */
     String APP_INFO_URL  = "https://open.microapp.bytedance.com/openapi/v1/microapp/app/info";
+
+    /**
+     * 获取小程序码
+     */
+    String APPS_QRCODE_URL = "https://developer.toutiao.com/api/apps/qrcode";
 
     /**
      * 获取二维码
@@ -83,6 +84,12 @@ public interface IByteDanceOpenV1MiniProgramInfoService {
     AppInfoResponse getAppInfo();
 
     /**
+     * 获取小程序码
+     * @return
+     */
+    byte[] appsQrcode(AppsQrcodeRequest request);
+
+    /**
      * 获取二维码
      * @param request
      * @return
@@ -133,8 +140,16 @@ public interface IByteDanceOpenV1MiniProgramInfoService {
      */
     AppModifyWebviewDomainResponse modifyWebviewDomain(AppModifyWebviewDomainRequest request);
 
+    /**
+     * 查询质量评级信息
+     * @return
+     */
     AppQualityRatingResponse qualityRating();
 
+    /**
+     * 查询信用分分值
+     * @return
+     */
     AppCreditScoreResponse creditScore();
 
 }

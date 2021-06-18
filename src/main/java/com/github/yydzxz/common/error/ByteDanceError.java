@@ -2,7 +2,6 @@ package com.github.yydzxz.common.error;
 
 import java.io.Serializable;
 import java.util.Objects;
-
 import lombok.Data;
 
 /**

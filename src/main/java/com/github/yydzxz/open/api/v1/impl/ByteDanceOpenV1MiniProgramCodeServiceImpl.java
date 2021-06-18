@@ -1,8 +1,11 @@
 package com.github.yydzxz.open.api.v1.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramCodeService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramService;
+import com.github.yydzxz.open.api.v1.request.code.CensorImageRequest;
 import com.github.yydzxz.open.api.v1.request.code.CodeUploadRequest;
+import com.github.yydzxz.open.api.v1.response.code.CensorImageResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditHostsResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeAuditResponse;
 import com.github.yydzxz.open.api.v1.response.code.CodeReleaseResponse;
@@ -56,5 +59,10 @@ public class ByteDanceOpenV1MiniProgramCodeServiceImpl implements IByteDanceOpen
     @Override
     public CodeVersionsResponse versions() {
         return byteDanceOpenV1MiniProgramService.get(VERSIONS_URL, CodeVersionsResponse.class);
+    }
+
+    @Override
+    public CensorImageResponse censorImage(CensorImageRequest request) {
+        return byteDanceOpenV1MiniProgramService.post(CENSOR_IMAGE_URL, request, CensorImageResponse.class);
     }
 }

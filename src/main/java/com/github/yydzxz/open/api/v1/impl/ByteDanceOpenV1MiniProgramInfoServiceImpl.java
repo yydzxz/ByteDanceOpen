@@ -2,12 +2,7 @@ package com.github.yydzxz.open.api.v1.impl;
 
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramInfoService;
 import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramService;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIconRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppIntroRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyAppNameRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyServerDomainRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppModifyWebviewDomainRequest;
-import com.github.yydzxz.open.api.v1.request.appinfo.AppQrCodeRequest;
+import com.github.yydzxz.open.api.v1.request.appinfo.*;
 import com.github.yydzxz.open.api.v1.response.appinfo.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +28,11 @@ public class ByteDanceOpenV1MiniProgramInfoServiceImpl implements IByteDanceOpen
     @Override
     public AppInfoResponse getAppInfo() {
         return byteDanceOpenV1MiniProgramService.get(APP_INFO_URL, AppInfoResponse.class);
+    }
+
+    @Override
+    public byte[] appsQrcode(AppsQrcodeRequest request) {
+        return byteDanceOpenV1MiniProgramService.post(APPS_QRCODE_URL, request, byte[].class);
     }
 
     @Override
