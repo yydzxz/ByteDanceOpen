@@ -5,13 +5,19 @@ import java.util.Objects;
 import lombok.Data;
 
 /**
- * 支付错误
+ * 字节跳动支付错误
+ * 不知道字节怎么想的，要定义两套不同的错误码
+ * ByteDanceError 跟 ByteDancePayError 是平级的，并不是父子关系
+ *
+ * <code>ByteDanceErrorMsgEnum</code>
+ * <code>ByteDancePayErrorMsgEnum</code>
  * @author yangyidian
  * @date 2021/06/18
  **/
 @Data
-public class ByteDancePayError implements Serializable {
+public class ByteDancePayError implements IByteDanceError, Serializable {
 
+    private static final long serialVersionUID = 3633468442265803862L;
     /**
      * 错误号
      */
@@ -22,7 +28,23 @@ public class ByteDancePayError implements Serializable {
      */
     private String errmsg;
 
+    @Override
     public Boolean checkSuccess(){
         return Objects.equals(this.errcode, 0);
+    }
+
+    @Override
+    public String toString() {
+        return "错误代码：" + this.errcode + ", 错误信息：" + this.errmsg;
+    }
+
+    @Override
+    public Integer errorCode() {
+        return getErrcode();
+    }
+
+    @Override
+    public String errorMessage() {
+        return getErrmsg();
     }
 }

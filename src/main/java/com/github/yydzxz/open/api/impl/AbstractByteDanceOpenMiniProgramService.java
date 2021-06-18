@@ -4,6 +4,8 @@ import cn.hutool.core.util.StrUtil;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
 import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
+import com.github.yydzxz.common.error.ByteDancePayErrorMsgEnum;
+import com.github.yydzxz.common.error.IByteDanceError;
 import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
 import com.github.yydzxz.open.api.IByteDanceOpenMiniProgramService;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
@@ -100,8 +102,7 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
             String uriWithCommonParam = url + (url.contains("?") ? "&" : "?") + "authorizer_access_token=" + accessToken + "&component_appid=" + componentAppid;
             response = executable.execute(uriWithCommonParam, headers, request, t);
         }catch (ByteDanceErrorException e){
-            ByteDanceError error = e.getError();
-            if((shouldExpireAccessToken(error))){
+            if((shouldExpireAccessToken(e.getError()))){
                 // 强制设置access token过期，这样在下一次请求里就会刷新access token
                 Lock lock = getByteDanceOpenConfigStorage().getAccessTokenLock(appId);
                 lock.lock();
@@ -115,11 +116,12 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
                     lock.unlock();
                 }
             }
-            if (error.getErrno() != null && error.getErrno() != 0) {
-                log.error("\n【请求地址】: {}\n【错误信息】: {}", url, error);
-                throw new ByteDanceOpenMiniProgramException(appId, error, e);
+            if (!e.getError().checkSuccess()) {
+                log.error("\n【请求地址】: {}\n【错误信息】: {}", url, e.getError());
+                throw new ByteDanceOpenMiniProgramException(appId, e.getError(), e);
             }
-        }catch (Exception e) {
+        }
+        catch (Exception e) {
             log.error("\n【请求地址】: {}\n【异常信息】: {}", url, e.getMessage());
             throw new RuntimeException(e);
         }
@@ -132,10 +134,15 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
      * @param error
      * @return
      */
-    protected boolean shouldExpireAccessToken(ByteDanceError error){
-        return ByteDanceErrorMsgEnum.CODE_40020.getCode() == error.getErrno()
-            || ByteDanceErrorMsgEnum.CODE_40021.getCode() == error.getErrno();
+    protected boolean shouldExpireAccessToken(IByteDanceError error){
+        if(error instanceof ByteDanceError){
+            return ByteDanceErrorMsgEnum.CODE_40020.getCode() == error.errorCode()
+                || ByteDanceErrorMsgEnum.CODE_40021.getCode() == error.errorCode();
+        }else{
+            return ByteDancePayErrorMsgEnum.CODE_40002.getCode() == error.errorCode();
+        }
     }
+
 
     /**
      * 是否应该进行请求重试
@@ -144,8 +151,14 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
      * @return
      */
     @Override
-    public boolean shouldRetry(ByteDanceError error){
-        return shouldExpireAccessToken(error)
-            || ByteDanceErrorMsgEnum.CODE_40000.getCode() == error.getErrno();
+    public boolean shouldRetry(IByteDanceError error){
+        if(error instanceof ByteDanceError){
+            return shouldExpireAccessToken(error)
+                || ByteDanceErrorMsgEnum.CODE_40000.getCode() == error.errorCode();
+        }else {
+            return shouldExpireAccessToken(error)
+                || ByteDancePayErrorMsgEnum.CODE_NEGATIVE_1.getCode() == error.errorCode();
+        }
+
     }
 }

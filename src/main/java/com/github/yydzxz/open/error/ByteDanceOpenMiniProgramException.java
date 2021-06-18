@@ -2,6 +2,7 @@ package com.github.yydzxz.open.error;
 
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
+import com.github.yydzxz.common.error.IByteDanceError;
 
 /**
  * @author yangyidian
@@ -11,12 +12,12 @@ public class ByteDanceOpenMiniProgramException extends ByteDanceErrorException {
 
     private String appid;
 
-    public ByteDanceOpenMiniProgramException(String appid,ByteDanceError error) {
+    public ByteDanceOpenMiniProgramException(String appid, IByteDanceError error) {
         super(error);
         this.appid = appid;
     }
 
-    public ByteDanceOpenMiniProgramException(String appid,ByteDanceError error, Throwable cause) {
+    public ByteDanceOpenMiniProgramException(String appid, IByteDanceError error, Throwable cause) {
         super(error, cause);
         this.appid = appid;
     }

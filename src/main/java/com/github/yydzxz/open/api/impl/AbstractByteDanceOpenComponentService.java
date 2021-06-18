@@ -1,9 +1,9 @@
 package com.github.yydzxz.open.api.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
 import com.github.yydzxz.common.error.ByteDanceErrorMsgEnum;
+import com.github.yydzxz.common.error.IByteDanceError;
 import com.github.yydzxz.open.api.IByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.IExecutable;
@@ -77,9 +77,9 @@ public abstract class AbstractByteDanceOpenComponentService implements IByteDanc
     }
 
     @Override
-    public boolean shouldRetry(ByteDanceError error) {
+    public boolean shouldRetry(IByteDanceError error) {
         return shouldExpireComponentAccessToken(error)
-            || ByteDanceErrorMsgEnum.CODE_40000.getCode() == error.getErrno();
+            || ByteDanceErrorMsgEnum.CODE_40000.getCode() == error.errorCode();
     }
 
 
@@ -100,7 +100,7 @@ public abstract class AbstractByteDanceOpenComponentService implements IByteDanc
         try {
             return executable.execute(uriWithCommonParam, headers, request, t);
         } catch (ByteDanceErrorException e) {
-            ByteDanceError error = e.getError();
+            IByteDanceError error = e.getError();
             /*
              * 发生以下情况时尝试刷新access_token
              * 40009 第三方平台AccessToken已过期
@@ -120,7 +120,8 @@ public abstract class AbstractByteDanceOpenComponentService implements IByteDanc
                     lock.unlock();
                 }
             }
-            if (error.getErrno() != null && error.getErrno() != 0) {
+            if (!error.checkSuccess()) {
+                log.error("\n【请求地址】: {}\n【错误信息】: {}", url, e.getError());
                 throw new ByteDanceErrorException(error, e);
             }
             return null;
@@ -132,9 +133,9 @@ public abstract class AbstractByteDanceOpenComponentService implements IByteDanc
      * @param error
      * @return
      */
-    private boolean shouldExpireComponentAccessToken(ByteDanceError error){
-        return error.getErrno() == ByteDanceErrorMsgEnum.CODE_40009.getCode()
-            || error.getErrno() == ByteDanceErrorMsgEnum.CODE_40010.getCode();
+    private boolean shouldExpireComponentAccessToken(IByteDanceError error){
+        return error.errorCode() == ByteDanceErrorMsgEnum.CODE_40009.getCode()
+            || error.errorCode() == ByteDanceErrorMsgEnum.CODE_40010.getCode();
     }
 
     @Override
