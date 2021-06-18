@@ -6,11 +6,8 @@ import lombok.Data;
 
 /**
  * 字节跳动支付错误
- * 不知道字节怎么想的，要定义两套不同的错误码
- * ByteDanceError 跟 ByteDancePayError 是平级的，并不是父子关系
  *
- * <code>ByteDanceErrorMsgEnum</code>
- * <code>ByteDancePayErrorMsgEnum</code>
+ * ByteDancePayError的部分错误码可以在<code>ByteDancePayErrorMsgEnum</code>中找到
  * @author yangyidian
  * @date 2021/06/18
  **/
