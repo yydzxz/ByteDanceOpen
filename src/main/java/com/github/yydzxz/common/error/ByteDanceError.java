@@ -5,11 +5,14 @@ import java.util.Objects;
 import lombok.Data;
 
 /**
+ * 字节跳动错误
+ * <code>ByteDanceErrorMsgEnum</code>
+ * <code>ByteDancePayErrorMsgEnum</code>
  * @author yangyidian
  * @date 2020/06/28
  **/
 @Data
-public class ByteDanceError implements Serializable {
+public class ByteDanceError implements IByteDanceError, Serializable {
 
     private static final long serialVersionUID = 8757224149770373443L;
     /**
@@ -26,6 +29,7 @@ public class ByteDanceError implements Serializable {
      * 封装结果判断
      * @return
      */
+    @Override
     public Boolean checkSuccess(){
         return Objects.equals(this.errno, 0);
     }
@@ -35,4 +39,13 @@ public class ByteDanceError implements Serializable {
         return "错误代码：" + this.errno + ", 错误信息：" + this.message;
     }
 
+    @Override
+    public Integer errorCode() {
+        return getErrno();
+    }
+
+    @Override
+    public String errorMessage() {
+        return errorMessage();
+    }
 }

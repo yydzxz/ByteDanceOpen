@@ -6,19 +6,19 @@ package com.github.yydzxz.common.error;
  **/
 public class ByteDanceErrorException extends RuntimeException{
 
-    private ByteDanceError error;
+    private IByteDanceError error;
 
-    public ByteDanceErrorException(ByteDanceError error) {
+    public ByteDanceErrorException(IByteDanceError error) {
         super(error.toString());
         this.error = error;
     }
 
-    public ByteDanceErrorException(ByteDanceError error, Throwable cause) {
+    public ByteDanceErrorException(IByteDanceError error, Throwable cause) {
         super(error.toString(), cause);
         this.error = error;
     }
 
-    public ByteDanceError getError() {
+    public IByteDanceError getError() {
         return this.error;
     }
 }

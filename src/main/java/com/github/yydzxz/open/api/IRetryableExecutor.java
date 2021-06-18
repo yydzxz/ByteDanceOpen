@@ -1,7 +1,7 @@
 package com.github.yydzxz.open.api;
 
-import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
+import com.github.yydzxz.common.error.IByteDanceError;
 import com.google.common.collect.Multimap;
 import org.slf4j.Logger;
 
@@ -37,7 +37,7 @@ public interface IRetryableExecutor {
      * @param error 根据error判断是否应该重试
      * @return
      */
-    boolean shouldRetry(ByteDanceError error);
+    boolean shouldRetry(IByteDanceError error);
 
     Logger getLogger();
 
@@ -66,7 +66,7 @@ public interface IRetryableExecutor {
                 response = executable.execute(url, headers, request, t);
                 break;
             }catch (ByteDanceErrorException e){
-                ByteDanceError error = e.getError();
+                IByteDanceError error = e.getError();
                 if(shouldRetry(error)){
                     if(getLogger() != null){
                         getLogger().warn("字节跳动接口请求失败，{} ms 后重试(第{}次)", getRetrySleepMillis(), retryTimes + 1);
