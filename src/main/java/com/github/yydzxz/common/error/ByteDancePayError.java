@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 字节跳动支付错误
  *
- * ByteDancePayError的部分错误码可以在<code>ByteDancePayErrorMsgEnum</code>中找到
+ * ByteDancePayError的部分错误码可以在<code>ByteDancePayErrorMsgEnum</code>中找到, 完整的请去官网查看
  * @author yangyidian
  * @date 2021/06/18
  **/
