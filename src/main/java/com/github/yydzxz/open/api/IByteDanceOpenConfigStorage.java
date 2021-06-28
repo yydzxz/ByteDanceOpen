@@ -38,6 +38,9 @@ public interface IByteDanceOpenConfigStorage {
     void updateComponentAccessToken(ByteDanceOpenComponentAccessToken componentAccessToken);
 
 //    ByteDanceMiniProgramConfig getByteDanceMiniProgramConfig(String appId);
+    String getPaySalt();
+
+    void setPaySalt(String paySalt);
 
     Lock getComponentAccessTokenLock();
 

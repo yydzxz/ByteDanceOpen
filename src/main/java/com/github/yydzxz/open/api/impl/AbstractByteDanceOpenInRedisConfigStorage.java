@@ -40,6 +40,7 @@ public abstract class AbstractByteDanceOpenInRedisConfigStorage implements IByte
     private String componentAesKey;
     private String componentVerifyTicket;
     private String componentAccessToken;
+    private String paySalt;
     private long componentExpiresTime;
 
     private Map<String, Token> authorizerRefreshTokens = new ConcurrentHashMap<>();

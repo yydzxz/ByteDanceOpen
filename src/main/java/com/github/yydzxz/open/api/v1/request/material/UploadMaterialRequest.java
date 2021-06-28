@@ -3,13 +3,14 @@ package com.github.yydzxz.open.api.v1.request.material;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.yydzxz.common.http.IByteDanceRequest;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import java.io.File;
 
 @Data
-public class UploadMaterialRequest {
+public class UploadMaterialRequest implements IByteDanceRequest {
     @JSONField(name = "material_type")
     @JsonAlias("material_type")
     @JsonProperty("material_type")

@@ -8,13 +8,15 @@ import com.github.yydzxz.common.http.IByteDanceResponse;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 public class Code2SessionResponse extends ByteDanceError implements IByteDanceResponse {
 
     private Code2SessionResponseData data;
 
     @Data
-    public static class Code2SessionResponseData{
+    public static class Code2SessionResponseData implements Serializable {
 
         @JSONField(name = "session_key")
         @JsonAlias("session_key")
