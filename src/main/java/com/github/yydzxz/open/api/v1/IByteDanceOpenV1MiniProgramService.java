@@ -27,6 +27,12 @@ public interface IByteDanceOpenV1MiniProgramService extends IByteDanceOpenMiniPr
      */
     IByteDanceOpenV1MiniProgramOperationService getByteDanceOpenV1MiniProgramOperationService();
 
+    /**
+     * 支付service
+     * @return
+     */
+    IByteDanceOpenV1MiniProgramPayService getByteDanceOpenV1MiniProgramPayService();
+
     IByteDanceOpenV1ComponentService getByteDanceOpenV1ComponentService();
 
 }

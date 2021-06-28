@@ -24,8 +24,6 @@ public class ByteDanceOpenV1MiniProgramServiceImpl extends AbstractByteDanceOpen
 
     private IByteDanceOpenV1MiniProgramPayService byteDanceOpenV1MiniProgramPayService;
 
-
-
     public ByteDanceOpenV1MiniProgramServiceImpl(IByteDanceOpenV1ComponentService byteDanceOpenV1ComponentService, String appId) {
         super(appId);
         this.byteDanceOpenV1ComponentService = byteDanceOpenV1ComponentService;
@@ -73,6 +71,11 @@ public class ByteDanceOpenV1MiniProgramServiceImpl extends AbstractByteDanceOpen
     @Override
     public IByteDanceOpenV1MiniProgramOperationService getByteDanceOpenV1MiniProgramOperationService() {
         return byteDanceOpenV1MiniProgramOperationService;
+    }
+
+    @Override
+    public IByteDanceOpenV1MiniProgramPayService getByteDanceOpenV1MiniProgramPayService() {
+        return byteDanceOpenV1MiniProgramPayService;
     }
 
     @Override
