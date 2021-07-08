@@ -6,8 +6,11 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.http.IByteDanceResponse;
+import com.github.yydzxz.common.util.json.ByteDanceJsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import lombok.Data;
@@ -96,6 +99,10 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
 
         private String reason;
 
+        @SerializedName("reason_detail")
+        @JSONField(name = "reason_detail")
+        @JsonAlias("reason_detail")
+        @JsonProperty("reason_detail")
         private Map<String, Object> reasonDetail;
 
         private Long status;
@@ -226,11 +233,23 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
         @JsonProperty("has_audit")
         private Integer hasAudit;
 
-        private String screenshot;
+        /**
+         * 字节服务器在返回这个字段时，可能返回字符串，也可能返回数组
+         * 为了兼容两种情况, 提供了一个简便方法parseScreenshot()来获取screenshot的值，这个方法无论字节返回的是字符串还是数组，都会返回数组
+         *
+         */
+        private Object screenshot;
 
         private String summary;
 
         private String version;
-    }
 
+        public List<String> parseScreenshot(){
+            if(screenshot instanceof List){
+                return (List)screenshot;
+            }else{
+                return Arrays.asList(screenshot.toString());
+            }
+        }
+    }
 }
