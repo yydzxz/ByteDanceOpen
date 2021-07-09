@@ -245,6 +245,9 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
         private String version;
 
         public List<String> parseScreenshot(){
+            if(screenshot == null){
+                return new ArrayList<>();
+            }
             if(screenshot instanceof List){
                 return (List)screenshot;
             }else{
