@@ -99,10 +99,10 @@ public class CodeVersionsResponse extends ByteDanceError implements IByteDanceRe
 
         private String reason;
 
-        @SerializedName("reason_detail")
-        @JSONField(name = "reason_detail")
-        @JsonAlias("reason_detail")
-        @JsonProperty("reason_detail")
+        @SerializedName("reasonDetail")
+        @JSONField(name = "reasonDetail")
+        @JsonAlias("reasonDetail")
+        @JsonProperty("reasonDetail")
         private Map<String, Object> reasonDetail;
 
         private Long status;
