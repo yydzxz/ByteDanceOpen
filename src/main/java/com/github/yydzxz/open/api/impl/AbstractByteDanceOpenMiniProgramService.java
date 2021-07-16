@@ -90,7 +90,7 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
     private <T> T postWithHeadersInternal(String url, Multimap<String, String> headers, Object request, Class<T> t){
         return executeRequest(
             (uriWithCommonParam, headers2, request2, t2) -> {
-                return getByteDanceOpenService().getByteDanceHttpClient().post(uriWithCommonParam, request2, t2);
+                return getByteDanceOpenService().getByteDanceHttpClient().postWithHeaders(uriWithCommonParam, headers2, request2, t2);
             },url, headers, request, t
         );
     }
