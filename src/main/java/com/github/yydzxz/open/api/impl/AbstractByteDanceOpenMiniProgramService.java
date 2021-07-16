@@ -20,6 +20,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ *
  * @author yangyidian
  * @date 2020/09/21
  **/
@@ -163,7 +164,7 @@ public abstract class AbstractByteDanceOpenMiniProgramService implements IByteDa
             return shouldExpireAccessToken(error)
                 || ByteDancePayErrorMsgEnum.CODE_NEGATIVE_1.getCode() == error.errorCode();
         }else {
-            log.error("错误类: {}, 没有设置哪些错误码应该让请求进行重试", error.getClass());
+            log.warn("错误类: {}, 没有设置哪些错误码应该让请求进行重试", error.getClass());
             return false;
         }
     }
