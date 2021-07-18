@@ -5,10 +5,7 @@ import com.github.yydzxz.common.error.InvalidAuthorizerRefreshToken;
 import com.github.yydzxz.open.api.impl.AbstractByteDanceOpenComponentService;
 import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1ComponentService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MaterialService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1TemplateService;
+import com.github.yydzxz.open.api.v1.*;
 import com.github.yydzxz.open.api.v1.response.auth.AuthAppListResponse;
 import com.github.yydzxz.open.api.v1.response.auth.AuthRetrieveResponse;
 import com.github.yydzxz.open.api.v1.response.auth.GetAuthorizerAccessTokenResponse;
@@ -34,6 +31,8 @@ public class ByteDanceOpenV1ComponentServiceImpl extends AbstractByteDanceOpenCo
 
     private IByteDanceOpenV1MaterialService byteDanceOpenV1MaterialService;
 
+    private IByteDanceOpenV1MiniProgramOrderPayService byteDanceOpenV1MiniProgramOrderPayService;
+
     private static final Map<String, IByteDanceOpenV1MiniProgramService> BYTEDANCE_OPEN_MINI_PROGRAM_SERVICE_MAP = new ConcurrentHashMap<>();
 
     @Override
@@ -55,6 +54,7 @@ public class ByteDanceOpenV1ComponentServiceImpl extends AbstractByteDanceOpenCo
         super(byteDanceOpenService);
         byteDanceOpenV1TemplateService = new ByteDanceOpenV1TemplateServiceImpl(byteDanceOpenService);
         byteDanceOpenV1MaterialService = new ByteDanceOpenV1MaterialServiceImpl(byteDanceOpenService);
+        byteDanceOpenV1MiniProgramOrderPayService = new ByteDanceOpenV1MiniProgramOrderPayServiceImpl(this);
     }
 
     @Override
@@ -66,6 +66,9 @@ public class ByteDanceOpenV1ComponentServiceImpl extends AbstractByteDanceOpenCo
     public IByteDanceOpenV1TemplateService getByteDanceOpenTemplateService() {
         return byteDanceOpenV1TemplateService;
     }
+
+    @Override
+    public IByteDanceOpenV1MiniProgramOrderPayService getByteDanceOrderPayService() {return byteDanceOpenV1MiniProgramOrderPayService;}
 
     @Override
     public String getComponentAccessToken(boolean forceRefresh){

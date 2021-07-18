@@ -52,6 +52,11 @@ public interface IByteDanceOpenV1ComponentService extends IByteDanceOpenComponen
     IByteDanceOpenV1TemplateService getByteDanceOpenTemplateService();
 
     /**
+     * 获取订单下单支付管理service
+     */
+    IByteDanceOpenV1MiniProgramOrderPayService getByteDanceOrderPayService();
+
+    /**
      * 获取指定appid的代授权小程序service
      * <br>用于代授权小程序业务</br>
      * @param appid

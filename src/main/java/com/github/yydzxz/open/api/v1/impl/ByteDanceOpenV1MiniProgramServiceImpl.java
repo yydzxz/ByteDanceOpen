@@ -3,12 +3,7 @@ package com.github.yydzxz.open.api.v1.impl;
 import com.github.yydzxz.open.api.IByteDanceOpenConfigStorage;
 import com.github.yydzxz.open.api.IByteDanceOpenService;
 import com.github.yydzxz.open.api.impl.AbstractByteDanceOpenMiniProgramService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1ComponentService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramCodeService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramInfoService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramPayService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramService;
-import com.github.yydzxz.open.api.v1.IByteDanceOpenV1MiniProgramOperationService;
+import com.github.yydzxz.open.api.v1.*;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 
