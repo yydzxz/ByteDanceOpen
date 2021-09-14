@@ -94,6 +94,11 @@ public class ByteDanceOpenInRedisConfigStorage extends AbstractByteDanceOpenInRe
     }
 
     @Override
+    public void setAuthorizerRefreshToken(String appId, String authorizerRefreshToken, int expiresInSeconds) {
+        redisOps.setValue(this.getKey(this.authorizerRefreshTokenKey, appId), authorizerRefreshToken, expiresInSeconds, TimeUnit.SECONDS);
+    }
+
+    @Override
     public String getAuthorizerAccessToken(String appId) {
         return redisOps.getValue(this.getKey(this.authorizerAccessTokenKey, appId));
     }

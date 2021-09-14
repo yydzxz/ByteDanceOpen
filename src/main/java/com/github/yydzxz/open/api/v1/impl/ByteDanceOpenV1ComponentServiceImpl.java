@@ -116,7 +116,7 @@ public class ByteDanceOpenV1ComponentServiceImpl extends AbstractByteDanceOpenCo
                 response.getAuthorizerAccessToken(), response.getExpiresIn());
         }
         if (!StrUtil.isEmpty(response.getAuthorizerRefreshToken())) {
-            getByteDanceOpenService().getByteDanceOpenConfigStorage().setAuthorizerRefreshToken(response.getAuthorizerAppid(), response.getAuthorizerRefreshToken());
+            getByteDanceOpenService().getByteDanceOpenConfigStorage().setAuthorizerRefreshToken(response.getAuthorizerAppid(), response.getAuthorizerRefreshToken(), response.getRefreshExpiresIn() - 60 * 60 * 12);
         }
         return response;
     }

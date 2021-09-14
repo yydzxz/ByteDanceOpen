@@ -60,6 +60,8 @@ public interface IByteDanceOpenConfigStorage {
 
     void setAuthorizerRefreshToken(String appId, String authorizerRefreshToken);
 
+    void setAuthorizerRefreshToken(String appId, String authorizerRefreshToken, int expiresInSeconds);
+
     String getAuthorizerAccessToken(String appId);
 
     boolean isAuthorizerAccessTokenExpired(String appId);

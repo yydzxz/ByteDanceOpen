@@ -49,6 +49,17 @@ public class GetAuthorizerAccessTokenResponse extends ByteDanceError implements 
     @JsonProperty("authorize_permission")
     private List<AuthorizePermission> authorizePermission;
 
+    @SerializedName("refresh_expires_in")
+    @JSONField(name = "refresh_expires_in")
+    @JsonAlias("refresh_expires_in")
+    @JsonProperty("refresh_expires_in")
+    private Integer refreshExpiresIn;
+
+    @SerializedName("share_data")
+    @JSONField(name = "share_data")
+    @JsonAlias("share_data")
+    @JsonProperty("share_data")
+    private ShareData shareData;
 
     @Data
     public static class AuthorizePermission implements Serializable {
@@ -60,5 +71,23 @@ public class GetAuthorizerAccessTokenResponse extends ByteDanceError implements 
         private String category;
 
         private String description;
+    }
+
+    @Data
+    public static class ShareData implements Serializable{
+
+        private static final long serialVersionUID = -5168384019692156192L;
+
+        @SerializedName("share_ratio")
+        @JSONField(name = "share_ratio")
+        @JsonAlias("share_ratio")
+        @JsonProperty("share_ratio")
+        private Integer shareRatio;
+
+        @SerializedName("share_amount")
+        @JSONField(name = "share_amount")
+        @JsonAlias("share_amount")
+        @JsonProperty("share_amount")
+        private Integer shareAmount;
     }
 }
