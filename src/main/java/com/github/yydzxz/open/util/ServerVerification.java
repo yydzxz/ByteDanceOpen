@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.security.MessageDigest;
 
 /**
- * 字节跳动提供的代码
+ * 字节跳动提供的验签工具类
  */
 public class ServerVerification {
 

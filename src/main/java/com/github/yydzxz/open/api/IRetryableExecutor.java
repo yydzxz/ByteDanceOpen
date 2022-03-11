@@ -2,6 +2,7 @@ package com.github.yydzxz.open.api;
 
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
+import com.google.common.collect.Multimap;
 import org.slf4j.Logger;
 
 /**
@@ -51,19 +52,19 @@ public interface IRetryableExecutor {
      * @param <T>
      * @return
      */
-    default <T> T retryableExecuteRequest(IExecutable<T> executable, String url, Object request, Class<T> t){
-        int retryTimes = 0;
+    default <T> T retryableExecuteRequest(IExecutable<T> executable, String url, Multimap<String,String> headers, Object request, Class<T> t){
+        int retryTimes = 1;
         ByteDanceErrorException exception = null;
         T response;
         while(true){
-            if(retryTimes > getMaxRetryTimes() + 1){
+            if(retryTimes > getMaxRetryTimes()){
                 if(getLogger() != null){
-                    getLogger().error("重试达到最大次数【{}】", retryTimes);
+                    getLogger().error("重试达到最大次数【{}】", retryTimes - 1);
                 }
                 throw exception;
             }
             try {
-                response = executable.execute(url, request, t);
+                response = executable.execute(url, headers, request, t);
                 break;
             }catch (ByteDanceErrorException e){
                 ByteDanceError error = e.getError();

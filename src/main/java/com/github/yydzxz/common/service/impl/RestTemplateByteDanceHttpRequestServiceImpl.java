@@ -1,11 +1,25 @@
 package com.github.yydzxz.common.service.impl;
 
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.yydzxz.common.error.ByteDanceError;
 import com.github.yydzxz.common.error.ByteDanceErrorException;
-import com.github.yydzxz.common.error.ByteDanceMiniProgramErrorMsgEnum;
 import com.github.yydzxz.common.service.IByteDanceHttpRequestService;
+import com.google.common.collect.Multimap;
+import java.io.File;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.util.Collection;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -45,10 +59,72 @@ public class RestTemplateByteDanceHttpRequestServiceImpl implements IByteDanceHt
         return handleResponse(response);
     }
 
+    @Override
+    public <T> T postWithHeaders(String url, Multimap<String,String> headers, Object request, Class<T> t){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        for(String headerName: headers.keySet()){
+            Collection<String> headerValues = headers.get(headerName);
+            for(String headerValue : headerValues){
+                httpHeaders.add(headerName, headerValue);
+            }
+        }
+        MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();
+
+        Field[] fields = request.getClass().getDeclaredFields();
+        for(Field field : fields){
+            field.setAccessible(true);
+            Object value;
+            try {
+                value = field.get(request);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+            if(value != null && value instanceof File){
+                value = new FileSystemResource((File)value);
+            }
+            String paramName;
+            Annotation filedAliasAnnotation = field.getAnnotation(JSONField.class);
+            if(filedAliasAnnotation != null){
+                JSONField jsonField = (JSONField)filedAliasAnnotation;
+                paramName = jsonField.name();
+                if(!StringUtils.isEmpty(paramName)){
+                    param.add(paramName, value);
+                    continue;
+                }
+
+            }
+
+            filedAliasAnnotation = field.getAnnotation(JsonAlias.class);
+            if(filedAliasAnnotation != null){
+                JsonAlias jsonField = (JsonAlias)filedAliasAnnotation;
+                paramName = jsonField.value()[0];
+                if(!StringUtils.isEmpty(paramName)){
+                    param.add(paramName, value);
+                    continue;
+                }
+            }
+
+            filedAliasAnnotation = field.getAnnotation(JsonProperty.class);
+            if(filedAliasAnnotation != null){
+                JsonProperty jsonField = (JsonProperty)filedAliasAnnotation;
+                paramName = jsonField.value();
+                if(!StringUtils.isEmpty(paramName)){
+                    param.add(paramName, value);
+                    continue;
+                }
+            }
+            param.add(field.getName(), value);
+        }
+
+        ResponseEntity<T> responseEntity = restTemplate.postForEntity(url, new HttpEntity<>(param, httpHeaders), t);
+        T response = responseEntity.getBody();
+        return handleResponse(response);
+    }
+
     private <T> T handleResponse(T response){
         if(response instanceof String){
-            checkError((String)response);
             log.info("请求字节跳动接口返回数据: {}", response);
+            checkError((String)response);
         }else if(response instanceof byte[]){
             try{
                 checkError(new String((byte[])response));
@@ -64,17 +140,8 @@ public class RestTemplateByteDanceHttpRequestServiceImpl implements IByteDanceHt
     }
 
     private void checkError(String response){
-        log.debug(response);
-        ByteDanceError error;
-        try{
-            error = JSONUtil.toBean(response, ByteDanceError.class);
-        }catch (RuntimeException e){
-            log.error("字节跳动接口未知错误");
-            log.error(e.getMessage(), e);
-            throw e;
-        }
+        ByteDanceError error = JSONUtil.toBean(response, ByteDanceError.class);
         if(error.getErrno() != null && error.getErrno() != 0){
-            log.error("字节跳动接口返回内容: {}", response);
             throw new ByteDanceErrorException(error);
         }
     }

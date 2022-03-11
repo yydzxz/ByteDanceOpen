@@ -12,6 +12,8 @@ import lombok.Data;
 @Data
 public class GetPreAuthCodeResponse extends ByteDanceError {
 
+    private static final long serialVersionUID = -1208735625532808579L;
+
     @JSONField(name = "pre_auth_code")
     @JsonAlias("pre_auth_code")
     private String preAuthCode;

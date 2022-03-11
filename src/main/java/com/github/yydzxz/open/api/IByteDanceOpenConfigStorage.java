@@ -3,7 +3,6 @@ package com.github.yydzxz.open.api;
 
 import com.github.yydzxz.open.bean.ByteDanceOpenAuthorizerAccessToken;
 import com.github.yydzxz.open.bean.ByteDanceOpenComponentAccessToken;
-import com.github.yydzxz.miniprogram.config.ByteDanceMiniProgramConfig;
 import java.util.concurrent.locks.Lock;
 
 /**
@@ -39,7 +38,7 @@ public interface IByteDanceOpenConfigStorage {
 
     void updateComponentAccessToken(ByteDanceOpenComponentAccessToken componentAccessToken);
 
-    ByteDanceMiniProgramConfig getByteDanceMiniProgramConfig(String appId);
+//    ByteDanceMiniProgramConfig getByteDanceMiniProgramConfig(String appId);
 
     Lock getComponentAccessTokenLock();
 
@@ -95,5 +94,5 @@ public interface IByteDanceOpenConfigStorage {
      */
     void setByteDanceOpenInfo(String componentAppId, String componentAppSecret, String componentToken, String componentAesKey);
 
-    Lock getAccessTokenLock();
+    Lock getAccessTokenLock(String appId);
 }
