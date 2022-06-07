@@ -95,7 +95,7 @@
     <dependency>
       <groupId>org.jodd</groupId>
       <artifactId>jodd-http</artifactId>
-      <version>5.1.5</version>
+      <version>6.2.1</version>
       <scope>provided</scope>
     </dependency>
     <!-- http客户端 end-->
