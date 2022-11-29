@@ -47,6 +47,6 @@ public class ByteDanceError implements IByteDanceError, Serializable {
 
     @Override
     public String errorMessage() {
-        return errorMessage();
+        return getMessage();
     }
 }
