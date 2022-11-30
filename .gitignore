@@ -18,6 +18,8 @@ target/
 *.iws
 *.iml
 *.ipr
+### idea maven plugin
+.run/
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +33,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
