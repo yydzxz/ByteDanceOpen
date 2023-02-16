@@ -33,5 +33,10 @@ public class Code2SessionResponse extends ByteDanceError implements IByteDanceRe
         @JsonProperty("anonymous_openid")
         @SerializedName("anonymous_openid")
         private String anonymousOpenid;
+
+        /**
+         * 用户在小程序平台的唯一标识符，如果请求时有 code 参数才会返回。如果开发者拥有多个小程序，可通过 unionid 来区分用户的唯一性。
+         */
+        private String unionid;
     }
 }
